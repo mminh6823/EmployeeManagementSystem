@@ -1,0 +1,17 @@
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\bin\Debug\net8.0\Backend_Library.deps.json
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\bin\Debug\net8.0\Backend_Library.runtimeconfig.json
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\bin\Debug\net8.0\Backend_Library.dll
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\bin\Debug\net8.0\Backend_Library.pdb
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\Backend_Library.csproj.AssemblyReference.cache
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\Backend_Library.GeneratedMSBuildEditorConfig.editorconfig
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\Backend_Library.AssemblyInfoInputs.cache
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\Backend_Library.AssemblyInfo.cs
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\Backend_Library.csproj.CoreCompileInputs.cache
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\Backend_Library.dll
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\refint\Backend_Library.dll
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\Backend_Library.pdb
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\Backend_Library.genruntimeconfig.cache
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\ref\Backend_Library.dll
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\bin\Debug\net8.0\BaseLibrary.dll
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\bin\Debug\net8.0\BaseLibrary.pdb
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\Backend_.91583946.Up2Date
