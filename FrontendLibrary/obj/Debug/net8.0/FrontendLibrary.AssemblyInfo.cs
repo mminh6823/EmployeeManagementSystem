@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FrontendLibrary")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2bb9f7b86e23ec1791d52a03b1c86ca7d16559c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+67db48165ee8057dcb765e386b40a3c4575cb79c")]
 [assembly: System.Reflection.AssemblyProductAttribute("FrontendLibrary")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FrontendLibrary")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

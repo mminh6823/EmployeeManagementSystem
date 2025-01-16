@@ -1,6 +1,38 @@
 [
   {
     "ContainingType": "Backend_EmployeeManagementSystem.Controllers.AuthenticationController",
+    "Method": "LoginAsync",
+    "RelativePath": "api/Authentication/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "BaseLibrary.DTOs.Login",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.AuthenticationController",
+    "Method": "RefreshTokenAsync",
+    "RelativePath": "api/Authentication/refresh-token",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "token",
+        "Type": "BaseLibrary.DTOs.RefreshToken",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.AuthenticationController",
     "Method": "CreateAsync",
     "RelativePath": "api/Authentication/register",
     "HttpMethod": "POST",
