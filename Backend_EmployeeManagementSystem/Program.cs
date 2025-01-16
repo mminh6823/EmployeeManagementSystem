@@ -1,6 +1,8 @@
 ﻿using Backend_Library.Data;
+using Backend_Library.Helpers;
+using Backend_Library.Repositories.Contracts;
 using Microsoft.EntityFrameworkCore;
-
+using Backend_Library.Repositories.Implementations;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -13,6 +15,9 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")
     ??throw new InvalidOperationException("Xin lỗi, kết nối của bạn không thành công")));
+
+builder.Services.Configure<JwtSection>(builder.Configuration.GetSection("JwtSection"));
+builder.Services.AddScoped<IUserAccount, UserAccountRepository>();
 
 
 var app = builder.Build();

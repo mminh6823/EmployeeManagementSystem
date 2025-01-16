@@ -9,3 +9,4 @@ D:\.Net\EmployeeManagementSystemSolution\FrontendLibrary\obj\Debug\net8.0\Fronte
 D:\.Net\EmployeeManagementSystemSolution\FrontendLibrary\obj\Debug\net8.0\refint\FrontendLibrary.dll
 D:\.Net\EmployeeManagementSystemSolution\FrontendLibrary\obj\Debug\net8.0\FrontendLibrary.pdb
 D:\.Net\EmployeeManagementSystemSolution\FrontendLibrary\obj\Debug\net8.0\ref\FrontendLibrary.dll
+D:\.Net\EmployeeManagementSystemSolution\FrontendLibrary\obj\Debug\net8.0\FrontendLibrary.sourcelink.json

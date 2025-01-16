@@ -149,3 +149,4 @@ D:\.Net\EmployeeManagementSystemSolution\Backend_EmployeeManagementSystem\bin\De
 D:\.Net\EmployeeManagementSystemSolution\Backend_EmployeeManagementSystem\bin\Debug\net8.0\BCrypt.Net-Next.dll
 D:\.Net\EmployeeManagementSystemSolution\Backend_EmployeeManagementSystem\bin\Debug\net8.0\Backend_Library.dll
 D:\.Net\EmployeeManagementSystemSolution\Backend_EmployeeManagementSystem\bin\Debug\net8.0\Backend_Library.pdb
+D:\.Net\EmployeeManagementSystemSolution\Backend_EmployeeManagementSystem\obj\Debug\net8.0\Backend_EmployeeManagementSystem.sourcelink.json

@@ -15,3 +15,4 @@ D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\ref\Ba
 D:\.Net\EmployeeManagementSystemSolution\Backend_Library\bin\Debug\net8.0\BaseLibrary.dll
 D:\.Net\EmployeeManagementSystemSolution\Backend_Library\bin\Debug\net8.0\BaseLibrary.pdb
 D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\Backend_.91583946.Up2Date
+D:\.Net\EmployeeManagementSystemSolution\Backend_Library\obj\Debug\net8.0\Backend_Library.sourcelink.json

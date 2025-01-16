@@ -10,3 +10,4 @@ D:\.Net\EmployeeManagementSystemSolution\BaseLibrary\obj\Debug\net8.0\refint\Bas
 D:\.Net\EmployeeManagementSystemSolution\BaseLibrary\obj\Debug\net8.0\BaseLibrary.pdb
 D:\.Net\EmployeeManagementSystemSolution\BaseLibrary\obj\Debug\net8.0\ref\BaseLibrary.dll
 D:\.Net\EmployeeManagementSystemSolution\BaseLibrary\obj\Debug\net8.0\BaseLibrary.csproj.AssemblyReference.cache
+D:\.Net\EmployeeManagementSystemSolution\BaseLibrary\obj\Debug\net8.0\BaseLibrary.sourcelink.json
