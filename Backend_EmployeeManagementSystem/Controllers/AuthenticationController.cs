@@ -2,11 +2,13 @@
 using BaseLibrary.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Backend_EmployeeManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class AuthenticationController(IUserAccount accountInteface ) : ControllerBase
     {
         [HttpPost("register")]
@@ -24,7 +26,7 @@ namespace Backend_EmployeeManagementSystem.Controllers
             var result = await accountInteface.SingInAsync(user);
             return Ok(result);
         }
-
+        
         [HttpPost("refresh-token")]
         public async Task<IActionResult> RefreshTokenAsync(RefreshToken token)
         {

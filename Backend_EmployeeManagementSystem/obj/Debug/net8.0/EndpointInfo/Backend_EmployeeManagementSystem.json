@@ -98,12 +98,11 @@
         }
       }
     },
-    "/WeatherForecast": {
+    "/api/WeatherForecast": {
       "get": {
         "tags": [
           "WeatherForecast"
         ],
-        "operationId": "GetWeatherForecast",
         "responses": {
           "200": {
             "description": "OK",

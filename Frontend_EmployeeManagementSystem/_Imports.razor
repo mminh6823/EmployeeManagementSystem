@@ -8,3 +8,14 @@
 @using Microsoft.JSInterop
 @using Frontend_EmployeeManagementSystem
 @using Frontend_EmployeeManagementSystem.Layout
+
+@using BaseLibrary.DTOs
+@using FrontendLibrary.Helpers
+@using Microsoft.AspNetCore.Components.Authorization 
+@using FrontendLibrary.Services.Contracts
+
+
+
+@inject AuthenticationStateProvider AuthStateProvider
+@inject IUserAccountService accountService
+@inject NavigationManager NavManager

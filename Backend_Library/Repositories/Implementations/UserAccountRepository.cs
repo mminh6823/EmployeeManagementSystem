@@ -102,7 +102,7 @@ namespace Backend_Library.Repositories.Implementations
                issuer: config.Value.Issuer,
               audience: config.Value.Audience,
               claims: usercClaims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.Now.AddHours(12),
                 signingCredentials: credentials
                 );
             return new JwtSecurityTokenHandler().WriteToken(token);

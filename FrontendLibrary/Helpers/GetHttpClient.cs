@@ -18,7 +18,7 @@ namespace FrontendLibrary.Helpers
             return client;
         }
 
-        public HttpClient GetPublicHttpClient()
+        public  HttpClient GetPublicHttpClient()
         {
             var client = httpClientFactory.CreateClient("SystemApiClient");
             client.DefaultRequestHeaders.Remove(HeaderKey);

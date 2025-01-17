@@ -18,7 +18,6 @@ namespace FrontendLibrary.Services.Implementations
             return await response.Content.ReadFromJsonAsync<GeneralResponse>();
         }
 
-
         public async Task<LoginResponse> LoginAsync(Login user)
         {
             var httpClient = getHttpClient.GetPublicHttpClient();   
@@ -29,10 +28,18 @@ namespace FrontendLibrary.Services.Implementations
 
         public async Task<LoginResponse> RefreshToken(RefreshToken token)
         {   
-            throw new NotImplementedException();
+           var httpClient = getHttpClient.GetPublicHttpClient();
+            var response = await httpClient.PostAsJsonAsync($"{AuthUrl}/refresh-token", token);
+            if (!response.IsSuccessStatusCode) return new LoginResponse(false, "Refresh token thất bại");
+            return await response.Content.ReadFromJsonAsync<LoginResponse>();
         }
 
-
+        public async Task<WeatherForecast[]> GetWeatherForecast()
+        {
+           var httpClient =await getHttpClient.GetPrivateHttpClient();
+            var result = await httpClient.GetFromJsonAsync<WeatherForecast[]>("api/weatherforecast");
+            return result;
+        }
 
     }
 }
