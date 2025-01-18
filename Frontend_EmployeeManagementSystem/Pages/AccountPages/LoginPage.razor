@@ -1,12 +1,27 @@
 ﻿@page "/identity/account/login"
+@using Frontend_EmployeeManagementSystem.Pages.OtherPages
+@using Syncfusion.Blazor.Popups
+@layout AuthenticationLayout
+@inject SfDialogService DialogService
+
+
 <div class="container">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">
             <EditForm Model="User" OnValidSubmit="HandleLogin">
                 <DataAnnotationsValidator />
-                <ValidationSummary />
-                <div class="card">
-                    <div class="card-header">Đăng nhập tại đây</div>
+                <div class="card bg-dark" style="opacity:0.5; margin-top:25%; border-radius:10px; color:wheat; font-weight:bold">
+                    <div class="card-header text-center fs-5 mb-2">Đăng nhập tại đây</div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 d-flex justify-content-center">
+                                <img src="../images/companylogos/minhminh.jpg" style="border-radius:15px" height="50" width="50" />
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4"></div>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <div class="form-group mt-3">
                             <label class="form-label">Email</label>
@@ -19,25 +34,52 @@
                         </div>
 
                         <div class="form-group mt-3">
+                           @if (ShowLoadingButton)
+                            { 
+                            <ButtonLoadingSpinner></ButtonLoadingSpinner>
+                            }
+                            else
+                            {
                             <button type="submit" class="btn btn-outline-primary float-end">Đăng nhập</button>
+                            }
                         </div>
+                    </div>
+                    <div class="card-footer">
+                        <span class="text-center">Không có tài khoản? |
+                        <a class="btn-link" href="identity/account/register">Đăng ký ngay</a>
+                        </span> 
+                        <ValidationSummary />
                     </div>
                 </div>
             </EditForm>
         </div>
+        <div class="col-lg-4"></div>
     </div>
 </div>
 @code{
+    public bool ShowLoadingButton { get; set; } = false;
     Login User = new();
     async Task HandleLogin()
     {
+        ShowLoadingButton = true;
         var result = await accountService.LoginAsync(User);
         if (result.Flag)
         {
+            await DisplayDialog(result.Message, "Thông báo!");
             var customAuthStateProvider = (CustomAuthenticationStateProvider)AuthStateProvider;
             await customAuthStateProvider.UpdateAuthenticationState(new UserSession() 
             { Token = result.Token, RefreshToken = result.RefreshToken});
             NavManager.NavigateTo("/", forceLoad: true);
         }
+        else 
+        {
+            await DisplayDialog(result.Message, "Thông báo!");
+        }
+        ShowLoadingButton = false;
+    }
+     
+    private async Task DisplayDialog(string content, string title)
+    {
+        await DialogService.AlertAsync(content, title);
     }
 }

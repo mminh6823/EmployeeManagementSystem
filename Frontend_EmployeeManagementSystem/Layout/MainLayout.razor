@@ -12,10 +12,6 @@
                 <Authorized>
                     <a class="btn btn-none text-danger" @onclick="LogoutClicked">Đăng xuất</a>
                 </Authorized>
-                <NotAuthorized>
-                    <a class="btn btn-none" href="identity/account/login">Đăng nhập</a>
-                    <a class="btn btn-none" href="identity/account/register">Đăng ký</a>
-                </NotAuthorized>
                 </AuthorizeView>
         </div>
 
@@ -24,6 +20,7 @@
         </article>
     </main>
 </div>
+
 @code{
     async Task LogoutClicked()
     {

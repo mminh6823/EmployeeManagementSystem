@@ -6,6 +6,8 @@ using Blazored.LocalStorage;
 using Microsoft.AspNetCore.Components.Authorization;
 using FrontendLibrary.Services.Contracts;
 using FrontendLibrary.Services.Implementations;
+using Syncfusion.Blazor;
+using Syncfusion.Blazor.Popups;
 
 
 
@@ -26,5 +28,10 @@ builder.Services.AddScoped<GetHttpClient>();
 builder.Services.AddScoped<LocalStorageService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddScoped<IUserAccountService, UserAccountService>();
+
+builder.Services.AddSyncfusionBlazor();
+builder.Services.AddScoped<SfDialogService>();
+
+
 
 await builder.Build().RunAsync();

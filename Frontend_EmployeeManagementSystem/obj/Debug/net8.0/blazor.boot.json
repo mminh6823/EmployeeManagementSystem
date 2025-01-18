@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Frontend_EmployeeManagementSystem",
   "resources": {
-    "hash": "sha256-4g73MCi2YkRrZALrFlha6ucgLNfFdPVz9/AMsIaiyIk=",
+    "hash": "sha256-EBjxcBIqb4PyGpZCJxZQnt0UULaJJ0DxkpmN/kWSLPs=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-B6DNRvFeCUi3jbx9uKpuj+hV9cN0KG4RdZj1FgBZwj8="
     },
@@ -52,6 +52,11 @@
       "Microsoft.IdentityModel.Tokens.wasm": "sha256-ZeKsQcfctABmDSAJhU7CaSVrHqFuQZTknDBIVvZNIWU=",
       "Microsoft.JSInterop.wasm": "sha256-Io6aK2hSUL4m2prTnsWGWosE7cw/c/7mj3BAxlDuDjY=",
       "Microsoft.JSInterop.WebAssembly.wasm": "sha256-hcEp3tuBjwv8iSHAFSZG7AZV1aZYHr9VqnSGg1D6WgI=",
+      "Syncfusion.Blazor.Buttons.wasm": "sha256-kfE8rrbTaZXfLV+smYcw+pg49UmuU5CF/geZJ82H/UQ=",
+      "Syncfusion.Blazor.Core.wasm": "sha256-Q5/Y5xIMCk7GwgQFakreQQLnyPzAU3NttJLbiyJM3ac=",
+      "Syncfusion.Blazor.Popups.wasm": "sha256-I2sj/t71kNcmd4qzsXAzwVpa+XOwYAk5XdOIEhDLkQc=",
+      "Syncfusion.Blazor.Themes.wasm": "sha256-/QKYKLqkCNoPrd2SwcQIQRPVIPtMPea+6fXO7QnDQ3M=",
+      "Syncfusion.Licensing.wasm": "sha256-5UKB99K5bPueCqZQcB4+WueIF2sRO4s4yiK1mrs6t6w=",
       "System.IdentityModel.Tokens.Jwt.wasm": "sha256-l32HTgcfbhPXvPYSfqdBM1Y6BEb5gywPhLkebWUwlp4=",
       "System.IO.Pipelines.wasm": "sha256-JqVBy6SV+3qk+IK3VJiyIDt9CsVk6b1/ytTXmrI4mTM=",
       "Microsoft.CSharp.wasm": "sha256-zohYihZLqZl3Vs/WUXlbmBw6sSRhBg6suf/7sRlQmto=",
@@ -222,14 +227,14 @@
       "mscorlib.wasm": "sha256-QoC5hTKpDNO6efLnEvYwV9OJBXvYRq8/1yGhNZKiNCw=",
       "netstandard.wasm": "sha256-JT2F4bYWJpaSGq+iD0ITLpWxsDhMUjhqje9RpBtTg7w=",
       "System.Private.CoreLib.wasm": "sha256-fvIPBcvgvsRuWrKi2LGQsLYvcKUSnyIuBUsE3LJu/0Y=",
-      "BaseLibrary.wasm": "sha256-C/CxMH/wKeSvdDJzgm1F/8RlGzYgBLJ7+FDJlgeiCkg=",
-      "FrontendLibrary.wasm": "sha256-JpIZy6pyK38b+s7LM2RMG2lc30iobbkuEqcDHgWyGIQ=",
-      "Frontend_EmployeeManagementSystem.wasm": "sha256-kPUsExINkYcJSs718MTLQN2Pfm/S4MhG0NfNPpWuqMU="
+      "BaseLibrary.wasm": "sha256-LuLGt+noqjaJUPDsyeFHTRvOSKkUdYhlB4+i7HutEjw=",
+      "FrontendLibrary.wasm": "sha256-qhjEvAAYVvDv7oKfC1nnp+9REXu77iO4PWuV1OMLb1Y=",
+      "Frontend_EmployeeManagementSystem.wasm": "sha256-RHsATpbkYUEOe/B3P2RYcaxdOnt58uyNTHdMvmNhLQk="
     },
     "pdb": {
-      "BaseLibrary.pdb": "sha256-gw1rw0eqDSQiSErUCEDSi3kyqvqdO4h8DmenQgRaDX4=",
-      "FrontendLibrary.pdb": "sha256-56SGPwh6JDhc02x6dRYb6V6YmTdNA18/PDfp3hnMqCs=",
-      "Frontend_EmployeeManagementSystem.pdb": "sha256-ezwFZoTx69KNAJ5fV/NVrckT8RhbC/CtLsFlcLszXJ0="
+      "BaseLibrary.pdb": "sha256-eKg3nCzBuecPNd5qmpHZcojRJ1sIaZTQAnpKdjT1M9w=",
+      "FrontendLibrary.pdb": "sha256-QMO9w0ZlGj2RfsRjfidc+o4Nt1cYq5yVmAUszZDoGE4=",
+      "Frontend_EmployeeManagementSystem.pdb": "sha256-7fX6B6dGJNrlxcNUtcnIM38Ae8H0m2wrSmoBR/lXjmE="
     }
   },
   "cacheBootResources": true,
