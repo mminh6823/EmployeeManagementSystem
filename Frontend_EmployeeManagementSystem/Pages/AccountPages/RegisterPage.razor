@@ -10,7 +10,7 @@
         <div class="col-lg-4">
             <EditForm Enhance Model="User" OnValidSubmit="HandleRegistration">
                 <DataAnnotationsValidator />
-                <div class="card bg-dark" style="opacity:0.5; margin-top:25%; border-radius:10px; color:wheat; font-weight:bold">
+                <div class="card bg-dark" style="opacity:0.5; margin-top:25%; border-radius:10px; color:white; font-weight:bold">
                     <div class="card-header text-center fs-5">Đăng ký tài khoản tại đây!</div>
                     <div class="container">
                         <div class="row">
@@ -69,6 +69,13 @@
     // Khởi tạo đối tượng User
     Register User = new();
 
+    // Khai báo các dịch vụ cần sử dụng
+    [CascadingParameter] public Task<AuthenticationState> AuthenticationState { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+        await CheckUserAuthentication();
+    }
+
     // Phương thức xử lý khi form hợp lệ
     async Task HandleRegistration()
     {
@@ -93,4 +100,17 @@
     {
         await DialogService.AlertAsync(content, title);
     }
+
+    private async Task CheckUserAuthentication()
+    {
+        var user = (await AuthenticationState).User;
+        bool isUserAuthenticated = user.Identity!.IsAuthenticated;
+        if (isUserAuthenticated)
+        {
+            NavManager.NavigateTo("/home/dashboard");
+        }
+    }
+
+
+
 }

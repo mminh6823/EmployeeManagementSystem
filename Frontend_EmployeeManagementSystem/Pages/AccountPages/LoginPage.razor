@@ -11,7 +11,7 @@
         <div class="col-lg-4">
             <EditForm Model="User" OnValidSubmit="HandleLogin">
                 <DataAnnotationsValidator />
-                <div class="card bg-dark" style="opacity:0.5; margin-top:25%; border-radius:10px; color:wheat; font-weight:bold">
+                <div class="card bg-dark" style="opacity:0.5; margin-top:25%; border-radius:10px; color:white; font-weight:bold">
                     <div class="card-header text-center fs-5 mb-2">Đăng nhập tại đây</div>
                     <div class="container">
                         <div class="row">
@@ -59,6 +59,14 @@
 @code{
     public bool ShowLoadingButton { get; set; } = false;
     Login User = new();
+
+
+    [CascadingParameter] public Task<AuthenticationState> AuthenticationState { get; set; }
+    protected async override Task OnInitializedAsync()
+    {
+       await CheckUserAuthentication(); 
+    }
+
     async Task HandleLogin()
     {
         ShowLoadingButton = true;
@@ -82,4 +90,17 @@
     {
         await DialogService.AlertAsync(content, title);
     }
+
+    private async Task CheckUserAuthentication()
+    {
+        var user = (await AuthenticationState).User;
+        bool isUserAuthenticated = user.Identity!.IsAuthenticated;
+        if (isUserAuthenticated)
+        {
+            NavManager.NavigateTo("/home/dashboard");
+        }
+    }
+
+
+
 }

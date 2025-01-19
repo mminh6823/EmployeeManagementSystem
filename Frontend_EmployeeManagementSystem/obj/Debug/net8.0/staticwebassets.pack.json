@@ -8809,6 +8809,10 @@
       "PackagePath": "staticwebassets\\images\\companylogos\\minhminh.jpg"
     },
     {
+      "Id": "D:\\.Net\\EmployeeManagementSystemSolution\\Frontend_EmployeeManagementSystem\\wwwroot\\images\\profile\\profiledefault.png",
+      "PackagePath": "staticwebassets\\images\\profile\\profiledefault.png"
+    },
+    {
       "Id": "D:\\.Net\\EmployeeManagementSystemSolution\\Frontend_EmployeeManagementSystem\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },

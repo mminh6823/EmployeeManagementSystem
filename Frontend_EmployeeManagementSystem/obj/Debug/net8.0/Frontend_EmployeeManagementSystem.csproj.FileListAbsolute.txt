@@ -1114,10 +1114,6 @@ D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\D
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\refint\Frontend_EmployeeManagementSystem.dll
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\Frontend_EmployeeManagementSystem.pdb
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\ref\Frontend_EmployeeManagementSystem.dll
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\e03tqfzh5r-ysgn98enay.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\7grvqakagg-m47pjlh2zx.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\dp6f77mb31-o0u67h4xkt.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\qguqxn6q7z-kvxlql9910.gz
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\bin\Debug\net8.0\wwwroot\_framework\Syncfusion.Blazor.Buttons.wasm
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\bin\Debug\net8.0\wwwroot\_framework\Syncfusion.Blazor.Core.wasm
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\bin\Debug\net8.0\wwwroot\_framework\Syncfusion.Blazor.Popups.wasm
@@ -1144,6 +1140,10 @@ D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\D
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\8s137zli35-b68vc1ct1b.gz
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\f46xxd7yfd-lm996d114z.gz
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\4g52v0g9bh-zm2r39h7zy.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\xmek2tqpua-4k7cufd6q1.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\89mbvlebr8-rq1p1to6i9.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\bmly1w1rxd-iibzyrou2v.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\e03tqfzh5r-jrexx9gtu4.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\7grvqakagg-olweuptvfp.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\dp6f77mb31-arf1czn561.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\qguqxn6q7z-7s8yyo31di.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\xmek2tqpua-4cg5686uip.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\89mbvlebr8-v0e9et3tk2.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\bmly1w1rxd-lq2fvx0rdv.gz
