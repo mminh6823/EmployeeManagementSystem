@@ -1,7 +1,10 @@
 ﻿@using Frontend_EmployeeManagementSystem.Pages.OtherPages
 @using Microsoft.AspNetCore.Authorization
+@using Syncfusion.Blazor.Popups
 @inherits LayoutComponentBase
 @attribute [Authorize]
+@inject SfDialogService DialogService
+
 <div class="page">
     <div class="sidebar">
         <NavMenu />
@@ -17,7 +20,7 @@
         </article>
     </main>
 </div>
-
+<Syncfusion.Blazor.Popups.SfDialogProvider />
 @code{
     async Task LogoutClicked()
     {

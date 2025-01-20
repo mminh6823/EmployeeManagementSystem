@@ -256,15 +256,15 @@
             },
             "Syncfusion.Blazor.Buttons": {
               "target": "Package",
-              "version": "[26.2.12, )"
+              "version": "[28.1.33, )"
             },
             "Syncfusion.Blazor.Popups": {
               "target": "Package",
-              "version": "[26.2.12, )"
+              "version": "[28.1.33, )"
             },
             "Syncfusion.Blazor.Themes": {
               "target": "Package",
-              "version": "[26.2.12, )"
+              "version": "[28.1.33, )"
             }
           },
           "imports": [

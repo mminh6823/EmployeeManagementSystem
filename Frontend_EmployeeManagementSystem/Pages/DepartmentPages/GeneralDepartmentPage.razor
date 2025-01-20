@@ -1,0 +1,72 @@
+﻿@using Frontend_EmployeeManagementSystem.ApplicationStates
+@using Syncfusion.Blazor.Popups
+@implements IDisposable
+@inject DepartmentStates departmentState
+@inject SfDialogService DialogService
+@if(departmentState.ShowGeneralDepartment){
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header"> 
+                        <h4 class="float-start">Tổng hợp phòng ban</h4>
+                        <button class="btn btn-primary float-end" @onclick="OpenDialog"><i class="bi bi-plus-circle-fill"> Thêm phòng ban</i></button>
+                    </div>
+                    <div class="card-header">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Tên phòng ban</th>
+                                        <th scope="col">Mô tả</th>
+                                        <th scope="col">Ngày tạo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>minh</td>
+                                        <td>mùa</td>
+                                        <td>như</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">2</th>
+                                        <td>minh</td>
+                                        <td>mùa</td>
+                                        <td>như</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">3</th>
+                                        <td>minh</td>
+                                        <td>mùa</td>
+                                        <td>như</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<GeneralDepartmentDialog  @ref="generalDepartmentDialog"/>
+@code{
+    GeneralDepartmentDialog? generalDepartmentDialog;
+    GeneralDepartmentDTO Department = new();
+
+    protected override void OnInitialized(){
+        departmentState.GeneralDepartmentAction += StateHasChanged;
+    }
+
+    void OpenDialog()
+    {
+        generalDepartmentDialog?.OpenDialogs();
+    }
+
+        public void Dispose()
+    {
+        departmentState.GeneralDepartmentAction -= StateHasChanged;
+    }
+}

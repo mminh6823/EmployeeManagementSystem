@@ -1,51 +1,128 @@
 ﻿@page "/nav"
+@using Frontend_EmployeeManagementSystem.ApplicationStates
 @using Microsoft.AspNetCore.Components.Authorization
+@inject DepartmentStates departmentState
+
 <AuthorizeView>
     <Authorized>
+        <!-- Header của Navigation -->
         <div class="top-row ps-3 navbar navbar-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="">
-                    Xin chào, @context.User.Identity.Name   
+                <a class="navbar-brand" href="#">
+                    Xin chào, @context.User.Identity.Name
                 </a>
                 <button title="Danh sách menu" class="navbar-toggler" @onclick="ToggleNavMenu">
                     <span class="navbar-toggler-icon"></span>
-                    </button>
+                </button>
             </div>
         </div>
 
+        <!-- Menu điều hướng -->
+        <div class="@NavMenuCssClass nav-scrollable">
+            <nav class="flex-column" @onclick:stopPropagation>
+                <!-- Home -->
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link p-2" href="/home/dashboard">
+                        <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+                    </NavLink>
+                </div>
 
+                <!-- Counter -->
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link p-2" href="/counter">
+                        <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+                    </NavLink>
+                </div>
 
+                <!-- Administration -->
+                <div class="nav-item px-3">
+                    <NavLink class="nav-link p-2" @onclick="ToggleAdminMenu" style="cursor:pointer" href="javascript:void()">
+                        <div class="hstack gap-1">
+                            <span class="bi bi-person-fill fs-3 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                            <span>Quản lý</span>
+                        </div>
+                    </NavLink>
+                    <a class="nav-link p-2 text-white" style="margin-left:5rem; visibility:@AdminMenuVisibility" @onclick:stopPropagation>
+                        <div class="hstack">
+                            <span class="bi bi-people fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                            <span>User</span>
+                        </div>
+                    </a>
+                </div>
 
-<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
+                <!-- Departments -->
+                <div class="nav-item px-3" style="margin-top:@DepartmentMargin">
+                    <NavLink class="nav-link p-2" @onclick="ToggleDepartmentMenu" style="cursor:pointer" href="javascript:void()">
+                        <div class="hstack gap-1">
+                            <span class="bi bi-backpack4-fill fs-3 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                            <span>Phòng ban</span>
+                        </div>
+                    </NavLink>
+                    <div class="nav-link p-2 text-white" style="margin-left:5rem; visibility:@DepartmentMenuVisibility" @onclick:stopPropagation>
+                        <ul class="list-group">
+                            <li style="list-style:none" class="cursorStyle">
+                                <a class="nav-link p-2" @onclick="GeneralDepartmentClicked">
+                                    <div class="hstack">
+                                        <span class="bi bi-file-medical-fill fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                        <span>Tổng quan</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="list-style:none" class="cursorStyle">
+                                <a class="nav-link p-2">
+                                    <div class="hstack">
+                                        <span class="bi bi-substack fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                        <span>Phòng ban </span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="list-style:none" class="cursorStyle">
+                                <a class="nav-link p-2">
+                                    <div class="hstack">
+                                        <span class="bi bi-chevron-bar-contract fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                        <span>Chi nhánh</span>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-    </nav>
-</div>
-</Authorized>
+    </Authorized>
 </AuthorizeView>
 
-
 @code {
-    private bool collapseNavMenu = false;
+    private bool isNavMenuCollapsed = false; // Menu mặc định là mở
+    private bool isAdminMenuVisible = false; // Submenu Admin mặc định là ẩn
+    private bool isDepartmentMenuVisible = false; // Submenu Department mặc định là ẩn
 
-    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+    public string DepartmentMargin { get; set; } = "-3.5rem";
 
-    private void ToggleNavMenu()
+    // Tùy chỉnh CSS class cho menu (ẩn hoặc hiện)
+    private string NavMenuCssClass => isNavMenuCollapsed ? "collapse" : string.Empty;
+
+    // Hiển thị/Ẩn các menu con
+    private string AdminMenuVisibility => isAdminMenuVisible ? "visible" : "hidden";
+    private string DepartmentMenuVisibility => isDepartmentMenuVisible ? "visible" : "hidden";
+
+    // Toggle menu chính
+    private void ToggleNavMenu() => isNavMenuCollapsed = !isNavMenuCollapsed;
+
+    // Toggle menu con Admin
+    private void ToggleAdminMenu()
     {
-        collapseNavMenu = !collapseNavMenu;
+        isAdminMenuVisible = !isAdminMenuVisible;
+        DepartmentMargin = isAdminMenuVisible ? "0" : "-3.5rem";
     }
+
+    // Toggle menu con Department
+    private void ToggleDepartmentMenu() => isDepartmentMenuVisible = !isDepartmentMenuVisible;
+
+    void GeneralDepartmentClicked()
+    {
+        departmentState.GeneralDepartmentClicked();
+    }
+
+
 }

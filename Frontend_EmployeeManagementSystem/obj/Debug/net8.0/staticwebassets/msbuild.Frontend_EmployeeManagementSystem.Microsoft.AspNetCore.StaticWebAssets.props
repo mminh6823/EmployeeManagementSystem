@@ -39648,8 +39648,8 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>nx9mozc2pb</Fingerprint>
-      <Integrity>y5/BmIypPIcApFXDBYSPwQ2sYkQQQXTY4p+c9xTHSus=</Integrity>
+      <Fingerprint>ezvm84gxya</Fingerprint>
+      <Integrity>ltzWhLQu02TbCWyBZYJvlGXfof5AGkiEgmvNCTw2ujk=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\index.html'))</OriginalItemSpec>

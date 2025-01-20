@@ -1,0 +1,50 @@
+﻿@using Syncfusion.Blazor.Popups
+@using Syncfusion.Blazor.Buttons
+@inject SfDialogService DialogService
+
+<SfDialog Width="350px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
+    <DialogEvents OnOpen="OpenDialogs"/>
+    <DialogTemplates>
+        <Header> Thêm phòng ban </Header>
+        <Content>
+            <EditForm Model="Department" Enhance OnSubmit="Save">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label">Tên</label>
+                            <InputText @bind-Value="Department.Name" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        </Content>
+    </DialogTemplates>
+
+    <DialogButtons>
+        <DialogButton Content="Lưu" Type="ButtonType.Submit" Isprimary="true" OnClick="Save" />
+    </DialogButtons>
+</SfDialog>
+
+@code {
+    [Parameter] public GeneralDepartmentDTO Department  { get; set; } = new();
+    private bool IsVisible { get; set; } = false;
+
+    // Mở dialog
+    public void OpenDialogs()
+    {
+        IsVisible = true;
+        StateHasChanged();
+    }
+
+    // Lưu dữ liệu
+    public async void Save()
+    {
+       
+        // Kiểm tra nếu tên trống hoặc chỉ chứa dấu cách
+        if (string.IsNullOrEmpty(Department.Name))
+        {
+            // Hiển thị thông báo nếu Tên trống hoặc chỉ dấu cách
+             await DialogService.AlertAsync("Vui lòng nhập đầy đủ", "Thông báo!");
+        }
+    }
+}
