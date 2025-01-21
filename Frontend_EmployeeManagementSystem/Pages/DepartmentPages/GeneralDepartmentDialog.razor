@@ -1,4 +1,5 @@
-﻿@using Syncfusion.Blazor.Popups
+﻿@using BaseLibrary.Entities
+@using Syncfusion.Blazor.Popups
 @using Syncfusion.Blazor.Buttons
 @inject SfDialogService DialogService
 
@@ -26,7 +27,7 @@
 </SfDialog>
 
 @code {
-    [Parameter] public GeneralDepartmentDTO Department  { get; set; } = new();
+    [Parameter] public GeneralDepartment Department  { get; set; } = new();
     private bool IsVisible { get; set; } = false;
 
     // Mở dialog
@@ -41,7 +42,7 @@
     {
        
         // Kiểm tra nếu tên trống hoặc chỉ chứa dấu cách
-        if (string.IsNullOrEmpty(Department.Name))
+        if (string.IsNullOrEmpty(Department.Name) || string.IsNullOrWhiteSpace(Department.Name))
         {
             // Hiển thị thông báo nếu Tên trống hoặc chỉ dấu cách
              await DialogService.AlertAsync("Vui lòng nhập đầy đủ", "Thông báo!");
