@@ -10,6 +10,7 @@ using Syncfusion.Blazor;
 using Syncfusion.Blazor.Popups;
 using Frontend_EmployeeManagementSystem.ApplicationStates;
 using Syncfusion.Licensing;
+using BaseLibrary.Entities;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
@@ -38,7 +39,19 @@ builder.Services.AddScoped<LocalStorageService>();
 builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
 builder.Services.AddScoped<IUserAccountService, UserAccountService>();
 
-builder.Services.AddScoped<DepartmentStates>();
+//GeneralDepartment, Department, Branch
+builder.Services.AddScoped<IGenericServiceInterface<GeneralDepartment>, GenericServiceImplementation<GeneralDepartment>>();
+builder.Services.AddScoped<IGenericServiceInterface<Department>, GenericServiceImplementation<Department>>();
+builder.Services.AddScoped<IGenericServiceInterface<Branch>, GenericServiceImplementation<Branch>>();
+
+//Country, City
+builder.Services.AddScoped<IGenericServiceInterface<Country>, GenericServiceImplementation<Country>>();
+builder.Services.AddScoped<IGenericServiceInterface<City>, GenericServiceImplementation<City>>();
+
+//Employee
+builder.Services.AddScoped<IGenericServiceInterface<Employee>, GenericServiceImplementation<Employee>>();
+
+builder.Services.AddScoped<AllStates>();
 
 // Đăng ký Syncfusion Dialog Service nếu bạn muốn sử dụng Dialog
 builder.Services.AddScoped<SfDialogService>();

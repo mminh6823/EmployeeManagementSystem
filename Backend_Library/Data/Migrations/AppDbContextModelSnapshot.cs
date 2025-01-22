@@ -216,8 +216,6 @@ namespace Backend_Library.Data.Migrations
 
                     b.HasIndex("BranchId");
 
-                    b.HasIndex("TownId");
-
                     b.ToTable("Employees");
                 });
 
@@ -382,28 +380,6 @@ namespace Backend_Library.Data.Migrations
                     b.ToTable("SystemRoles");
                 });
 
-            modelBuilder.Entity("BaseLibrary.Entities.Town", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("CityId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CityId");
-
-                    b.ToTable("Towns");
-                });
-
             modelBuilder.Entity("BaseLibrary.Entities.UserRole", b =>
                 {
                     b.Property<int>("Id")
@@ -516,15 +492,7 @@ namespace Backend_Library.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BaseLibrary.Entities.Town", "Town")
-                        .WithMany("Employees")
-                        .HasForeignKey("TownId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Branch");
-
-                    b.Navigation("Town");
                 });
 
             modelBuilder.Entity("BaseLibrary.Entities.Overtime", b =>
@@ -547,17 +515,6 @@ namespace Backend_Library.Data.Migrations
                     b.Navigation("SanctionType");
                 });
 
-            modelBuilder.Entity("BaseLibrary.Entities.Town", b =>
-                {
-                    b.HasOne("BaseLibrary.Entities.City", "City")
-                        .WithMany("Towns")
-                        .HasForeignKey("CityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("City");
-                });
-
             modelBuilder.Entity("BaseLibrary.Entities.Vacation", b =>
                 {
                     b.HasOne("BaseLibrary.Entities.VacationType", "VacationType")
@@ -574,11 +531,6 @@ namespace Backend_Library.Data.Migrations
                     b.Navigation("Employees");
                 });
 
-            modelBuilder.Entity("BaseLibrary.Entities.City", b =>
-                {
-                    b.Navigation("Towns");
-                });
-
             modelBuilder.Entity("BaseLibrary.Entities.Country", b =>
                 {
                     b.Navigation("Cities");
@@ -587,11 +539,6 @@ namespace Backend_Library.Data.Migrations
             modelBuilder.Entity("BaseLibrary.Entities.Department", b =>
                 {
                     b.Navigation("Branches");
-                });
-
-            modelBuilder.Entity("BaseLibrary.Entities.Town", b =>
-                {
-                    b.Navigation("Employees");
                 });
 
             modelBuilder.Entity("BaseLibrary.Entities.VacationType", b =>

@@ -30,8 +30,6 @@ namespace BaseLibrary.Entities
         //Mối quan hệ n-1 với Branch
         public Branch? Branch { get; set; }
         public int BranchId { get; set; }
-
-        public Town? Town { get; set; }
         public int TownId { get; set; }
     }
 }

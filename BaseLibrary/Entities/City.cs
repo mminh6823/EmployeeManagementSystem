@@ -8,8 +8,6 @@ namespace BaseLibrary.Entities
         public Country? Country { get; set; }
         public int CountryId { get; set; }
 
-
-        //Mối quan hệ 1-n với Town
-        public List<Town>? Towns { get; set; }
+       
     }
 }

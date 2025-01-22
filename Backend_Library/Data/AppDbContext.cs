@@ -21,7 +21,6 @@ namespace Backend_Library.Data
 
 
         //Towns, City, Country
-        public DbSet<Town> Towns { get; set; }
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
 

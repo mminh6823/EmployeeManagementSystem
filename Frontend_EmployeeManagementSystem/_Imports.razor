@@ -1,5 +1,7 @@
 ﻿@using System.Net.Http
 @using System.Net.Http.Json
+@using BaseLibrary.Entities
+@using Frontend_EmployeeManagementSystem.ApplicationStates
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
 @using Microsoft.AspNetCore.Components.Web
@@ -13,9 +15,33 @@
 @using FrontendLibrary.Helpers
 @using Microsoft.AspNetCore.Components.Authorization 
 @using FrontendLibrary.Services.Contracts
+@using Syncfusion.Blazor.Popups
 
+@using Frontend_EmployeeManagementSystem.Pages.DepartmentPages
+@using Frontend_EmployeeManagementSystem.Pages.OtherPages
 
 
 @inject AuthenticationStateProvider AuthStateProvider
-@inject IUserAccountService accountService
 @inject NavigationManager NavManager
+
+@* /Authentication *@
+@inject IUserAccountService accountService
+
+@* xử lý trạng thái giao tiếp của các tab thanh điều hướng *@
+@inject AllStates allState
+
+@* /Synfusion dialog service *@
+@inject SfDialogService dialogService
+
+@* /GeneralDepartment / Department / Branch *@
+@inject IGenericServiceInterface<GeneralDepartment> generalDepartmentService
+@inject IGenericServiceInterface<Department> departmentService
+@inject IGenericServiceInterface<Branch> branchService
+
+@* /Country / City *@
+@inject IGenericServiceInterface<Country> countryService
+@inject IGenericServiceInterface<City> cityService
+
+@* /Employee *@
+@inject IGenericServiceInterface<Employee> employeeService
+
