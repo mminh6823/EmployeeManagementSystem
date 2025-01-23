@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="card">
-                    <div class="card-header"> 
+                    <div class="card-header" style="max-height:580px; overflow-x:hidden; overflow-y:scroll;"> 
                         <h4 class="float-start">Tổng hợp phòng ban</h4>
                         <button class="btn btn-primary float-end" @onclick="OpenDialog">
                             <i class="bi bi-plus-circle-fill"></i> Thêm phòng ban </button>
@@ -18,30 +18,32 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Tên phòng ban</th>
-                                        <th scope="col">Mô tả</th>
-                                        <th scope="col">Ngày tạo</th>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Phòng ban tổng hợp</th>
+                                        <th scope="col">Edit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <th scope="row">1</th>
-                                        <td>minh</td>
-                                        <td>mùa</td>
-                                        <td>như</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td>minh</td>
-                                        <td>mùa</td>
-                                        <td>như</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td>minh</td>
-                                        <td>mùa</td>
-                                        <td>như</td>
-                                    </tr>
+                                    @if(GeneralDepartment is not null){
+                                        int count = 1 ;
+                                        foreach(var item in GeneralDepartments){
+                                            <tr>
+                                                <th scope="row">@count</th>
+                                                <td>@item.Id</td>
+                                                <td>@item.Name</td>
+                                                <td>
+                                                    <i class="bi bi-pencil text-info" id="cursorStyle" @onclick="()=>EditClicked(item)"></i>
+                                                    <i class="bi bi-trash text-danger" id="cursorStyle" @onclick="()=>DeleteClicked(item)"></i>
+                                                </td>
+                                            </tr>
+                                            count++;
+                                        }
+                                    }
+                                    else{
+                                        <tr>
+                                            <td colspan="4"><div class="alert alert-info text-center">Chưa có phòng ban tổng hợp nào được thêm!!!</div></td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -55,8 +57,8 @@
 HandleSaveOperationEvent ="HandleSaveOperationEvent"
 GeneralDepartment="GeneralDepartment"/>
 @code{
-    GeneralDepartmentDialog? generalDepartmentDialog;
-    GeneralDepartment GeneralDepartment = new();
+        GeneralDepartmentDialog? generalDepartmentDialog;
+        GeneralDepartment GeneralDepartment = new();
     public string Title { get; set; } = "Add";
     public List<GeneralDepartment> GeneralDepartments { get; set; } = new();
 
@@ -70,6 +72,7 @@ GeneralDepartment="GeneralDepartment"/>
         GeneralDepartments = await generalDepartmentService.GetAll(Constants.GeneralDepartmentBaseUrl);
     }
 
+    //Add và Update
     private async Task HandleSaveOperationEvent(GeneralDepartment generalDepartment ){
         bool successCheck = false;
         if (generalDepartment.Id > 0)
@@ -87,14 +90,23 @@ GeneralDepartment="GeneralDepartment"/>
             generalDepartmentDialog?.ChangeTitle("Add");
         }
     }
-
+    //Edit
     private void EditClicked(GeneralDepartment dep){
         generalDepartmentDialog?.ChangeTitle("Update");
         GeneralDepartment = dep ;
         OpenDialog();
     }
 
+    //Delete
+    private async Task DeleteClicked(GeneralDepartment dep){
+        bool confirm = await dialogService.ConfirmAsync($"Bạn có chắc chắn muốn xóa phòng ban tổng hơp: {dep.Name}?", "Xác nhận xóa");
+        if (!confirm) return;
 
+        var respone = await generalDepartmentService.DeleteById(dep.Id, Constants.GeneralDepartmentBaseUrl);
+        if(await DisplayMessage(respone.Flag, respone.Message)){
+            await GetGeneralDepartments();
+        }
+    }
 
 
 

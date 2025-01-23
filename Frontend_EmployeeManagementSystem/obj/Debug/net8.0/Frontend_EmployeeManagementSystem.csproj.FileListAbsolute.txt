@@ -1140,10 +1140,10 @@ D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\D
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\refint\Frontend_EmployeeManagementSystem.dll
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\Frontend_EmployeeManagementSystem.pdb
 D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\ref\Frontend_EmployeeManagementSystem.dll
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\e03tqfzh5r-aj9gxopeln.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\dp6f77mb31-q3zb154h8j.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\7grvqakagg-w055j1sbgt.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\qguqxn6q7z-s9s6k4cnst.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\xmek2tqpua-0cvx8jqm63.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\89mbvlebr8-ntgt8bzjec.gz
-D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\bmly1w1rxd-y70w1inrn8.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\e03tqfzh5r-4xezgetgi8.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\7grvqakagg-fi8q7vj8am.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\dp6f77mb31-eh0b5djrss.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\qguqxn6q7z-lg3qye4p1h.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\xmek2tqpua-8dbma4ou6e.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\89mbvlebr8-0vcyfl4sat.gz
+D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\obj\Debug\net8.0\compressed\bmly1w1rxd-921803jto9.gz

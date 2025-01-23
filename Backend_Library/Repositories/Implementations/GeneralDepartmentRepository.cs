@@ -30,7 +30,8 @@ namespace Backend_Library.Repositories.Implementations
 
         public  async Task<GeneralResponse> Insert(GeneralDepartment item)
         {
-            if (!await CheckName(item.Name!)) return new GeneralResponse(false, "Phòng ban tổng hợp đã có sẵn!");
+            var checkIfNull = await CheckName(item.Name!);
+            if (!checkIfNull) return new GeneralResponse(false, "Phòng ban tổng hợp đã có sẵn!");
             appDbContext.GeneralDepartments.Add(item);
             await Commit();
             return Success();
@@ -45,13 +46,13 @@ namespace Backend_Library.Repositories.Implementations
             return Success();  
         }
         private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy phòng ban tổng hợp");
-        private static GeneralResponse Success() => new(true, "Quá trình hoàn tất!");
+        private static GeneralResponse Success() => new(true, "Thao tác thành công!");
         private async Task Commit() => await appDbContext.SaveChangesAsync();
     
     private async Task<bool> CheckName(string name)
         {
-            var item = await appDbContext.Departments.FirstOrDefaultAsync(m=>m.Name!.ToLower().Equals(name.ToLower()));
-            return item is null;
+            var item = await appDbContext.GeneralDepartments.FirstOrDefaultAsync(m=>m.Name!.ToLower().Equals(name.ToLower()));
+            return item is null ;
         }
     
     }
