@@ -35,6 +35,13 @@
         StateHasChanged();
     }
 
+    public void CloseDialogs()
+    {
+        // Đặt trạng thái dialog thành đóng
+        IsVisible = false;
+        StateHasChanged();
+    }
+
     // Lưu dữ liệu
     public async void Save()
     {
