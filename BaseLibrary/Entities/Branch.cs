@@ -1,5 +1,7 @@
 ﻿
 
+using System.Text.Json.Serialization;
+
 namespace BaseLibrary.Entities
 {
     public class Branch : BaseEntity
@@ -8,6 +10,7 @@ namespace BaseLibrary.Entities
         public Department? Department { get; set; }
         public int DepartmentId { get; set; }
         //Mối quan hệ 1-n với Employee
+        [JsonIgnore]
         public List<Employee>? Employees { get; set; }
     }
 }

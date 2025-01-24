@@ -258,6 +258,10 @@
               "target": "Package",
               "version": "[28.1.33, )"
             },
+            "Syncfusion.Blazor.DropDowns": {
+              "target": "Package",
+              "version": "[28.1.33, )"
+            },
             "Syncfusion.Blazor.Popups": {
               "target": "Package",
               "version": "[28.1.33, )"

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "0Npk7RaBRsM=",
+  "dgSpecHash": "qSDoR6Gonpg=",
   "success": true,
   "projectFilePath": "D:\\.Net\\EmployeeManagementSystemSolution\\Frontend_EmployeeManagementSystem\\Frontend_EmployeeManagementSystem.csproj",
   "expectedPackageFiles": [
@@ -45,7 +45,13 @@
     "C:\\Users\\admin\\.nuget\\packages\\microsoft.net.sdk.webassembly.pack\\9.0.1\\microsoft.net.sdk.webassembly.pack.9.0.1.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\syncfusion.blazor.buttons\\28.1.33\\syncfusion.blazor.buttons.28.1.33.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\syncfusion.blazor.core\\28.1.33\\syncfusion.blazor.core.28.1.33.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\syncfusion.blazor.data\\28.1.33\\syncfusion.blazor.data.28.1.33.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\syncfusion.blazor.dropdowns\\28.1.33\\syncfusion.blazor.dropdowns.28.1.33.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\syncfusion.blazor.inputs\\28.1.33\\syncfusion.blazor.inputs.28.1.33.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\syncfusion.blazor.notifications\\28.1.33\\syncfusion.blazor.notifications.28.1.33.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\syncfusion.blazor.popups\\28.1.33\\syncfusion.blazor.popups.28.1.33.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\syncfusion.blazor.spinner\\28.1.33\\syncfusion.blazor.spinner.28.1.33.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\syncfusion.blazor.splitbuttons\\28.1.33\\syncfusion.blazor.splitbuttons.28.1.33.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\syncfusion.blazor.themes\\28.1.33\\syncfusion.blazor.themes.28.1.33.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\syncfusion.licensing\\28.1.33\\syncfusion.licensing.28.1.33.nupkg.sha512",
     "C:\\Users\\admin\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.0\\system.diagnostics.diagnosticsource.8.0.0.nupkg.sha512",

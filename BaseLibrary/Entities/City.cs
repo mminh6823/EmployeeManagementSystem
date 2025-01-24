@@ -8,6 +8,5 @@ namespace BaseLibrary.Entities
         public Country? Country { get; set; }
         public int CountryId { get; set; }
 
-       
     }
 }

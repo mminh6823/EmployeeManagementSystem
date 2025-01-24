@@ -21,7 +21,11 @@ namespace Backend_Library.Repositories.Implementations
             await Commit();
             return Success();
         }
-        public async Task<List<Department>> GetAll() => await appDbContext.Departments.ToListAsync();
+        public async Task<List<Department>> GetAll() => await appDbContext
+            .Departments
+            .AsNoTracking()
+            .Include(m=>m.GeneralDepartment)
+            .ToListAsync();
 
         public async Task<Department> GetById(int id) => await appDbContext.Departments.FirstOrDefaultAsync(m => m.Id == id);
         public async Task<GeneralResponse> Insert(Department item)

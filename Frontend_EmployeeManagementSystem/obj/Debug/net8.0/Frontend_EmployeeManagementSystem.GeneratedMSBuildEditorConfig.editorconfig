@@ -48,6 +48,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXEhvbWVQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/DepartmentPages/DepartmentDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VzXERlcGFydG1lbnREaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/DepartmentPages/DepartmentPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VzXERlcGFydG1lbnRQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/DepartmentPages/GeneralDepartmentDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVwYXJ0bWVudFBhZ2VzXEdlbmVyYWxEZXBhcnRtZW50RGlhbG9nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

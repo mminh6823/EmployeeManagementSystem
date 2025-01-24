@@ -759,13 +759,6 @@
           "departmentId": {
             "type": "integer",
             "format": "int32"
-          },
-          "employees": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Employee"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -807,13 +800,6 @@
           "name": {
             "minLength": 1,
             "type": "string"
-          },
-          "cities": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/City"
-            },
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -836,83 +822,6 @@
             "$ref": "#/components/schemas/GeneralDepartment"
           },
           "generalDepartmentId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "branches": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Branch"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Employee": {
-        "required": [
-          "address",
-          "civilId",
-          "fileNumber",
-          "fullname",
-          "id",
-          "jobname",
-          "name",
-          "other",
-          "photo",
-          "telephoneNumber"
-        ],
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "civilId": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "fileNumber": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "fullname": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "jobname": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "address": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "telephoneNumber": {
-            "minLength": 1,
-            "type": "string",
-            "format": "tel"
-          },
-          "photo": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "other": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "branch": {
-            "$ref": "#/components/schemas/Branch"
-          },
-          "branchId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "townId": {
             "type": "integer",
             "format": "int32"
           }

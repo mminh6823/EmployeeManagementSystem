@@ -1,7 +1,4 @@
-﻿@page "/nav"
-@using Frontend_EmployeeManagementSystem.ApplicationStates
-@using Microsoft.AspNetCore.Components.Authorization
-@inject AllStates departmentState
+﻿
 
 <AuthorizeView>
     <Authorized>
@@ -18,7 +15,7 @@
         </div>
 
         <!-- Menu điều hướng -->
-        <div class="@NavMenuCssClass nav-scrollable">
+        <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
             <nav class="flex-column" @onclick:stopPropagation>
                 <!-- Home -->
                 <div class="nav-item px-3">
@@ -27,23 +24,17 @@
                     </NavLink>
                 </div>
 
-                <!-- Counter -->
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link p-2" href="/counter">
-                        <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-                    </NavLink>
-                </div>
 
                 <!-- Administration -->
                 <div class="nav-item px-3">
-                    <NavLink class="nav-link p-2" @onclick="ToggleAdminMenu" style="cursor:pointer" href="javascript:void()">
+                    <NavLink class="nav-link p-2" @onclick="ToggleAdminMenu " style="cursor:pointer" href="javascript:void()">
                         <div class="hstack gap-1">
                             <span class="bi bi-person-fill fs-3 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                            <span>Quản lý</span>
+                            <span>Quản lý User</span>
                         </div>
                     </NavLink>
                     <a class="nav-link p-2 text-white" style="margin-left:5rem; visibility:@AdminMenuVisibility" @onclick:stopPropagation>
-                        <div class="hstack">
+                        <div class="hstack" @onclick="UserClicked">
                             <span class="bi bi-people fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
                             <span>User</span>
                         </div>
@@ -55,32 +46,62 @@
                     <NavLink class="nav-link p-2" @onclick="ToggleDepartmentMenu" style="cursor:pointer" href="javascript:void()">
                         <div class="hstack gap-1">
                             <span class="bi bi-backpack4-fill fs-3 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                            <span>Phòng ban</span>
+                            <span>Quản lý</span>
                         </div>
                     </NavLink>
-                    <div class="nav-link p-2 text-white" style="margin-left:5rem; visibility:@DepartmentMenuVisibility" @onclick:stopPropagation>
+                    <div class="nav-link p-2 text-white" style="margin-left:3rem; visibility:@DepartmentMenuVisibility" @onclick:stopPropagation>
                         <ul class="list-group">
                             <li style="list-style:none" class="cursorStyle">
                                 <a class="nav-link p-2" @onclick="GeneralDepartmentClicked">
                                     <div class="hstack">
                                         <span class="bi bi-file-medical-fill fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                                        <span>Tổng quan</span>
+                                        <span>Phòng tổng hợp</span>
                                     </div>
                                 </a>
                             </li>
-                            <li style="list-style:none" class="cursorStyle">
+                            <li style="list-style:none" class="cursorStyle" @onclick="DepartmentClicked">
                                 <a class="nav-link p-2">
                                     <div class="hstack">
                                         <span class="bi bi-substack fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                                        <span>Phòng ban </span>
+                                        <span>Phòng bộ phận </span>
                                     </div>
                                 </a>
                             </li>
-                            <li style="list-style:none" class="cursorStyle">
+                            <li style="list-style:none" class="cursorStyle" @onclick="BranchClicked">
                                 <a class="nav-link p-2">
                                     <div class="hstack">
                                         <span class="bi bi-chevron-bar-contract fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
                                         <span>Chi nhánh</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="list-style:none">
+                                <hr/>
+                                </li>
+                                <li style="list-style:none">
+                                <a class="nav-link p-2 cursorStyle" @onclick="CountryClicked">
+                                    <div class="hstack">
+                                        <span class="bi bi-geo-alt fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                        <span>Quốc gia</span>
+                                    </div>
+                                </a>
+                                </li>
+                            <li style="list-style:none">
+                                <a class="nav-link p-2 cursorStyle" @onclick="CityClicked">
+                                    <div class="hstack">
+                                        <span class="bi bi-pin-map-fill fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                        <span>Thành phố</span>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="list-style:none">
+                                <hr />
+                            </li>
+                            <li style="list-style:none">
+                                <a class="nav-link p-2 cursorStyle" @onclick="EmployeeClicked">
+                                    <div class="hstack">
+                                        <span class="bi bi-people-fill fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                        <span>Nhân viên</span>
                                     </div>
                                 </a>
                             </li>
@@ -91,6 +112,12 @@
         </div>
     </Authorized>
 </AuthorizeView>
+
+<style>
+    .cursorStyle {
+        cursor:pointer;
+    }
+</style>
 
 @code {
     private bool isNavMenuCollapsed = false; // Menu mặc định là mở
@@ -119,10 +146,17 @@
     // Toggle menu con Department
     private void ToggleDepartmentMenu() => isDepartmentMenuVisible = !isDepartmentMenuVisible;
 
-    void GeneralDepartmentClicked()
-    {
-        departmentState.GeneralDepartmentClicked();
-    }
 
-
+    //GeneralDepartment / Department / Branch 
+    void GeneralDepartmentClicked() => allState .GeneralDepartmentClicked();
+    
+    void DepartmentClicked() => allState.DepartmentClicked();
+    void BranchClicked() => allState.BranchClicked();
+    // Country / City 
+    void CountryClicked() => allState.CountryClicked();
+    void CityClicked() => allState.CityClicked();
+    //User
+    void UserClicked() => allState.UserClicked();
+    //Employee
+    void EmployeeClicked() => allState.EmployeeClicked();
 }
