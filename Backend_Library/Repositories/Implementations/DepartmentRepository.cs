@@ -38,12 +38,20 @@ namespace Backend_Library.Repositories.Implementations
 
         public async Task<GeneralResponse> Update(Department item)
         {
+            // Tìm đối tượng trong database
             var dep = await appDbContext.Departments.FindAsync(item.Id);
             if (dep is null) return NotFound();
+
+            // Cập nhật thông tin
             dep.Name = item.Name;
+            dep.GeneralDepartmentId = item.GeneralDepartmentId; // Cập nhật GeneralDepartmentId
+
+            // Lưu thay đổi
             await Commit();
+
             return Success();
         }
+
         private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy chi nhánh");
         private static GeneralResponse Success() => new(true, "Quá trình hoàn tất!");
         private async Task Commit() => await appDbContext.SaveChangesAsync();

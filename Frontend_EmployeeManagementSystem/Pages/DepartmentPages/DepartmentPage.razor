@@ -18,8 +18,8 @@
                                     <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Id</th>
-                                        <th scope="col">Phòng ban tổng hợp</th>
                                         <th scope="col">Phòng bộ phận</th>
+                                        <th scope="col">Phòng tổng hợp</th>
                                         <th scope="col">Hành động</th>
                                     </tr>
                                 </thead>
@@ -33,7 +33,7 @@
                                                 <th scope="row">@count</th>
                                                 <td>@item.Id</td>
                                                 <td>@item.Name</td>
-                                                     <td>@item.GeneralDepartment!.Name</td>
+                                                <td>@item.GeneralDepartment!.Name</td>
                                                 <td>
                                                     <i class="bi bi-pencil text-info" id="cursorStyle" @onclick="()=>EditClicked(item)"></i>
                                                     <i class="bi bi-trash text-danger" id="cursorStyle" @onclick="()=>DeleteClicked(item)"></i>
@@ -104,7 +104,7 @@
     private async Task HandleSaveOperationEvent(Department department)
     {
         bool successCheck = false;
-        if (Department.Id > 0)
+        if (department.Id > 0)
         {
             var result = await departmentService.Update(Department, Constants.DepartmentBaseUrl);
             successCheck = await DisplayMessage(result.Flag, result.Message);
