@@ -80,7 +80,7 @@ GeneralDepartment="GeneralDepartment"/>
         GeneralDepartments = await generalDepartmentService.GetAll(Constants.GeneralDepartmentBaseUrl);
     }
 
-    //Add và Update
+    //Add 
     private async Task HandleSaveOperationEvent(GeneralDepartment generalDepartment ){
         bool successCheck = false;
         if (generalDepartment.Id > 0)

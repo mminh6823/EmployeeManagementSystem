@@ -7,9 +7,10 @@ namespace Backend_EmployeeManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CountryController(IGenericRepositoryInterface<Country> genericRepositoryInterface)
-        : GenericController<Country>(genericRepositoryInterface)
+    public class CountryController(
+          IGenericRepositoryInterface<Country> genericRepositoryInterface,
+         ILogger<GenericController<Country>> logger) // Thêm logger
+        : GenericController<Country>(genericRepositoryInterface, logger)
     {
-
     }
 }

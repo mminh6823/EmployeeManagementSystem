@@ -1,7 +1,7 @@
 ﻿<SfDialog Width="280px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
     <DialogEvents OnOpen="OpenDialogs"></DialogEvents>
     <DialogTemplates> 
-        <Header>@Title Department</Header>
+        <Header>@Title phòng bộ phận</Header>
         <Content> 
             <EditForm Model="Department" Enhance OnSubmit="Save">
                 <div class="card border-success">
@@ -24,7 +24,7 @@
                                 </SfDropDownList>
                             }
                             else{
-                                <SfDropDownList TValue="string" TItem="GeneralDepartment" Placeholder="Tìm kiếm phòng ban tổng hợp" DataSource="GeneralDepartments">
+                                <SfDropDownList TValue="string" TItem="GeneralDepartment" Placeholder="Phòng ban tổng hợp" DataSource="GeneralDepartments">
                                     <DropDownListFieldSettings Value="Id" Text="Name"></DropDownListFieldSettings>
                                     <DropDownListEvents TValue="string" TItem="GeneralDepartment" ValueChange="OnValueChange"></DropDownListEvents>
                                 </SfDropDownList>
@@ -51,18 +51,25 @@
 
     private bool IsVisible { get; set; } = false;
     public string Title { get; set; } = "Add";
+
     private async void Save()
     {
-        if (string.IsNullOrEmpty(Department.Name) || Department.GeneralDepartmentId <= 0)
+        try
         {
-            await dialogService.AlertAsync("Bạn cần nhập tên Phòng ban và chọn phòng tổng hợp!", "Thông báo!");
-        }
-        else
-        {
+            if (string.IsNullOrEmpty(Department.Name) || Department.GeneralDepartment == null)
+            {
+                await dialogService.AlertAsync("Bạn cần nhập tên phòng bộ phận và chọn phòng tổng hợp!", "Thông báo!");
+                return;
+            }
             Console.WriteLine($"Debug: Department ID = {Department.Id}, Name = {Department.Name}, GeneralDepartmentId = {Department.GeneralDepartmentId}");
             await HandleSaveOperationEvent.InvokeAsync(Department);
         }
+        catch (Exception ex)
+        {
+            await dialogService.AlertAsync($"Đã xảy ra lỗi: {ex.Message}", "Lỗi!");
+        }
     }
+
 
 
     // Mở dialog

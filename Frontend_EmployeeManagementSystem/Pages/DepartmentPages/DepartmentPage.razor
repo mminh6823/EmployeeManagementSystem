@@ -24,7 +24,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (Department is not null)
+                                    @if (Departments.Any())
                                     {
                                         int count = 1;
                                         foreach (var item in Departments)
@@ -33,7 +33,7 @@
                                                 <th scope="row">@count</th>
                                                 <td>@item.Id</td>
                                                 <td>@item.Name</td>
-                                                <td>@item.GeneralDepartment!.Name</td>
+                                                <td>@item.GeneralDepartment?.Name"</td>
                                                 <td>
                                                     <i class="bi bi-pencil text-info" id="cursorStyle" @onclick="()=>EditClicked(item)"></i>
                                                     <i class="bi bi-trash text-danger" id="cursorStyle" @onclick="()=>DeleteClicked(item)"></i>
@@ -48,6 +48,7 @@
                                             <td colspan="4"><div class="alert alert-info text-center">Chưa có phòng bộ phận nào được thêm!!!</div></td>
                                         </tr>
                                     }
+
                                 </tbody>
                             </table>
                         </div>
@@ -64,9 +65,9 @@
     }
 </style>
 <DepartmentDialog @ref="departmentDialog" 
-                   HandleSaveOperationEvent="HandleSaveOperationEvent"
-                   Department="Department"
-                   GeneralDepartments="GeneralDepartments"/> 
+HandleSaveOperationEvent="HandleSaveOperationEvent"
+Department="Department"
+GeneralDepartments="GeneralDepartments"/> 
 
 
 
@@ -92,36 +93,57 @@
         GeneralDepartments = await generalDepartmentService.GetAll(Constants.GeneralDepartmentBaseUrl);
     }
 
-    void AddButtonClicked(){
+    void AddButtonClicked()
+    {
         departmentDialog?.ChangeTitle("Add");
-        Department = new();
+        Department = new Department();
         OpenDialog();
     }
-    void OpenDialog(){
-        departmentDialog?.OpenDialogs();
+    void OpenDialog()
+    {
+        if (departmentDialog != null)
+        {
+            departmentDialog.OpenDialogs();
+        }
     }
+
     //Add và Update
     private async Task HandleSaveOperationEvent(Department department)
     {
+        // Kiểm tra dữ liệu trước khi gửi yêu cầu
+        if (string.IsNullOrWhiteSpace(department.Name))
+        {
+            await DisplayMessage(false, "Tên phòng ban không được để trống!");
+            return;
+        }
+
+        if (department.GeneralDepartmentId <= 0)
+        {
+            await DisplayMessage(false, "Chọn phòng tổng hợp hợp lệ!");
+            return;
+        }
+
         bool successCheck = false;
         if (department.Id > 0)
         {
-            var result = await departmentService.Update(Department, Constants.DepartmentBaseUrl);
+            var result = await departmentService.Update(department, Constants.DepartmentBaseUrl);
             successCheck = await DisplayMessage(result.Flag, result.Message);
         }
         else
         {
-            var respone = await departmentService.Insert(Department, Constants.DepartmentBaseUrl);
-            successCheck = await DisplayMessage(respone.Flag, respone.Message);
+            var response = await departmentService.Insert(department, Constants.DepartmentBaseUrl);
+            successCheck = await DisplayMessage(response.Flag, response.Message);
         }
+
         if (successCheck)
         {
-            Department = new();
+            Department = new();  // Khởi tạo lại Department sau khi lưu thành công
             await GetDepartments();
             departmentDialog?.ChangeTitle("Add");
-            departmentDialog?.CloseDialogs();
         }
     }
+
+
     //Edit
     private void EditClicked(Department dep)
     {
@@ -152,15 +174,17 @@
         }
         else
         {
-            await dialogService.AlertAsync(message, "Cảnh báo!!!");
+            await dialogService.AlertAsync($"Có lỗi xảy ra: {message}", "Cảnh báo!!!");
             return false;
         }
     }
- 
+
 
     public void Dispose()
     {
         allState.Action -= StateHasChanged;
+        // Hủy các sự kiện hoặc dịch vụ khác nếu có
     }
+
 
 }

@@ -7,8 +7,10 @@ namespace Backend_EmployeeManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DepartmentController(IGenericRepositoryInterface<Department> genericRepositoryInterface)
-        : GenericController<Department>(genericRepositoryInterface)
+    public class DepartmentController(
+        IGenericRepositoryInterface<Department> genericRepositoryInterface,
+         ILogger<GenericController<Department>> logger) // Thêm logger
+        : GenericController<Department>(genericRepositoryInterface, logger)
     {
     }
 }

@@ -28,14 +28,18 @@ namespace Backend_Library.Repositories.Implementations
         public async Task<GeneralDepartment> GetById(int id) => await appDbContext.GeneralDepartments.FirstOrDefaultAsync(m => m.Id == id);
 
 
-        public  async Task<GeneralResponse> Insert(GeneralDepartment item)
+        public async Task<GeneralResponse> Insert(GeneralDepartment item)
         {
+            // Kiểm tra xem tên phòng ban tổng hợp đã có trong cơ sở dữ liệu chưa
             var checkIfNull = await CheckName(item.Name!);
             if (!checkIfNull) return new GeneralResponse(false, "Phòng ban tổng hợp đã có sẵn!");
+
+            // Thêm mới phòng ban tổng hợp vào cơ sở dữ liệu
             appDbContext.GeneralDepartments.Add(item);
-            await Commit();
-            return Success();
+            await Commit(); // Lưu thay đổi vào cơ sở dữ liệu
+            return Success(); // Trả về kết quả thành công
         }
+
 
         public async Task<GeneralResponse> Update(GeneralDepartment item)
         {

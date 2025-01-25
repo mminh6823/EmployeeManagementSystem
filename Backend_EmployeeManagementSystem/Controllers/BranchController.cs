@@ -7,8 +7,10 @@ namespace Backend_EmployeeManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BranchController(IGenericRepositoryInterface<Branch> genericRepositoryInterface)
-        : GenericController<Branch>(genericRepositoryInterface)
+    public class BranchController(
+        IGenericRepositoryInterface<Branch> genericRepositoryInterface,
+         ILogger<GenericController<Branch>> logger) // Thêm logger
+        : GenericController<Branch>(genericRepositoryInterface, logger)
     {
     }
 }
