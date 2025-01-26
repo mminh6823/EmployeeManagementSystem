@@ -37,7 +37,7 @@
             var generalDepartment = await appDbContext.GeneralDepartments.AsNoTracking().FirstOrDefaultAsync(g => g.Id == item.GeneralDepartmentId);
             if (generalDepartment == null)
             {
-                return new GeneralResponse(false, "GeneralDepartment không tồn tại.");
+                return new GeneralResponse(false, "Phòng ban tổng hợp không tồn tại.");
             }
 
             // Chỉ cần thiết lập GeneralDepartmentId mà không cần đính kèm lại đối tượng GeneralDepartment
@@ -67,7 +67,7 @@
                 return Success();
             }
 
-            private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy chi nhánh");
+            private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy phòng bộ phận");
             private static GeneralResponse Success() => new(true, "Quá trình hoàn tất!");
         private async Task Commit()
         {

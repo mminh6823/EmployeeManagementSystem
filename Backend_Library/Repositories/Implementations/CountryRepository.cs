@@ -26,10 +26,14 @@ namespace Backend_Library.Repositories.Implementations
         public async Task<Country> GetById(int id) => await appDbContext.Countries.FirstOrDefaultAsync(m => m.Id == id);
         public async Task<GeneralResponse> Insert(Country item)
         {
-            if (!await CheckName(item.Name!)) return new GeneralResponse(false, "Quốc gia đã có sẵn!");
+            // Kiểm tra xem tên phòng ban tổng hợp đã có trong cơ sở dữ liệu chưa
+            var checkIfNull = await CheckName(item.Name!);
+            if (!checkIfNull) return new GeneralResponse(false, "Quốc gia đã có sẵn!");
+
+            // Thêm mới phòng ban tổng hợp vào cơ sở dữ liệu
             appDbContext.Countries.Add(item);
-            await Commit();
-            return Success();
+            await Commit(); // Lưu thay đổi vào cơ sở dữ liệu
+            return Success(); // Trả về kết quả thành công
         }
 
         public async Task<GeneralResponse> Update(Country item)
@@ -40,7 +44,7 @@ namespace Backend_Library.Repositories.Implementations
             await Commit();
             return Success();
         }
-        private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy chi nhánh");
+        private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không thêm được quốc gia");
         private static GeneralResponse Success() => new(true, "Quá trình hoàn tất!");
         private async Task Commit() => await appDbContext.SaveChangesAsync();
 

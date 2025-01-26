@@ -1,0 +1,143 @@
+﻿
+@implements IDisposable
+@if(allState.ShowGeneralDepartment){
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header" > 
+                        <h4 class="float-start">Phòng ban tổng hợp</h4>
+                        <button class="btn btn-outline-success float-end" @onclick="OpenDialog">
+                            <i class="bi bi-plus-circle-dotted"></i> Thêm phòng ban
+                        </button>
+                    </div>
+                    <div class="card-header" style="max-height: 580px; overflow-x:hidden; overflow-y:scroll;">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Phòng ban tổng hợp</th>
+                                        <th scope="col">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if(GeneralDepartment is not null){
+                                        int count = 1 ;
+                                        foreach(var item in GeneralDepartments){
+                                            <tr>
+                                                <th scope="row">@count</th>
+                                                <td>@item.Id</td>
+                                                <td>@item.Name</td>
+                                                <td>
+                                                    <i class="bi bi-pencil text-info" id="cursorStyle" @onclick="()=>EditClicked(item)"></i>
+                                                    <i class="bi bi-trash text-danger" id="cursorStyle" @onclick="()=>DeleteClicked(item)"></i>
+                                                </td>
+                                            </tr>
+                                            count++;
+                                        }
+                                    }
+                                    else{
+                                        <tr>
+                                            <td colspan="4"><div class="alert alert-info text-center">Chưa có phòng ban tổng hợp nào được thêm!!!</div></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<GeneralDepartmentDialog  @ref="generalDepartmentDialog" 
+HandleSaveOperationEvent ="HandleSaveOperationEvent"
+GeneralDepartment="GeneralDepartment"/>
+
+<style> 
+  .cursorStyle{
+      cursor:pointer;
+  }
+</style>
+
+
+
+@code{
+    GeneralDepartmentDialog? generalDepartmentDialog;
+    GeneralDepartment GeneralDepartment = new();
+    public string Title { get; set; } = "Add";
+    public List<GeneralDepartment> GeneralDepartments { get; set; } = new();
+
+    protected async override Task OnInitializedAsync()
+    {
+        await GetGeneralDepartments();
+        allState.Action += StateHasChanged;
+    }
+
+    private async Task GetGeneralDepartments(){
+        GeneralDepartments = await generalDepartmentService.GetAll(Constants.GeneralDepartmentBaseUrl);
+    }
+
+    //Add 
+    private async Task HandleSaveOperationEvent(GeneralDepartment generalDepartment ){
+        bool successCheck = false;
+        if (generalDepartment.Id > 0)
+        {
+            var result = await generalDepartmentService.Update(GeneralDepartment, Constants.GeneralDepartmentBaseUrl);
+            successCheck = await DisplayMessage(result.Flag, result.Message);
+        }
+        else{
+            var respone = await generalDepartmentService.Insert(GeneralDepartment, Constants.GeneralDepartmentBaseUrl);
+            successCheck = await DisplayMessage(respone.Flag, respone.Message);
+        }
+        if(successCheck){
+            GeneralDepartment = new();
+            await GetGeneralDepartments();
+            generalDepartmentDialog?.ChangeTitle("Add");
+            generalDepartmentDialog?.CloseDialogs();
+        }
+    }
+    //Edit
+    private void EditClicked(GeneralDepartment dep){
+        generalDepartmentDialog?.ChangeTitle("Update");
+        GeneralDepartment = dep ;
+        OpenDialog();
+    }
+
+    //Delete
+    private async Task DeleteClicked(GeneralDepartment dep){
+        bool confirm = await dialogService.ConfirmAsync($"Bạn có chắc chắn muốn xóa phòng ban tổng hơp: {dep.Name}?", "Xác nhận xóa");
+        if (!confirm) return;
+        var respone = await generalDepartmentService.DeleteById(dep.Id, Constants.GeneralDepartmentBaseUrl);
+        if(await DisplayMessage(respone.Flag, respone.Message)){
+            await GetGeneralDepartments();   
+        }
+    }
+
+
+
+
+
+    private async Task<bool> DisplayMessage(bool flag, string message){
+        if(flag){
+            await dialogService.AlertAsync(message, "Thông báo!");
+            return true;
+        }
+        else{
+            await dialogService.AlertAsync(message, "Cảnh báo!!!");
+            return false;
+        }
+    }
+
+    void OpenDialog()
+    {
+        generalDepartmentDialog?.OpenDialogs();
+    }
+
+    public void Dispose()
+    {
+        allState.Action-= StateHasChanged;
+    }
+}

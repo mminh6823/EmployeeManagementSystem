@@ -1,0 +1,192 @@
+﻿@implements IDisposable
+@if (allState.ShowCity)
+{
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="float-start">Thành phố</h4>
+                        <button class="btn btn-outline-success float-end" @onclick="AddButtonClicked">
+                            <i class="bi bi-plus-circle-dotted"></i> Thêm thành phố
+                        </button>
+                    </div>
+                    <div class="card-header" style="max-height: 580px; overflow-x:hidden; overflow-y:scroll;">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Thành phố</th>
+                                        <th scope="col">Quốc gia</th>
+                                        <th scope="col">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Cities.Any())
+                                    {
+                                        int count = 1;
+                                        foreach (var item in Cities)
+                                        {
+                                            <tr>
+                                                <th scope="row">@count</th>
+                                                <td>@item.Id</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Country?.Name</td>
+                                                <td>
+                                                    <i class="bi bi-pencil text-info" id="cursorStyle" @onclick="()=>EditClicked(item)"></i>
+                                                    <i class="bi bi-trash text-danger" id="cursorStyle" @onclick="()=>DeleteClicked(item)"></i>
+                                                </td>
+                                            </tr>
+                                            count++;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="4"><div class="alert alert-info text-center">Chưa có phòng bộ phận nào được thêm!!!</div></td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    #cursorStyle {
+        cursor: pointer;
+    }
+</style>
+<CityDialog @ref="cityDialog"
+                  HandleSaveOperationEvent="HandleSaveOperationEvent"
+                  City="City"
+                  Countries="Countries" />
+
+
+
+@code {
+    public string Title { get; set; } = "Add";
+    CityDialog?  cityDialog;
+    City City = new();
+    public List<Country>  Countries { get; set; } = new();
+    public List<City>  Cities { get; set; } = new();
+
+    protected async override Task OnInitializedAsync()
+    {
+        await GetCitys();
+        await GetCountrys();
+        allState.Action += StateHasChanged;
+    }
+
+    private async Task GetCitys()
+    {
+        Cities = await cityService.GetAll(Constants.CityBaseUrl);
+    }
+    private async Task GetCountrys()
+    {
+        Countries = await countryService.GetAll(Constants.CountryBaseUrl);
+    }
+
+    void AddButtonClicked()
+    {
+        cityDialog?.ChangeTitle("Add");
+        City = new City();
+        OpenDialog();
+    }
+    void OpenDialog()
+    {
+        if (cityDialog != null)
+        {
+            cityDialog.OpenDialogs();
+        }
+    }
+
+    //Add và Update
+    private async Task HandleSaveOperationEvent(City city)
+    {
+        // Kiểm tra dữ liệu trước khi gửi yêu cầu
+        if (string.IsNullOrWhiteSpace(city.Name))
+        {
+            await DisplayMessage(false, "Tên thành phố không được để trống!");
+            return;
+        }
+
+        if (city.CountryId <= 0)
+        {
+            await DisplayMessage(false, "Chọn quốc gia hợp lệ!");
+            return;
+        }
+
+        bool successCheck = false;
+        if (city.Id > 0)
+        {
+            var result = await cityService.Update(city, Constants.CityBaseUrl);
+            successCheck = await DisplayMessage(result.Flag, result.Message);
+        }
+        else
+        {
+            var response = await cityService.Insert(city, Constants.CityBaseUrl);
+            successCheck = await DisplayMessage(response.Flag, response.Message);
+        }
+
+        if (successCheck)
+        {
+            City = new();  // Khởi tạo lại City sau khi lưu thành công
+            await GetCitys();
+            cityDialog?.ChangeTitle("Add");
+            cityDialog?.CloseDialogs();
+        }
+    }
+
+
+    //Edit
+    private void EditClicked(City dep)
+    {
+        cityDialog?.ChangeTitle("Update");
+        City = dep;
+        OpenDialog();
+    }
+
+    //Delete
+    private async Task DeleteClicked(City dep)
+    {
+        bool confirm = await dialogService.ConfirmAsync($"Bạn có chắc chắn muốn xóa thành phố: {dep.Name}?", "Xác nhận xóa");
+        if (!confirm) return;
+        var respone = await cityService.DeleteById(dep.Id, Constants.CityBaseUrl);
+        if (await DisplayMessage(respone.Flag, respone.Message))
+        {
+            await GetCitys();
+        }
+    }
+
+
+    private async Task<bool> DisplayMessage(bool flag, string message)
+    {
+        if (flag)
+        {
+            await dialogService.AlertAsync(message, "Thông báo!");
+            return true;
+        }
+        else
+        {
+            await dialogService.AlertAsync($"Có lỗi xảy ra: {message}", "Cảnh báo!!!");
+            return false;
+        }
+    }
+
+
+    public void Dispose()
+    {
+        allState.Action -= StateHasChanged;
+        // Hủy các sự kiện hoặc dịch vụ khác nếu có
+    }
+
+
+}

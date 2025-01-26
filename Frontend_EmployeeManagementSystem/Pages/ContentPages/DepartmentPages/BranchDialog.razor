@@ -1,0 +1,103 @@
+﻿<SfDialog Width="280px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
+    <DialogEvents OnOpen="OpenDialogs"></DialogEvents>
+    <DialogTemplates>
+        <Header>@Title chi nhánh</Header>
+        <Content>
+            <EditForm Model="Branch" Enhance OnSubmit="Save">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label">Id</label>
+                            <input @bind="Branch.Id" class="form-control" disabled></input>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <InputText @bind-Value="Branch.Name" class="form-control"></InputText>
+                        </div>
+                        <div class="form-group mt-3 mb-3">
+                            <label class="form-label">Tìm kiếm phòng bộ phận</label>
+                            @if (Branch.Department != null)
+                            {
+                                string selected = Branch.Department.Name!;
+                                <SfDropDownList TValue="string" TItem="Department" Placeholder="@selected" DataSource="Departments">
+                                    <DropDownListFieldSettings Value="Id" Text="Name"></DropDownListFieldSettings>
+                                    <DropDownListEvents TValue="string" TItem="Department" ValueChange="OnValueChange"></DropDownListEvents>
+                                </SfDropDownList>
+                            }
+                            else
+                            {
+                                <SfDropDownList TValue="string" TItem="Department" Placeholder="Phòng bộ phận" DataSource="Departments">
+                                    <DropDownListFieldSettings Value="Id" Text="Name"></DropDownListFieldSettings>
+                                    <DropDownListEvents TValue="string" TItem="Department" ValueChange="OnValueChange"></DropDownListEvents>
+                                </SfDropDownList>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        </Content>
+    </DialogTemplates>
+
+    <DialogButtons>
+        <DialogButton Content="Lưu" Type="ButtonType.Submit" IsPrimary="true" OnClick="Save"></DialogButton>
+    </DialogButtons>
+</SfDialog>
+
+
+
+
+@code {
+    [Parameter] public Branch Branch { get; set; } = new();
+    [Parameter] public List<Department> Departments { get; set; } = new();
+    [Parameter] public EventCallback<Branch> HandleSaveOperationEvent { get; set; }
+
+    private bool IsVisible { get; set; } = false;
+    public string Title { get; set; } = "Add";
+
+    private async void Save()
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(Branch.Name) || Branch.Department == null)
+            {
+                await dialogService.AlertAsync("Bạn cần nhập tên chi nhánh và chọn phòng bộ phận!", "Thông báo!");
+                return;
+            }
+            Console.WriteLine($"Debug: Branch ID = {Branch.Id}, Name = {Branch.Name}, DepartmentId = {Branch.DepartmentId}");
+            await HandleSaveOperationEvent.InvokeAsync(Branch);
+        }
+        catch (Exception ex)
+        {
+            await dialogService.AlertAsync($"Đã xảy ra lỗi: {ex.Message}", "Lỗi!");
+        }
+    }
+
+
+
+    // Mở dialog
+    public void OpenDialogs()
+    {
+        IsVisible = true;
+        StateHasChanged();
+    }
+    public void ChangeTitle(string title)
+    {
+        Title = title;
+    }
+
+    public void OnValueChange(ChangeEventArgs<string, Department> args)
+    {
+        if (int.TryParse(args.Value, out int departmentId))
+        {
+            Branch.DepartmentId = departmentId;
+            Branch.Department = Departments.FirstOrDefault(g => g.Id == departmentId);
+        }
+    }
+
+    public void CloseDialogs()
+    {
+        // Đặt trạng thái dialog thành đóng
+        IsVisible = false;
+        StateHasChanged();
+    }
+}

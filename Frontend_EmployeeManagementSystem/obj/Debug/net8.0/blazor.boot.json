@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Frontend_EmployeeManagementSystem",
   "resources": {
-    "hash": "sha256-St8vxKQo1BPdsEUMUSYvUnC1Va/qTBtpkK4cJ3aRaGg=",
+    "hash": "sha256-5ftGYiP5ewuVaOIzDSUCZclUJRpU/BOfg9mMJuJsr8I=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-B6DNRvFeCUi3jbx9uKpuj+hV9cN0KG4RdZj1FgBZwj8="
     },
@@ -233,14 +233,14 @@
       "mscorlib.wasm": "sha256-QoC5hTKpDNO6efLnEvYwV9OJBXvYRq8/1yGhNZKiNCw=",
       "netstandard.wasm": "sha256-JT2F4bYWJpaSGq+iD0ITLpWxsDhMUjhqje9RpBtTg7w=",
       "System.Private.CoreLib.wasm": "sha256-fvIPBcvgvsRuWrKi2LGQsLYvcKUSnyIuBUsE3LJu/0Y=",
-      "BaseLibrary.wasm": "sha256-vrV1RwAV1DW1U0u4HQI8r9AeuhD2MJ+xHSSjRRraZmc=",
-      "FrontendLibrary.wasm": "sha256-2843TpPu0HiHQYjkHYwu03ENOJUnUEefUtU5yPv9f00=",
-      "Frontend_EmployeeManagementSystem.wasm": "sha256-cTXLiupvJZua0mQTRKK51Y+kBMuuG+2eysxUzqpyZeM="
+      "BaseLibrary.wasm": "sha256-rAHdF/QKbfZmKYHviEmAwl/V7mMneLp4SL8t60eKLSk=",
+      "FrontendLibrary.wasm": "sha256-jMRxX5ujRHJuqIr1N/SxBgQa3UFIMxsY+ShFuNdfds8=",
+      "Frontend_EmployeeManagementSystem.wasm": "sha256-c5ESk+u9t/1aTvGYJm8O4lerHW+rJ5ACK2P6dW5QGxA="
     },
     "pdb": {
-      "BaseLibrary.pdb": "sha256-lBQl8B6RLXEkcKmb6hhKn7nf7bmGoPn9aDUyZHdIdf4=",
-      "FrontendLibrary.pdb": "sha256-HvrSe1bVP0EVfOUdZ5y6xV9eefkv0AOSfBIpZRal33Q=",
-      "Frontend_EmployeeManagementSystem.pdb": "sha256-HOVuyv9TWKYNEbPrUANoAVvzwdXEAg9nzThFRm2aL60="
+      "BaseLibrary.pdb": "sha256-vANtHtPZFdwYC+CmaytiwiPkT0niZVkSJHtIcucb48Y=",
+      "FrontendLibrary.pdb": "sha256-R7jocbrBskOvamgqsWdSv7bkbM7mYqpN1LdeuGASAG8=",
+      "Frontend_EmployeeManagementSystem.pdb": "sha256-ZC7FGkDK8y3h2sVp1cnDdeOsJRACTlHqLqmEwYT/D+4="
     }
   },
   "cacheBootResources": true,

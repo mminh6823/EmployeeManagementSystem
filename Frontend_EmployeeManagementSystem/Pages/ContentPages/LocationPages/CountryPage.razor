@@ -1,0 +1,155 @@
+﻿@implements IDisposable
+@if (allState.ShowCountry)
+{
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="float-start">Quốc gia</h4>
+                        <button class="btn btn-outline-success float-end" @onclick="OpenDialog">
+                            <i class="bi bi-plus-circle-dotted"></i> Thêm quốc gia
+                        </button>
+                    </div>
+                    <div class="card-header" style="max-height: 580px; overflow-x:hidden; overflow-y:scroll;">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Id</th>
+                                        <th scope="col">Quốc gia</th>
+                                        <th scope="col">Hành động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Country is not null)
+                                    {
+                                        int count = 1;
+                                        foreach (var item in Countries)
+                                        {
+                                            <tr>
+                                                <th scope="row">@count</th>
+                                                <td>@item.Id</td>
+                                                <td>@item.Name</td>
+                                                <td>
+                                                    <i class="bi bi-pencil text-info" id="cursorStyle" @onclick="()=>EditClicked(item)"></i>
+                                                    <i class="bi bi-trash text-danger" id="cursorStyle" @onclick="()=>DeleteClicked(item)"></i>
+                                                </td>
+                                            </tr>
+                                            count++;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="4"><div class="alert alert-info text-center">Chưa có quốc gia nào được thêm!!!</div></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<CountryDialog @ref="countryDialog"
+                         HandleSaveOperationEvent="HandleSaveOperationEvent"
+               country="Country" />
+
+<style>
+    .cursorStyle {
+        cursor: pointer;
+    }
+</style>
+
+@code {
+    CountryDialog?  countryDialog ;
+    Country  Country = new();
+    public string Title { get; set; } = "Add";
+    public List<Country>  Countries { get; set; } = new();
+
+    protected async override Task OnInitializedAsync()
+    {
+        await GetCountries();
+        allState.Action += StateHasChanged;
+    }
+
+    private async Task GetCountries()
+    {
+        Countries = await countryService.GetAll(Constants.CountryBaseUrl);
+    }
+
+    //Add
+    private async Task HandleSaveOperationEvent(Country  country)
+    {
+        bool successCheck = false;
+        if (country.Id > 0)
+        {
+            var result = await countryService.Update(Country, Constants.CountryBaseUrl);
+            successCheck = await DisplayMessage(result.Flag, result.Message);
+        }
+        else
+        {
+            var respone = await countryService.Insert(Country, Constants.CountryBaseUrl);
+            successCheck = await DisplayMessage(respone.Flag, respone.Message);
+        }
+        if (successCheck)
+        {
+            Countries = new();
+            await GetCountries();
+            countryDialog?.ChangeTitle("Add");
+            countryDialog?.CloseDialogs();
+        }
+    }
+    //Edit
+    private void EditClicked(Country dep)
+    {
+        countryDialog?.ChangeTitle("Update");
+        Country = dep;
+        OpenDialog();
+    }
+
+    //Delete
+    private async Task DeleteClicked(Country dep)
+    {
+        bool confirm = await dialogService.ConfirmAsync($"Bạn có chắc chắn muốn xóa quốc gia: {dep.Name}?", "Xác nhận xóa");
+        if (!confirm) return;
+        var respone = await countryService.DeleteById(dep.Id, Constants.CountryBaseUrl);
+        if (await DisplayMessage(respone.Flag, respone.Message))
+        {
+            await GetCountries();
+        }
+    }
+
+
+
+
+
+    private async Task<bool> DisplayMessage(bool flag, string message)
+    {
+        if (flag)
+        {
+            await dialogService.AlertAsync(message, "Thông báo!");
+            return true;
+        }
+        else
+        {
+            await dialogService.AlertAsync(message, "Cảnh báo!!!");
+            return false;
+        }
+    }
+
+    void OpenDialog()
+    {
+        countryDialog?.OpenDialogs();
+    }
+
+    public void Dispose()
+    {
+        allState.Action -= StateHasChanged;
+    }
+
+}

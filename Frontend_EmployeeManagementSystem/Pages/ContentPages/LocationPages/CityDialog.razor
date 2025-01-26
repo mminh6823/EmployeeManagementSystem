@@ -1,0 +1,104 @@
+﻿<SfDialog Width="280px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
+    <DialogEvents OnOpen="OpenDialogs"></DialogEvents>
+    <DialogTemplates>
+        <Header>@Title thành phố</Header>
+        <Content>
+            <EditForm Model="City" Enhance OnSubmit="Save">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label">Id</label>
+                            <input @bind="City.Id" class="form-control" disabled></input>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Name</label>
+                            <InputText @bind-Value="City.Name" class="form-control"></InputText>
+                        </div>
+                        <div class="form-group mt-3 mb-3">
+                            <label class="form-label">Tìm kiếm quốc gia</label>
+                            @if (City.Country != null)
+                            {
+                                string selected = City.Country.Name!;
+                                <SfDropDownList TValue="string" TItem="Country" Placeholder="@selected" DataSource="Countries">
+                                    <DropDownListFieldSettings Value="Id" Text="Name"></DropDownListFieldSettings>
+                                    <DropDownListEvents TValue="string" TItem="Country" ValueChange="OnValueChange"></DropDownListEvents>
+                                </SfDropDownList>
+                            }
+                            else
+                            {
+                                <SfDropDownList TValue="string" TItem="Country" Placeholder="Phòng quốc gia" DataSource="Countries">
+                                    <DropDownListFieldSettings Value="Id" Text="Name"></DropDownListFieldSettings>
+                                    <DropDownListEvents TValue="string" TItem="Country" ValueChange="OnValueChange"></DropDownListEvents>
+                                </SfDropDownList>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        </Content>
+    </DialogTemplates>
+
+    <DialogButtons>
+        <DialogButton Content="Lưu" Type="ButtonType.Submit" IsPrimary="true" OnClick="Save"></DialogButton>
+    </DialogButtons>
+</SfDialog>
+
+
+
+
+
+@code {
+    [Parameter] public City City { get; set; } = new();
+    [Parameter] public List<Country>  Countries { get; set; } = new();
+    [Parameter] public EventCallback<City> HandleSaveOperationEvent { get; set; }
+
+    private bool IsVisible { get; set; } = false;
+    public string Title { get; set; } = "Add";
+
+    private async void Save()
+    {
+        try
+        {
+            if (string.IsNullOrEmpty(City.Name) || City.Country == null)
+            {
+                await dialogService.AlertAsync("Bạn cần nhập tên phòng bộ phận và chọn phòng tổng hợp!", "Thông báo!");
+                return;
+            }
+            Console.WriteLine($"Debug: City ID = {City.Id}, Name = {City.Name}, Country = {City.Country}");
+            await HandleSaveOperationEvent.InvokeAsync(City);
+        }
+        catch (Exception ex)
+        {
+            await dialogService.AlertAsync($"Đã xảy ra lỗi: {ex.Message}", "Lỗi!");
+        }
+    }
+
+
+
+    // Mở dialog
+    public void OpenDialogs()
+    {
+        IsVisible = true;
+        StateHasChanged();
+    }
+    public void ChangeTitle(string title)
+    {
+        Title = title;
+    }
+
+    public void OnValueChange(ChangeEventArgs<string, Country> args)
+    {
+        if (int.TryParse(args.Value, out int countryId))
+        {
+            City.CountryId = countryId;
+            City.Country = Countries.FirstOrDefault(g => g.Id == countryId);
+        }
+    }
+
+    public void CloseDialogs()
+    {
+        // Đặt trạng thái dialog thành đóng
+        IsVisible = false;
+        StateHasChanged();
+    }
+}

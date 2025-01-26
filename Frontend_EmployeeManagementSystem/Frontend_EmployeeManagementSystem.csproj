@@ -27,4 +27,8 @@
     <ProjectReference Include="..\FrontendLibrary\FrontendLibrary.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Pages\ContentPages\UserPages\" />
+  </ItemGroup>
+
 </Project>
