@@ -177,6 +177,9 @@ namespace Backend_Library.Data.Migrations
                     b.Property<int>("BranchId")
                         .HasColumnType("int");
 
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
                     b.Property<string>("CivilId")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -209,12 +212,11 @@ namespace Backend_Library.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TownId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("BranchId");
+
+                    b.HasIndex("CityId");
 
                     b.ToTable("Employees");
                 });
@@ -492,7 +494,15 @@ namespace Backend_Library.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("BaseLibrary.Entities.City", "City")
+                        .WithMany("Employees")
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Branch");
+
+                    b.Navigation("City");
                 });
 
             modelBuilder.Entity("BaseLibrary.Entities.Overtime", b =>
@@ -527,6 +537,11 @@ namespace Backend_Library.Data.Migrations
                 });
 
             modelBuilder.Entity("BaseLibrary.Entities.Branch", b =>
+                {
+                    b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("BaseLibrary.Entities.City", b =>
                 {
                     b.Navigation("Employees");
                 });

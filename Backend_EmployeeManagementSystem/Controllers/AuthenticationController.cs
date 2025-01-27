@@ -35,5 +35,33 @@ namespace Backend_EmployeeManagementSystem.Controllers
             return Ok(result);
         }
 
+        [HttpGet("users")]
+        public async Task<IActionResult> GetUsers()
+        {
+            var result = await accountInteface.GetUsers();
+            if(result == null ) return NotFound();
+            return Ok(result);
+        }
+        [HttpPut("update-user")]
+        public async Task<IActionResult> UpdateUser(ManageUser user)
+        {
+            if (user == null) return BadRequest("Model trống");
+            var result = await accountInteface.UpdateUser(user);
+            return Ok(result);
+        }
+        [HttpGet("roles")]
+        public async Task<IActionResult> GetRoles()
+        {
+            var result = await accountInteface.GetRoles();
+            if (result == null) return NotFound();
+            return Ok(result);
+        }
+        [HttpDelete("delete-user/{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            if (id == 0) return BadRequest("Id trống");
+            var result = await accountInteface.DeleteUser(id);
+            return Ok(result);
+        }
     }
 }

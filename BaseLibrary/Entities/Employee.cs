@@ -27,9 +27,10 @@ namespace BaseLibrary.Entities
 
 
 
-        //Mối quan hệ n-1 với Branch
+        //Mối quan hệ n-1 với Branch và City
         public Branch? Branch { get; set; }
+        public City? City { get; set; }
         public int BranchId { get; set; }
-        public int TownId { get; set; }
+        public int CityId { get; set; }
     }
 }

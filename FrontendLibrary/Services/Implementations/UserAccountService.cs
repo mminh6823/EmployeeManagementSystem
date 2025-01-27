@@ -1,7 +1,9 @@
 ﻿using BaseLibrary.DTOs;
+using BaseLibrary.Entities;
 using BaseLibrary.Responses;
 using FrontendLibrary.Helpers;
 using FrontendLibrary.Services.Contracts;
+using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
 
 
@@ -34,12 +36,36 @@ namespace FrontendLibrary.Services.Implementations
             return await response.Content.ReadFromJsonAsync<LoginResponse>();
         }
 
-        public async Task<WeatherForecast[]> GetWeatherForecast()
+
+        public async Task<List<ManageUser>> GetUsers()
         {
-           var httpClient =await getHttpClient.GetPrivateHttpClient();
-            var result = await httpClient.GetFromJsonAsync<WeatherForecast[]>("api/weatherforecast");
-            return result;
+           var httpClient = await getHttpClient.GetPrivateHttpClient();
+            var response = await httpClient.GetFromJsonAsync<List<ManageUser>>($"{AuthUrl}/users");
+            return response!;
         }
 
+        public async Task<GeneralResponse> UpdateUser(ManageUser user)
+        {
+           var httpClient = await getHttpClient.GetPrivateHttpClient();
+            var response = await httpClient.PutAsJsonAsync($"{AuthUrl}/update-user", user);
+            if (!response.IsSuccessStatusCode) return new GeneralResponse(false, "Cập nhật tài khoản thất bại");
+            return await response.Content.ReadFromJsonAsync<GeneralResponse>()!;
+        }
+
+        public async Task<List<SystemRole>> GetRoles()
+        {
+            var httpClient = await getHttpClient.GetPrivateHttpClient();
+            var response = await httpClient.GetFromJsonAsync<List<SystemRole>>($"{AuthUrl}/roles");
+            return response!;
+
+        }
+
+        public async Task<GeneralResponse> DeleteUser(int id)
+        {
+            var httpClient = await getHttpClient.GetPrivateHttpClient();
+            var response =await httpClient.DeleteAsync($"{AuthUrl}/delete-user/{id}");
+            if (!response.IsSuccessStatusCode) return new GeneralResponse(false, "Xóa tài khoản thất bại");
+            return await response.Content.ReadFromJsonAsync<GeneralResponse>()!;
+        }
     }
 }

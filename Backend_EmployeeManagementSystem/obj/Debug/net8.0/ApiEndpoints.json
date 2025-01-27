@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "Backend_EmployeeManagementSystem.Controllers.AuthenticationController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/Authentication/delete-user/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.AuthenticationController",
     "Method": "LoginAsync",
     "RelativePath": "api/Authentication/login",
     "HttpMethod": "POST",
@@ -45,6 +61,42 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.AuthenticationController",
+    "Method": "GetRoles",
+    "RelativePath": "api/Authentication/roles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.AuthenticationController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/Authentication/update-user",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user",
+        "Type": "BaseLibrary.DTOs.ManageUser",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.AuthenticationController",
+    "Method": "GetUsers",
+    "RelativePath": "api/Authentication/users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -338,6 +390,80 @@
       {
         "Name": "model",
         "Type": "BaseLibrary.Entities.Department",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.GenericController\u00601[[BaseLibrary.Entities.Employee, BaseLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Add",
+    "RelativePath": "api/Employee/add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BaseLibrary.Entities.Employee",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.GenericController\u00601[[BaseLibrary.Entities.Employee, BaseLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetAll",
+    "RelativePath": "api/Employee/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.GenericController\u00601[[BaseLibrary.Entities.Employee, BaseLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Delete",
+    "RelativePath": "api/Employee/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.GenericController\u00601[[BaseLibrary.Entities.Employee, BaseLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "GetById",
+    "RelativePath": "api/Employee/single/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.GenericController\u00601[[BaseLibrary.Entities.Employee, BaseLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+    "Method": "Update",
+    "RelativePath": "api/Employee/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "BaseLibrary.Entities.Employee",
         "IsRequired": true
       }
     ],
