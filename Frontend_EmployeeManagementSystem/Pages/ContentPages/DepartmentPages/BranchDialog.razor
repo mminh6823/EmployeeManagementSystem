@@ -1,7 +1,7 @@
 ﻿<SfDialog Width="280px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
     <DialogEvents OnOpen="OpenDialogs"></DialogEvents>
     <DialogTemplates>
-        <Header>@Title chi nhánh</Header>
+        <Header>@Title chuyên môn</Header>
         <Content>
             <EditForm Model="Branch" Enhance OnSubmit="Save">
                 <div class="card border-success">
@@ -60,7 +60,7 @@
         {
             if (string.IsNullOrEmpty(Branch.Name) || Branch.Department == null)
             {
-                await dialogService.AlertAsync("Bạn cần nhập tên chi nhánh và chọn phòng bộ phận!", "Thông báo!");
+                await dialogService.AlertAsync("Bạn cần nhập tên chuyên môn và chọn phòng bộ phận!", "Thông báo!");
                 return;
             }
             Console.WriteLine($"Debug: Branch ID = {Branch.Id}, Name = {Branch.Name}, DepartmentId = {Branch.DepartmentId}");

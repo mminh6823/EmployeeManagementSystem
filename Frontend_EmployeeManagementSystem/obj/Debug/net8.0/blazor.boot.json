@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Frontend_EmployeeManagementSystem",
   "resources": {
-    "hash": "sha256-Wjq31xHrdTnVBeRiXCeGkuAhQ7bJjsddGsOL2j+pmsw=",
+    "hash": "sha256-2M1Znz/8pf2FNkcBz3WGZ7YOfNgfAVm/DU8D/1E81Y4=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-B6DNRvFeCUi3jbx9uKpuj+hV9cN0KG4RdZj1FgBZwj8="
     },
@@ -53,16 +53,22 @@
       "Microsoft.JSInterop.wasm": "sha256-Io6aK2hSUL4m2prTnsWGWosE7cw/c/7mj3BAxlDuDjY=",
       "Microsoft.JSInterop.WebAssembly.wasm": "sha256-hcEp3tuBjwv8iSHAFSZG7AZV1aZYHr9VqnSGg1D6WgI=",
       "Syncfusion.Blazor.Buttons.wasm": "sha256-Eu/o6ULiyQQr74FEAmOkY/Fqvux7dmoikYKoObGSoRs=",
+      "Syncfusion.Blazor.Calendars.wasm": "sha256-wnw23FCzfzVyXCRXruOEgFU/xk5NN8TGct17J8vkD/8=",
       "Syncfusion.Blazor.Core.wasm": "sha256-ejNR0Uk2pjVOccdh2BxgEtuRXhufsJGdNMCr5LobP0A=",
       "Syncfusion.Blazor.Data.wasm": "sha256-/75HY10EUKpKodL5H53rhVcBf/SmLlZaSY68l68gAiY=",
       "Syncfusion.Blazor.DropDowns.wasm": "sha256-OPILwt8Ll7oD4CyyGOc7t+5grDrgOZgsL6xQz/WbMBs=",
+      "Syncfusion.Blazor.Grids.wasm": "sha256-jWGYKqCr3jPiOGepYJpTxu/QFUuYrWOgg45tlubVXJU=",
       "Syncfusion.Blazor.Inputs.wasm": "sha256-RWCLtlSeq2x5w1CiGZmlIK2IUHkn1Jmh7JLYAGH4k9Q=",
+      "Syncfusion.Blazor.Lists.wasm": "sha256-64zPLjzGN6rksHRYuHt1MllMWL2jNaApomUDI1+RtjE=",
+      "Syncfusion.Blazor.Navigations.wasm": "sha256-E8NUIviIX1a9giDwb8v00vNvACQdPSjmHI4Am6YSCEU=",
       "Syncfusion.Blazor.Notifications.wasm": "sha256-I3uR4F/kOsHY8zehPfz4Cfd2ypXSSl0YJRqPhNVJJbw=",
       "Syncfusion.Blazor.Popups.wasm": "sha256-wHOfUQ15xsu1BdwPTTQtmSrylnJsjDA0ExgA0wg1V6w=",
       "Syncfusion.Blazor.Spinner.wasm": "sha256-4lMQbKrOsAgPU9liNJcIpHeGmqsISJUfNfXYD7WRS/4=",
       "Syncfusion.Blazor.SplitButtons.wasm": "sha256-59FwNleGdN0PUIRPtWYy5nj06TeUOYrTNwTYWYrxl8M=",
       "Syncfusion.Blazor.Themes.wasm": "sha256-hq7ZJo6/+fOwihD4yDYM5pBb9d6OMKeVugcNNf3Bw64=",
+      "Syncfusion.ExcelExport.Net.wasm": "sha256-8jGdYP0jdVGQzEGBh9L4XFR56xndcETD84hFYLi5pTs=",
       "Syncfusion.Licensing.wasm": "sha256-7DdS1iZru3Jrpyjo5QYZByWl9W5vQY3i4UCD5X+3+2I=",
+      "Syncfusion.PdfExport.Net.wasm": "sha256-HCAUZ7AMOsncJ3pudp6Ktfqf3/AnE+FLD3+WNV3+850=",
       "System.IdentityModel.Tokens.Jwt.wasm": "sha256-l32HTgcfbhPXvPYSfqdBM1Y6BEb5gywPhLkebWUwlp4=",
       "System.IO.Pipelines.wasm": "sha256-JqVBy6SV+3qk+IK3VJiyIDt9CsVk6b1/ytTXmrI4mTM=",
       "Microsoft.CSharp.wasm": "sha256-zohYihZLqZl3Vs/WUXlbmBw6sSRhBg6suf/7sRlQmto=",
@@ -233,14 +239,14 @@
       "mscorlib.wasm": "sha256-QoC5hTKpDNO6efLnEvYwV9OJBXvYRq8/1yGhNZKiNCw=",
       "netstandard.wasm": "sha256-JT2F4bYWJpaSGq+iD0ITLpWxsDhMUjhqje9RpBtTg7w=",
       "System.Private.CoreLib.wasm": "sha256-fvIPBcvgvsRuWrKi2LGQsLYvcKUSnyIuBUsE3LJu/0Y=",
-      "BaseLibrary.wasm": "sha256-I1WZdB3+pxBHPNgS2UnPXWZEr4ramJ/FomxPOD60pBU=",
-      "FrontendLibrary.wasm": "sha256-wc/GlBnBtMCkoc+Ohi1Fs5vvZ34KbbK9q4zL32T4Znc=",
-      "Frontend_EmployeeManagementSystem.wasm": "sha256-5fVibvIJjLjIvh8Kxwa5GyMeDVcnKOMa80a9IyQgD+8="
+      "BaseLibrary.wasm": "sha256-8l0nF/OYHHSYzeDEgDFJfN9wPEpBocY7QXQH/OS+bJk=",
+      "FrontendLibrary.wasm": "sha256-O5pBZqs0zdSdBea7hj8HXeHtOVKybt+56Xum0/RnQzE=",
+      "Frontend_EmployeeManagementSystem.wasm": "sha256-DmiQqmGQt3WtwYKyLJXD0nFWCWWKXnGDpF0PnsN9E7w="
     },
     "pdb": {
-      "BaseLibrary.pdb": "sha256-0OhoU1v3XCd+eizcBXWSukWN0xO9EA2emDb2nLeDM54=",
-      "FrontendLibrary.pdb": "sha256-WXc+weU7qEONNwOecePklj4BqQ/bxwKhZNKfrUqyRMc=",
-      "Frontend_EmployeeManagementSystem.pdb": "sha256-bYlw4sePejB9cpqnfAwbQ7EgshBj5DR3NSXeV5S73TE="
+      "BaseLibrary.pdb": "sha256-Z46GAP7SxUfHcpl8VHpJKfGIJcmW++fhGYRbLe5VTww=",
+      "FrontendLibrary.pdb": "sha256-zwsl+kibyNKxtPVqV2JniscSMKqq71S6ClR+eQZwhvM=",
+      "Frontend_EmployeeManagementSystem.pdb": "sha256-My0GDOJgQdlatu9cHr2moAcYTqtC2WDcxOV0QVZu2OQ="
     }
   },
   "cacheBootResources": true,

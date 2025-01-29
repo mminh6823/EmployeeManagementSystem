@@ -1,0 +1,73 @@
+﻿
+@implements IDisposable
+
+@if (allState.ShowEmployee)
+{
+    if(ShowMainPage){
+        <div class="container-fluid mt-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header"><button class="btn btn-outline-success" @onclick="ShowAddOrUpdateEmployeeButtonClicked">
+                            <i class="bi bi-plus-circle-dotted"></i> Thêm nhân viên
+                            </button>
+                            </div>
+                        <div class="card-body">
+                            <SfGrid DataSource="@Employees">
+                                <GridColumns>
+                                    <GridColumn HeaderText="Ảnh nhân viên"> 
+                                        <Template>
+                                            @{
+                                                var employee = context as Employee;
+                                                <div class="image">
+                                                    <img src="@employee!.Photo" alt="@employee.Name" width="150" height="150"/>
+                                                </div>
+                                            }
+                                        </Template>
+                                    </GridColumn>
+                                    <GridColumn Field=@nameof(Employee.CivilId) HeaderText="ID định danh"></GridColumn>
+                                    <GridColumn Field=@nameof(Employee.FileNumber) HeaderText="Số File"></GridColumn>
+                                    <GridColumn Field=@nameof(Employee.Name) HeaderText="Tên"></GridColumn>
+                                    <GridColumn Field=@nameof(Employee.TelephoneNumber) HeaderText="Số điện thoại"></GridColumn>
+                                    <GridColumn Field=@nameof(Employee.Jobname) HeaderText="Tên công việc"></GridColumn>
+                                    <GridColumn Field=@nameof(Employee.Branch.Name) HeaderText="Chuyên môn"></GridColumn>
+                                    <GridColumn Field=@nameof(Employee.City.Name) HeaderText="Thành phố"></GridColumn>
+                                </GridColumns>
+                            </SfGrid>
+                        </div>
+                        <div class="card-footer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+<AddOrUpdateEmployeePage ShowAddOrUpdateEmployee="ShowAddOrUpdatePage" />
+@code {
+    public List<Employee> Employees { get; set; } = new();
+    private async Task LoadEmployees()
+    {
+        Employees = await employeeService.GetAll(Constants.EmployeeBaseUrl);
+    }   
+    protected override async Task OnInitializedAsync()
+    {
+        allState.Action += StateHasChanged;
+        await LoadEmployees();
+    }
+    public bool ShowMainPage { get; set; } = true;  
+    public bool ShowAddOrUpdatePage { get; set; } = false;
+    public void ShowAddOrUpdateEmployeeButtonClicked()
+    {
+        ShowMainPage = false;
+        ShowAddOrUpdatePage = true;
+    }
+
+
+
+
+
+    public void Dispose()
+    {
+        allState.Action -= StateHasChanged;
+    }
+}

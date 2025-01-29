@@ -26,8 +26,8 @@ namespace Backend_Library.Repositories.Implementations
         public async Task<Branch> GetById(int id) => await appDbContext.Branches.FirstOrDefaultAsync(m => m.Id == id);
         public async Task<GeneralResponse> Insert(Branch item)
         {
-            // Kiểm tra xem tên phòng bộ phận đã tồn tại chưa
-            if (!await CheckName(item.Name!)) return new GeneralResponse(false, "Chi nhánh đã có sẵn!");
+            // Kiểm tra xem tên chuyên môn đã tồn tại chưa
+            if (!await CheckName(item.Name!)) return new GeneralResponse(false, "Chuyên môn đã có sẵn!");
 
             // Kiểm tra xem DepartmentId có hợp lệ không (phải tồn tại trong cơ sở dữ liệu)
             var department = await appDbContext.Departments.AsNoTracking().FirstOrDefaultAsync(g => g.Id == item.DepartmentId);
@@ -60,7 +60,7 @@ namespace Backend_Library.Repositories.Implementations
 
             return Success();
         }
-        private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy chi nhánh");
+        private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy chuyên môn");
         private static GeneralResponse Success() => new(true, "Quá trình hoàn tất!");
         private async Task Commit() => await appDbContext.SaveChangesAsync();
 
