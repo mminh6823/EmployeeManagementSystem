@@ -1,0 +1,81 @@
+﻿<SfDialog Width="100px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
+    <DialogEvents OnOpen="OpenContextMenu"></DialogEvents>
+    <DialogTemplates>
+        <Header>Menu nhân viên</Header>
+        <Content>
+            <div class="hstack gap-2 mb-2" id="cursorStyle" @onclick="ViewClicked">
+                <i class="bi bi-eye text-info"></i>
+                <span id="cursorStyle" class="text-info"> Xem</span>
+            </div>
+            <div class="hstack gap-2 mb-2" id="cursorStyle" @onclick="EditClicked">
+                <i class="bi bi-pencil text-primary"></i>
+                <span id="cursorStyle" class="text-primary"> Sửa</span>
+            </div>
+            <div class="hstack gap-2 mb-2" id="cursorStyle" @onclick="DeleteClicked">
+                <i class="bi bi-trash text-danger"></i>
+                <span id="cursorStyle" class="text-danger"> Xóa</span>
+            </div>
+            <hr/>
+            <div class="hstack gap-2 mb-2" id="cursorStyle" @onclick="AddVacationClicked">
+                <i class="bi bi-backpack3 text-success"></i>
+                <span id="cursorStyle" class="text-danger"> Thêm kì nghỉ</span>
+            </div>
+            <div class="hstack gap-2 mb-2" id="cursorStyle" @onclick="AddOvertimeClicked">
+                <i class="bi bi-stopwatch text-danger"></i>
+                <span id="cursorStyle" class="text-danger"> Thêm tăng ca</span>
+            </div>
+            <div class="hstack gap-2 mb-2" id="cursorStyle" @onclick="AddHealthClicked">
+                <i class="bi bi-hospital text-warning"></i>
+                <span id="cursorStyle" class="text-warning"> Thêm sức khỏe</span>
+            </div>
+            <div class="hstack gap-2 mb-2" id="cursorStyle" @onclick="AddSanctionClicked">
+                <i class="bi bi-octagon text-info"></i>
+                <span id="cursorStyle" class="text-info"> Thêm hình phạt</span>
+            </div>
+        </Content>
+    </DialogTemplates>
+</SfDialog>
+<style>
+    .cursorStyle{
+        cursor: pointer;
+    }
+</style>
+@code{
+    SfDialog? OpenDialog;
+    private bool IsVisible { get; set; }
+
+    [Parameter] public EventCallback HanldeViewClicked { get; set; }
+    private async Task ViewClicked() => await HanldeViewClicked.InvokeAsync();
+
+    [Parameter] public EventCallback HanldeEditClicked { get; set; }
+    private async Task EditClicked() => await HanldeEditClicked.InvokeAsync();
+
+    [Parameter] public EventCallback HanldeDeleteClicked { get; set; }
+    private async Task DeleteClicked() => await HanldeDeleteClicked.InvokeAsync();
+
+    [Parameter] public EventCallback HanldeAddVacationClicked { get; set; }
+    private async Task AddVacationClicked() => await HanldeAddVacationClicked.InvokeAsync();
+
+    [Parameter] public EventCallback HanldeAddOvertimeClicked { get; set; }
+    private async Task AddOvertimeClicked() => await HanldeAddOvertimeClicked.InvokeAsync();
+
+    [Parameter] public EventCallback HanldeAddHealthClicked { get; set; }
+    private async Task AddHealthClicked() => await HanldeAddHealthClicked.InvokeAsync();
+
+    [Parameter] public EventCallback HanldeAddSanctionClicked { get; set; }
+    private async Task AddSanctionClicked() => await HanldeAddSanctionClicked.InvokeAsync();
+
+    public void OpenContextMenu()
+    {
+        IsVisible = true;
+        StateHasChanged();
+    }
+    public void CloseContextMenu()
+    {
+        IsVisible = false;
+        StateHasChanged();
+    } 
+
+
+
+}

@@ -4607,11 +4607,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\.Net\\EmployeeManagementSystemSolution\\Backend_EmployeeManagementSystem\\Backend_EmployeeManagementSystem.csproj",
+      "projectUniqueName": "D:\\.Net\\EmployeeManagementSystem\\Backend_EmployeeManagementSystem\\Backend_EmployeeManagementSystem.csproj",
       "projectName": "Backend_EmployeeManagementSystem",
-      "projectPath": "D:\\.Net\\EmployeeManagementSystemSolution\\Backend_EmployeeManagementSystem\\Backend_EmployeeManagementSystem.csproj",
+      "projectPath": "D:\\.Net\\EmployeeManagementSystem\\Backend_EmployeeManagementSystem\\Backend_EmployeeManagementSystem.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "D:\\.Net\\EmployeeManagementSystemSolution\\Backend_EmployeeManagementSystem\\obj\\",
+      "outputPath": "D:\\.Net\\EmployeeManagementSystem\\Backend_EmployeeManagementSystem\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -4634,11 +4634,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "D:\\.Net\\EmployeeManagementSystemSolution\\Backend_Library\\Backend_Library.csproj": {
-              "projectPath": "D:\\.Net\\EmployeeManagementSystemSolution\\Backend_Library\\Backend_Library.csproj"
+            "D:\\.Net\\EmployeeManagementSystem\\Backend_Library\\Backend_Library.csproj": {
+              "projectPath": "D:\\.Net\\EmployeeManagementSystem\\Backend_Library\\Backend_Library.csproj"
             },
-            "D:\\.Net\\EmployeeManagementSystemSolution\\BaseLibrary\\BaseLibrary.csproj": {
-              "projectPath": "D:\\.Net\\EmployeeManagementSystemSolution\\BaseLibrary\\BaseLibrary.csproj"
+            "D:\\.Net\\EmployeeManagementSystem\\BaseLibrary\\BaseLibrary.csproj": {
+              "projectPath": "D:\\.Net\\EmployeeManagementSystem\\BaseLibrary\\BaseLibrary.csproj"
             }
           }
         }

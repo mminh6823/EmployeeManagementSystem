@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\.Net\\EmployeeManagementSystemSolution\\Backend_Library\\Backend_Library.csproj": {}
+    "D:\\.Net\\EmployeeManagementSystem\\Backend_Library\\Backend_Library.csproj": {}
   },
   "projects": {
-    "D:\\.Net\\EmployeeManagementSystemSolution\\Backend_Library\\Backend_Library.csproj": {
+    "D:\\.Net\\EmployeeManagementSystem\\Backend_Library\\Backend_Library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.Net\\EmployeeManagementSystemSolution\\Backend_Library\\Backend_Library.csproj",
+        "projectUniqueName": "D:\\.Net\\EmployeeManagementSystem\\Backend_Library\\Backend_Library.csproj",
         "projectName": "Backend_Library",
-        "projectPath": "D:\\.Net\\EmployeeManagementSystemSolution\\Backend_Library\\Backend_Library.csproj",
+        "projectPath": "D:\\.Net\\EmployeeManagementSystem\\Backend_Library\\Backend_Library.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\.Net\\EmployeeManagementSystemSolution\\Backend_Library\\obj\\",
+        "outputPath": "D:\\.Net\\EmployeeManagementSystem\\Backend_Library\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -34,8 +34,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\.Net\\EmployeeManagementSystemSolution\\BaseLibrary\\BaseLibrary.csproj": {
-                "projectPath": "D:\\.Net\\EmployeeManagementSystemSolution\\BaseLibrary\\BaseLibrary.csproj"
+              "D:\\.Net\\EmployeeManagementSystem\\BaseLibrary\\BaseLibrary.csproj": {
+                "projectPath": "D:\\.Net\\EmployeeManagementSystem\\BaseLibrary\\BaseLibrary.csproj"
               }
             }
           }
@@ -107,14 +107,14 @@
         }
       }
     },
-    "D:\\.Net\\EmployeeManagementSystemSolution\\BaseLibrary\\BaseLibrary.csproj": {
+    "D:\\.Net\\EmployeeManagementSystem\\BaseLibrary\\BaseLibrary.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\.Net\\EmployeeManagementSystemSolution\\BaseLibrary\\BaseLibrary.csproj",
+        "projectUniqueName": "D:\\.Net\\EmployeeManagementSystem\\BaseLibrary\\BaseLibrary.csproj",
         "projectName": "BaseLibrary",
-        "projectPath": "D:\\.Net\\EmployeeManagementSystemSolution\\BaseLibrary\\BaseLibrary.csproj",
+        "projectPath": "D:\\.Net\\EmployeeManagementSystem\\BaseLibrary\\BaseLibrary.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\.Net\\EmployeeManagementSystemSolution\\BaseLibrary\\obj\\",
+        "outputPath": "D:\\.Net\\EmployeeManagementSystem\\BaseLibrary\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

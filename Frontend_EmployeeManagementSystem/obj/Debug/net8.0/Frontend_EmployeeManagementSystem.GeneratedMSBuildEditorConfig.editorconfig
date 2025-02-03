@@ -13,117 +13,121 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = Frontend_EmployeeManagementSystem
 build_property.RootNamespace = Frontend_EmployeeManagementSystem
-build_property.ProjectDir = D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem\
+build_property.ProjectDir = D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = false
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\.Net\EmployeeManagementSystemSolution\Frontend_EmployeeManagementSystem
+build_property.MSBuildProjectDirectory = D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/App.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Layout/AuthenticationLayout.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Layout/AuthenticationLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEF1dGhlbnRpY2F0aW9uTGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/AccountPages/LoginPage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/AccountPages/LoginPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFBhZ2VzXExvZ2luUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/AccountPages/RegisterPage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/AccountPages/RegisterPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFBhZ2VzXFJlZ2lzdGVyUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/AuthenticationPage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/AuthenticationPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQXV0aGVudGljYXRpb25QYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/BranchDialog.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/BranchDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXERlcGFydG1lbnRQYWdlc1xCcmFuY2hEaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/BranchPage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/BranchPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXERlcGFydG1lbnRQYWdlc1xCcmFuY2hQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/DepartmentDialog.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/DepartmentDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXERlcGFydG1lbnRQYWdlc1xEZXBhcnRtZW50RGlhbG9nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/DepartmentPage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/DepartmentPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXERlcGFydG1lbnRQYWdlc1xEZXBhcnRtZW50UGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/GeneralDepartmentDialog.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/GeneralDepartmentDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXERlcGFydG1lbnRQYWdlc1xHZW5lcmFsRGVwYXJ0bWVudERpYWxvZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/GeneralDepartmentPage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/DepartmentPages/GeneralDepartmentPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXERlcGFydG1lbnRQYWdlc1xHZW5lcmFsRGVwYXJ0bWVudFBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/EmployeePages/AddOrUpdateEmployeePage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/EmployeePages/AddOrUpdateEmployeePage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXEVtcGxveWVlUGFnZXNcQWRkT3JVcGRhdGVFbXBsb3llZVBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/EmployeePages/EmployeePage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/EmployeePages/EmployeePage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXEVtcGxveWVlUGFnZXNcRW1wbG95ZWVQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/HomePage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/HomePage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXEhvbWVQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/LocationPages/CityDialog.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/LocationPages/CityDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXExvY2F0aW9uUGFnZXNcQ2l0eURpYWxvZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/LocationPages/CityPage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/LocationPages/CityPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXExvY2F0aW9uUGFnZXNcQ2l0eVBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/LocationPages/CountryDialog.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/LocationPages/CountryDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXExvY2F0aW9uUGFnZXNcQ291bnRyeURpYWxvZy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/LocationPages/CountryPage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/LocationPages/CountryPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXExvY2F0aW9uUGFnZXNcQ291bnRyeVBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/UserPages/UserDialog.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/UserPages/UserDialog.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXFVzZXJQYWdlc1xVc2VyRGlhbG9nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/ContentPages/UserPages/UserPage.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/UserPages/UserPage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXFVzZXJQYWdlc1xVc2VyUGFnZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/OtherPages/ButtonLoadingSpinner.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/ButtonLoadingSpinner.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xCdXR0b25Mb2FkaW5nU3Bpbm5lci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/OtherPages/ProfileDropDown.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/ContextMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xDb250ZXh0TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/ProfileDropDown.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xQcm9maWxlRHJvcERvd24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Pages/OtherPages/TableBanner.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/TableBanner.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xUYWJsZUJhbm5lci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/_Imports.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Layout/MainLayout.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Layout/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-e84dvhsh2h
 
-[D:/.Net/EmployeeManagementSystemSolution/Frontend_EmployeeManagementSystem/Layout/NavMenu.razor]
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Layout/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-zp7kgp43l7

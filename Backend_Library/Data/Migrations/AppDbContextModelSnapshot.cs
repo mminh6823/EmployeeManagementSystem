@@ -188,10 +188,6 @@ namespace Backend_Library.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Fullname")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Jobname")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

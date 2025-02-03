@@ -1,26 +1,27 @@
-﻿
-@implements IDisposable
+﻿@implements IDisposable
 
 @if (allState.ShowEmployee)
 {
-    if(ShowMainPage){
+    if (ShowMainPage)
+    {
         <div class="container-fluid mt-5">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header"><button class="btn btn-outline-success" @onclick="ShowAddOrUpdateEmployeeButtonClicked">
-                            <i class="bi bi-plus-circle-dotted"></i> Thêm nhân viên
+                        <div class="card-header">
+                            <button class="btn btn-outline-success" @onclick="ShowAddOrUpdateEmployeeButtonClicked">
+                                <i class="bi bi-plus-circle-dotted"></i> Thêm nhân viên
                             </button>
-                            </div>
+                        </div>
                         <div class="card-body">
                             <SfGrid DataSource="@Employees">
                                 <GridColumns>
-                                    <GridColumn HeaderText="Ảnh nhân viên"> 
+                                    <GridColumn HeaderText="Ảnh nhân viên">
                                         <Template>
                                             @{
                                                 var employee = context as Employee;
                                                 <div class="image">
-                                                    <img src="@employee!.Photo" alt="@employee.Name" width="150" height="150"/>
+                                                    <img src="@employee!.Photo" alt="@employee.Name" width="150" height="150" />
                                                 </div>
                                             }
                                         </Template>
@@ -30,8 +31,16 @@
                                     <GridColumn Field=@nameof(Employee.Name) HeaderText="Tên"></GridColumn>
                                     <GridColumn Field=@nameof(Employee.TelephoneNumber) HeaderText="Số điện thoại"></GridColumn>
                                     <GridColumn Field=@nameof(Employee.Jobname) HeaderText="Tên công việc"></GridColumn>
-                                    <GridColumn Field=@nameof(Employee.Branch.Name) HeaderText="Chuyên môn"></GridColumn>
-                                    <GridColumn Field=@nameof(Employee.City.Name) HeaderText="Thành phố"></GridColumn>
+                                    <GridColumn Field="Branch.Name" HeaderText="Chuyên môn"></GridColumn>
+                                    <GridColumn Field="City.Name" HeaderText="Thành phố"></GridColumn>
+                                    <GridColumn HeaderText="Menu" HeaderTextAlign="TextAlign.Left">
+                                        <Template>
+                                            @{
+                                                var employee = (context as Employee);
+                                                <i class="bi bi-menu-down text-primary" id="cursorStyle" @onclick="()=>ShowMenuPopUp(employee!)"></i>
+                                            }
+                                        </Template>
+                                    </GridColumn>
                                 </GridColumns>
                             </SfGrid>
                         </div>
@@ -42,30 +51,220 @@
         </div>
     }
 }
-<AddOrUpdateEmployeePage ShowAddOrUpdateEmployee="ShowAddOrUpdatePage" />
+<AddOrUpdateEmployeePage @ref="addOrUpdateEmployee"
+                         Employee="Employee"
+                         ShowAddOrUpdateEmployee="ShowAddOrUpdatePage"
+                         NotifyParentFormCloseClicked="NotifyParentFormCloseChicked"
+                         Countries="DefaultCountries"
+                         Cities="SelectedCities"
+                         GeneralDepartments="DefaultGeneralDepartments"
+                         Departments="SelectedDepartments"
+                         Branchs="SelectedBranchs"
+                         HandleCountrySelectedEvent="HandleCountrySelectedEvent"
+                         HandleGeneralDepartmentSelectedEvent="HandleGeneralDepartmentSelectedEvent"
+                         HandleDepartmentSelectedEvent="HandleDepartmentSelectedEvent"
+                         HandleSaveEmployeeEvent="HandleSaveEmployeeEvent">
+</AddOrUpdateEmployeePage>
+<ContextMenu @ref="contextMenu"
+             HanldeViewClicked="ViewClicked"
+             HanldeEditClicked="EditClicked"
+             HanldeDeleteClicked="DeleteClicked"
+             HanldeAddVacationClicked ="AddVactionClicked"
+             HanldeAddOvertimeClicked="AddOvertimeClicked"
+             HanldeAddSanctionClicked="AddSanctionClicked"
+             HanldeAddHealthClicked="AddHealthClicked">
+
+</ContextMenu>
 @code {
-    public List<Employee> Employees { get; set; } = new();
-    private async Task LoadEmployees()
+    AddOrUpdateEmployeePage? addOrUpdateEmployee;
+    public List<Employee>? Employees { get; set; } = [];
+    public Employee Employee { get; set; } = new Employee();
+
+    //Country and City
+    public List<Country> DefaultCountries { get; set; } = [];
+    public List<City> DefaultCities { get; set; } = [];
+
+    //GeneralDepartment and Department and Branch
+    public List<GeneralDepartment> DefaultGeneralDepartments { get; set; } = [];
+    public List<Department> DefaultDepartments { get; set; } = [];
+    public List<Branch> DefaultBranchs { get; set; } = [];
+
+    public List<Department> SelectedDepartments { get; set; } = [];
+    public List<Branch> SelectedBranchs { get; set; } = [];
+    public List<City> SelectedCities { get; set; } = [];
+
+    //Thông báo cho khi thêm hoặc cập nhật nhân viên khi form đóng
+    private async Task NotifyParentFormCloseChicked()
     {
-        Employees = await employeeService.GetAll(Constants.EmployeeBaseUrl);
-    }   
+
+        ShowMainPage = true;
+        ShowAddOrUpdatePage = false;
+        await LoadEmployees();
+    }
+
     protected override async Task OnInitializedAsync()
     {
         allState.Action += StateHasChanged;
         await LoadEmployees();
+        await LoadDefault();
     }
-    public bool ShowMainPage { get; set; } = true;  
+    //Load Default Data
+    private async Task LoadDefault()
+    {
+        DefaultCountries = await countryService.GetAll(Constants.CountryBaseUrl);
+        DefaultCities = await cityService.GetAll(Constants.CityBaseUrl);
+
+        DefaultGeneralDepartments = await generalDepartmentService.GetAll(Constants.GeneralDepartmentBaseUrl);
+        DefaultDepartments = await departmentService.GetAll(Constants.DepartmentBaseUrl);
+        DefaultBranchs = await branchService.GetAll(Constants.BranchBaseUrl);
+
+    }
+    //Country Selected Event
+    private void HandleCountrySelectedEvent(int countryid)
+    {
+        SelectedCities = DefaultCities.Where(c => c.CountryId == countryid).ToList();
+        Console.WriteLine($"Total Country: {DefaultCountries.Count}");
+        Console.WriteLine($"Total city: {DefaultCities.Count}");
+    }
+
+    //Department Selected Event
+    private void HandleDepartmentSelectedEvent(int departmentId)
+    {
+        SelectedBranchs = DefaultBranchs.Where(b => b.DepartmentId == departmentId).ToList();
+
+
+    }
+    //GeneralDepartment Selected Event
+    private void HandleGeneralDepartmentSelectedEvent(int generalDepartmentId)
+    {
+        SelectedDepartments = DefaultDepartments.Where(d => d.GeneralDepartmentId == generalDepartmentId).ToList();
+        Console.WriteLine($"Total GeneralDepartment: {DefaultGeneralDepartments.Count}");
+        Console.WriteLine($"Total Departments: {DefaultDepartments.Count}");
+        Console.WriteLine($"Total Branchs: {DefaultBranchs.Count}");
+    }
+
+    //load nhân viên
+    private async Task LoadEmployees()
+    {
+        Employees = await employeeService.GetAll(Constants.EmployeeBaseUrl);
+    }
+
+
+    //Save Employee Event
+    private async Task HandleSaveEmployeeEvent(Employee employee)
+    {
+        bool check = false;
+        if (employee.Id > 0)
+        {
+            var result = await employeeService.Update(employee, Constants.EmployeeBaseUrl);
+            check = await DisplayMessage(result.Flag, result.Message);
+        }
+        else
+        {
+            var result = await employeeService.Insert(employee, Constants.EmployeeBaseUrl);
+            check = await DisplayMessage(result.Flag, result.Message);
+        }
+        if (check)
+        {
+            addOrUpdateEmployee!.ClearContent();
+        }
+    }
+
+    //Hiển thị thông báo sử dụng dialog service
+    private async Task<bool> DisplayMessage(bool flag, string message)
+    {
+        if (flag)
+        {
+            await dialogService.AlertAsync(message, "Thao tác thành công!");
+            return true;
+        }
+        else
+        {
+            await dialogService.AlertAsync(message, "Thông báo!");
+            return false;
+        }
+    }
+
+    //Menu
+    // Hiển thị menu popup
+    ContextMenu? contextMenu;
+
+    public Employee SelectedEmployee { get; set; } = new();
+    void ShowMenuPopUp(Employee employee)
+    {
+        SelectedEmployee = employee;
+        contextMenu!.OpenContextMenu();
+    }
+
+    //Edit
+    void EditClicked()
+    {
+        //group1
+        addOrUpdateEmployee!.Employee.Id = SelectedEmployee.Id;
+        addOrUpdateEmployee!.EmployeeGroup1.Name = SelectedEmployee.Name!;
+        addOrUpdateEmployee!.EmployeeGroup1.CivilId = SelectedEmployee.CivilId!;
+        addOrUpdateEmployee!.EmployeeGroup1.FileNumber = SelectedEmployee.FileNumber!;
+        addOrUpdateEmployee!.EmployeeGroup1.TelephoneNumber = SelectedEmployee.TelephoneNumber!;
+        addOrUpdateEmployee!.EmployeeGroup1.Photo = SelectedEmployee.Photo!;
+        addOrUpdateEmployee!.EmployeeGroup1.Address = SelectedEmployee.Address!;
+
+        //group2
+        addOrUpdateEmployee!.EmployeeGroup2.JobName = SelectedEmployee.Jobname!;
+        addOrUpdateEmployee!.EmployeeGroup2.Other = SelectedEmployee.Other!;
+
+        //GeneralDepartment and Department and Branch
+        addOrUpdateEmployee!.GeneralDepartment = SelectedEmployee.Branch!.Department!.GeneralDepartment!.Name!;
+        addOrUpdateEmployee!.Department = SelectedEmployee.Branch!.Department!.Name!;
+        addOrUpdateEmployee!.Branch = SelectedEmployee.Branch!.Name!;
+
+        //Country and City
+        addOrUpdateEmployee!.Country = SelectedEmployee.City!.Country!.Name!;
+        addOrUpdateEmployee!.City = SelectedEmployee.City!.Name!;
+
+        //Title
+        addOrUpdateEmployee!.Title = "Cập nhật nhân viên";
+        SelectedEmployee = new();
+        contextMenu!.CloseContextMenu();
+        ShowAddOrUpdatePage = true;
+        ShowMainPage = false;
+    }
+
+    //Delete
+    private async Task DeleteClicked()
+    {
+        contextMenu!.CloseContextMenu();
+        bool confirm = await dialogService
+        .ConfirmAsync($"Bạn có chắc chắn muốn xóa nhân viên {SelectedEmployee.Name} không?", "Xác nhận xóa");
+        if (!confirm) return;
+        var respone = await branchService.DeleteById(SelectedEmployee.Id, Constants.EmployeeBaseUrl);
+        var result = await DisplayMessage(respone.Flag, respone.Message);
+        if (result)
+        {
+            SelectedEmployee = new();
+            await LoadEmployees();
+        }
+    }
+
+    //View
+    public bool ShowDetailsPage { get; set; } = false;
+    private void ViewClicked()
+    {
+        Employee = SelectedEmployee;
+        contextMenu!.CloseContextMenu();
+        ShowDetailsPage = true;
+        ShowMainPage = false;
+        SelectedEmployee = new();
+    }
+
+
+
+    public bool ShowMainPage { get; set; } = true;
     public bool ShowAddOrUpdatePage { get; set; } = false;
     public void ShowAddOrUpdateEmployeeButtonClicked()
     {
         ShowMainPage = false;
         ShowAddOrUpdatePage = true;
     }
-
-
-
-
-
     public void Dispose()
     {
         allState.Action -= StateHasChanged;
