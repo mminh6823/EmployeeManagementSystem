@@ -65,15 +65,20 @@
                          HandleDepartmentSelectedEvent="HandleDepartmentSelectedEvent"
                          HandleSaveEmployeeEvent="HandleSaveEmployeeEvent">
 </AddOrUpdateEmployeePage>
+
+<EmployeeDetailPage EmployeeDetails="Employee"
+                    ShowDetailsPage="ShowDetailsPage"
+                    HandleDetailsPageCloseBtnClicked="HandleDetailsPageCloseBtnClicked"/>
+
+
 <ContextMenu @ref="contextMenu"
              HanldeViewClicked="ViewClicked"
              HanldeEditClicked="EditClicked"
              HanldeDeleteClicked="DeleteClicked"
-             HanldeAddVacationClicked ="AddVactionClicked"
+             HanldeAddVacationClicked="AddVactionClicked"
              HanldeAddOvertimeClicked="AddOvertimeClicked"
              HanldeAddSanctionClicked="AddSanctionClicked"
              HanldeAddHealthClicked="AddHealthClicked">
-
 </ContextMenu>
 @code {
     AddOrUpdateEmployeePage? addOrUpdateEmployee;
@@ -175,7 +180,7 @@
     {
         if (flag)
         {
-            await dialogService.AlertAsync(message, "Thao tác thành công!");
+            await dialogService.AlertAsync(message, "Thông báo!");
             return true;
         }
         else
@@ -255,6 +260,14 @@
         ShowMainPage = false;
         SelectedEmployee = new();
     }
+
+    //Nút đóng trang chi tiết nhân viên
+    void HandleDetailsPageCloseBtnClicked()
+    {
+        ShowDetailsPage = false;
+        ShowMainPage = true;
+    }
+
 
 
 

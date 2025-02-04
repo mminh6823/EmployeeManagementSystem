@@ -72,6 +72,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXEVtcGxveWVlUGFnZXNcQWRkT3JVcGRhdGVFbXBsb3llZVBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/EmployeePages/EmployeeDetailPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXEVtcGxveWVlUGFnZXNcRW1wbG95ZWVEZXRhaWxQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/ContentPages/EmployeePages/EmployeePage.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGVudFBhZ2VzXEVtcGxveWVlUGFnZXNcRW1wbG95ZWVQYWdlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

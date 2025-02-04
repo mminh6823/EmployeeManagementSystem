@@ -114,7 +114,7 @@
                                                     string generalDepartmentName = GeneralDepartments.Equals("") ? "Tìm kiếm phòng ban tổng hợp" : GeneralDepartment ;
                                                 }
                                                 <label class="form-label"> Tìm kiếm phòng ban tổng hợp</label>
-                                                <SfDropDownList TValue="string" TItem="GeneralDepartment" Placeholder="Tìm kiếm phòng ban tổng hợp" DataSource="GeneralDepartments">
+                                                <SfDropDownList TValue="string" TItem="GeneralDepartment" Placeholder="@generalDepartmentName" DataSource="GeneralDepartments">
                                                     <DropDownListFieldSettings Text="Name" Value="Id"></DropDownListFieldSettings>
                                                     <DropDownListEvents TValue="string" TItem="GeneralDepartment" ValueChange="OnGeneralDepartmentValueChange"></DropDownListEvents>
                                                 </SfDropDownList>
@@ -124,7 +124,7 @@
                                                     string departmentName = Departments.Equals("") ? "Tìm kiếm phòng bộ phận" : Department;
                                                 }
                                                 <label class="form-label"> Tìm kiếm phòng bô phận</label>
-                                                <SfDropDownList TValue="string" TItem="Department" Placeholder="Tìm kiếm phòng bộ phận" DataSource="Departments">
+                                                <SfDropDownList TValue="string" TItem="Department" Placeholder="@departmentName" DataSource="Departments">
                                                     <DropDownListFieldSettings Text="Name" Value="Id"></DropDownListFieldSettings>
                                                     <DropDownListEvents TValue="string" TItem="Department" ValueChange="OnDepartmentValueChange"></DropDownListEvents>
                                                 </SfDropDownList>
@@ -134,7 +134,7 @@
                                                     string branchName = Branchs.Equals("") ? "Tìm kiếm nghiệp vụ" : Branch;
                                                 }
                                                 <label class="form-label"> Tìm kiếm nghiệp vụ</label>
-                                                <SfDropDownList TValue="string" TItem="Branch" Placeholder="Tìm kiếm nghiệp vụ" DataSource="Branchs">
+                                                <SfDropDownList TValue="string" TItem="Branch" Placeholder="@branchName" DataSource="Branchs">
                                                     <DropDownListFieldSettings Text="Name" Value="Id"></DropDownListFieldSettings>
                                                     <DropDownListEvents TValue="string" TItem="Branch " ValueChange="OnBranchValueChange"></DropDownListEvents>
                                                 </SfDropDownList>
@@ -156,7 +156,7 @@
                                                 @{
                                                     string countryName = Countries.Equals("") ? "Tìm kiếm quốc gia" : Country;
                                                 }
-                                                <SfDropDownList TValue="string" TItem="Country" Placeholder="Tìm kiếm quốc gia" DataSource="Countries">
+                                                <SfDropDownList TValue="string" TItem="Country" Placeholder="@countryName" DataSource="Countries">
                                                     <DropDownListFieldSettings Text="Name" Value="Id"></DropDownListFieldSettings>
                                                     <DropDownListEvents TValue="string" TItem="Country" ValueChange="OnCountryValueChange"></DropDownListEvents>
                                                 </SfDropDownList>
@@ -167,7 +167,7 @@
                                                     string cityName = Cities.Equals("") ? "Tìm kiếm thành phố" : City;
 
                                                 }
-                                                <SfDropDownList TValue="string" TItem="City" Placeholder="Tìm kiếm thành phố" DataSource="Cities">
+                                                <SfDropDownList TValue="string" TItem="City" Placeholder="@cityName" DataSource="Cities">
                                                     <DropDownListFieldSettings Text="Name" Value="Id"></DropDownListFieldSettings>
                                                     <DropDownListEvents TValue="string" TItem="City" ValueChange="OnCityValueChange"></DropDownListEvents>
                                                 </SfDropDownList>
@@ -227,7 +227,7 @@
 </style>
 
 @code {
-    
+
     [Parameter] public Employee Employee { get; set; } = new();
 
     [Parameter] public bool ShowAddOrUpdateEmployee { get; set; }
@@ -271,6 +271,7 @@
     {
         ShowAddOrUpdateEmployee = false;
         await NotifyParentFormCloseClicked.InvokeAsync();
+        ClearContent();
     }
 
     private void PrevClicked()

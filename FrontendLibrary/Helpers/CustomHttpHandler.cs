@@ -50,7 +50,7 @@ namespace FrontendLibrary.Helpers
                     request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", deserializeToken.Token!);
                     return await base.SendAsync(request, cancellationToken);
                 }
-                //Gọi đên RefreshToken
+                //Gọi đến RefreshToken
                 var newJwtToken = await GetRefreshToken(deserializeToken.RefreshToken);
                 if (string.IsNullOrEmpty(newJwtToken)) return result;
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", newJwtToken!);
