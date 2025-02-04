@@ -49,7 +49,7 @@ namespace Backend_Library.Repositories.Implementations
             await Commit();
             return Success();  
         }
-        private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy phòng ban tổng hợp");
+        private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy dữ liệu");
         private static GeneralResponse Success() => new(true, "Thao tác thành công!");
         private async Task Commit() => await appDbContext.SaveChangesAsync();
     

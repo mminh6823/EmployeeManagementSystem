@@ -1,5 +1,6 @@
 ﻿
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace BaseLibrary.Entities
 {
@@ -10,6 +11,7 @@ namespace BaseLibrary.Entities
         [Required]
         public string MedicalDiagnose { get; set; } = string.Empty;
         [Required]
-        public string MedicalRecommendation { get; set; } = string.Empty;
+        public string? MedicalRecommendation { get; set; } = string.Empty;
+
     }
 }

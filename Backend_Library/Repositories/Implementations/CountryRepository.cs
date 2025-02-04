@@ -44,7 +44,7 @@ namespace Backend_Library.Repositories.Implementations
             await Commit();
             return Success();
         }
-        private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không thêm được quốc gia");
+        private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không thêm được dữ liệu");
         private static GeneralResponse Success() => new(true, "Quá trình hoàn tất!");
         private async Task Commit() => await appDbContext.SaveChangesAsync();
 

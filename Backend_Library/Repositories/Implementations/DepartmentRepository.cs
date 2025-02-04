@@ -67,7 +67,7 @@
                 return Success();
             }
 
-            private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy phòng bộ phận");
+            private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy dữ liệu");
             private static GeneralResponse Success() => new(true, "Quá trình hoàn tất!");
         private async Task Commit()
         {

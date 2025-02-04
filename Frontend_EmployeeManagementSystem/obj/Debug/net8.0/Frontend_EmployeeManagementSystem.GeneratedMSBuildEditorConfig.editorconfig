@@ -116,6 +116,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xDb250ZXh0TWVudS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/DoctorPages/DoctorDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xEb2N0b3JQYWdlc1xEb2N0b3JEaWFsb2cucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/ProfileDropDown.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xQcm9maWxlRHJvcERvd24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

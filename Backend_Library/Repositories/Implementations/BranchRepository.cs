@@ -60,7 +60,7 @@ namespace Backend_Library.Repositories.Implementations
 
             return Success();
         }
-        private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy chuyên môn");
+        private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy dữ liệu");
         private static GeneralResponse Success() => new(true, "Quá trình hoàn tất!");
         private async Task Commit() => await appDbContext.SaveChangesAsync();
 

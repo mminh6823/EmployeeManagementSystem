@@ -78,8 +78,8 @@
              HanldeAddVacationClicked="AddVactionClicked"
              HanldeAddOvertimeClicked="AddOvertimeClicked"
              HanldeAddSanctionClicked="AddSanctionClicked"
-             HanldeAddHealthClicked="AddHealthClicked">
-</ContextMenu>
+             HanldeAddHealthClicked="AddHealthClicked"/>
+             <DoctorDialog @ref="doctorDialog" Doctor="Doctor" HandleSaveOperationEvent="SaveHealthEvent"/>
 @code {
     AddOrUpdateEmployeePage? addOrUpdateEmployee;
     public List<Employee>? Employees { get; set; } = [];
@@ -100,7 +100,7 @@
 
     //Thông báo cho khi thêm hoặc cập nhật nhân viên khi form đóng
     private async Task NotifyParentFormCloseChicked()
-    {
+    { 
 
         ShowMainPage = true;
         ShowAddOrUpdatePage = false;
@@ -250,7 +250,7 @@
         }
     }
 
-    //View
+    //View Clicked
     public bool ShowDetailsPage { get; set; } = false;
     private void ViewClicked()
     {
@@ -260,6 +260,15 @@
         ShowMainPage = false;
         SelectedEmployee = new();
     }
+
+    //Thêm Health Clicked
+    Doctor Doctor = new();
+        DoctorDialog? doctorDialog;
+        private void AddHealthClicked(){
+        Doctor.EmployeeId = SelectedEmployee.Id;
+        contextMenu!.CloseContextMenu();
+        doctorDialog.OpenDialog();
+        } 
 
     //Nút đóng trang chi tiết nhân viên
     void HandleDetailsPageCloseBtnClicked()
