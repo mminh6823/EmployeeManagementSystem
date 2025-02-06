@@ -26,7 +26,7 @@
                                                 var employee = (context as Doctor);
                                                 <div>
                                                     <i class="bi bi-pencil text-info" id="cursorStyle" @onclick="()=>EditClicked(employee!)"></i>
-                                                    <i class="bi bi-danger text-info" id="cursorStyle" @onclick="()=>DeleteClicked(employee!)"></i>
+                                                    <i class="bi bi-trash text-danger" id="cursorStyle" @onclick="()=>DeleteClicked(employee!)"></i>
                                                 </div>
                                             }
                                         </Template>
@@ -67,7 +67,7 @@
         Doctor = new();
         OpenDialog();
     }
-    void OpenDialog() => doctorDialog.OpenDialog();
+    void OpenDialog() => doctorDialog!.OpenDialog();
 
     private async Task HandleSaveOperationEvent(Doctor doctor)
     {
@@ -94,6 +94,7 @@
         if (check)
         {
             await GetHealth();
+            StateHasChanged();
         }
     }
 

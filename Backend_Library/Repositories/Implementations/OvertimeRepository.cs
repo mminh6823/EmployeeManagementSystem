@@ -28,9 +28,23 @@ namespace Backend_Library.Repositories.Implementations
 
         public async Task<GeneralResponse> Insert(Overtime item)
         {
+            // Kiểm tra xem id nghỉ phép đã tồn tại chưa
+            if (!await CheckId(item.Id!)) return new GeneralResponse(false, "Lịch làm thêm đã tồn tại!");
+
+            // Kiểm tra xem VacationTypeId có hợp lệ không (phải tồn tại trong cơ sở dữ liệu)
+            var overtimeType = await appDbContext.OvertimeTypes.AsNoTracking().FirstOrDefaultAsync(g => g.Id == item.OvertimeTypeId);
+            if (overtimeType == null)
+            {
+                return new GeneralResponse(false, "Kiểu làm thêm không tồn tại.");
+            }
+
+            // Chỉ cần thiết lập VacationTypeId mà không cần đính kèm lại đối tượng VacationType
+            item.OvertimeType = null;  // Đảm bảo không đính kèm lại đối tượng VacationType
+
+            // Thêm mới phòng ban vào cơ sở dữ liệu
             appDbContext.Overtimes.Add(item);
-            await Commit();
-            return Success();
+            await Commit(); // Lưu thay đổi vào cơ sở dữ liệu
+            return Success(); // Trả về kết quả thành công
         }
 
         public async Task<GeneralResponse> Update(Overtime item)
@@ -47,5 +61,11 @@ namespace Backend_Library.Repositories.Implementations
         private static GeneralResponse NotFound() => new(false, "Xin lỗi! Không tìm thấy dữ liệu");
         private static GeneralResponse Success() => new(true, "Quá trình hoàn tất!");
         private async Task Commit() => await appDbContext.SaveChangesAsync();
+        private async Task<bool> CheckId(int id)
+        {
+            var item = await appDbContext.Overtimes
+                .FirstOrDefaultAsync(m => m.Id == id);
+            return item is null;
+        }
     }
 }

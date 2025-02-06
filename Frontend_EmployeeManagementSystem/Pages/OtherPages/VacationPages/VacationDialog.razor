@@ -13,11 +13,11 @@
                         </div>
                         <div class="form-group mt-2">
                             <label class="form-label"> Ngày bắt đầu</label>
-                            <InputDate @bind-Value="ItemModel.StartDate"/>
+                            <InputDate @bind-Value="ItemModel.StartDate" class="form-control"/>
                         </div>
                         <div class="form-group mt-2">
                             <label class="form-label"> Số ngày</label>
-                            <input @bind="@ItemModel.NumberOfDays"/>
+                            <InputNumber @bind-Value="ItemModel.NumberOfDays" class="form-control"/>
                         </div>
                         <div class="form-group mt-2">
                             <label class="form-label"> Ngày kết thúc</label>

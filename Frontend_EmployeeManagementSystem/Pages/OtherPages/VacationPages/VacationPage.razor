@@ -8,43 +8,53 @@
                     <div class="card-header">
                         <h4 class="float-start">Quản lý nhân sự bị phạt</h4>
                     </div>
-                    <div class="card-body">
-                        <!-- Sửa vị trí thẻ này -->
-                        @{
-                            var tool = new List<string>() { "Tìm kiếm", "Excel", "PDF", "In" };
-                        }
-                        <SfGrid DataSource="@Vacations" AllowPaging="true" AllowSorting="true" Toolbar="@tool"
-                                AllowExcelExport="true" @ref="DefaultGrid" AllowPdfExport="true">
-                            <GridPageSettings PageSize="3"></GridPageSettings>
-                            <GridEvents OnToolbarClick="ToolbarClickHandle" TValue="Vacation"></GridEvents>
-                            <GridColumns>
-                                <GridColumn Field="@nameof(Vacation.EmployeeId)" HeaderText="Id"></GridColumn>
-                                <GridColumn HeaderText="Kiểu">
-                                    <Template>
-                                        @{
-                                            var item = (context as Vacation);
+                    <div class="card-header" style="max-height:580px; overflow-x:hidden; overflow-y: scroll">
+                        <div class="card-body">
+                            @{
+                                // Các nút xuất Excel, PDF và In
+                                var tool = new List<string>() { "Excel", "PDF", "In" };
+                            }
+                            <SfGrid DataSource="@Vacations" AllowPaging="true" AllowSorting="true" Toolbar="@tool"
+                                    AllowExcelExport="true" @ref="DefaultGrid" AllowPdfExport="true">
+                                <!-- ToolbarTemplate cho phần tìm kiếm theo EmployeeId -->
+
+                                    <div class="d-flex align-items-center mt-2 mb-2">
+                                        <input type="text" placeholder="Tìm kiếm theo ID" class="form-control"
+                                               style="width:200px;" @bind="searchId" />
+                                        <button class="btn btn-primary ms-2" @onclick="OnSearchClick">Tìm kiếm</button>
+                                    </div>
+
+                                <GridPageSettings PageSize="3"></GridPageSettings>
+                                <GridEvents OnToolbarClick="ToolbarClickHandle" TValue="Vacation"></GridEvents>
+                                <GridColumns>
+                                    <GridColumn Field="@nameof(Vacation.EmployeeId)" HeaderText="ID"></GridColumn>
+                                    <GridColumn HeaderText="Kiểu">
+                                        <Template>
+                                            @{
+                                                var item = (context as Vacation);
+                                            }
                                             <div>
-                                                @item!.VacationType!.Name
+                                                @(item?.VacationType?.Name ?? "Không có dữ liệu")
                                             </div>
-                                        }
-                                    </Template>
-                                </GridColumn>
-                                <GridColumn Field="@nameof(Vacation.StartDate)" HeaderText="Ngày bắt đầu"></GridColumn>
-                                <GridColumn Field="@nameof(Vacation.EndDate)" HeaderText="Ngày kết thúc"></GridColumn>
-                                <GridColumn Field="@nameof(Vacation.NumberOfDays)" HeaderText="Số ngày"></GridColumn>
-                                <GridColumn HeaderText="Hành động">
-                                    <Template>
-                                        @{
-                                            var item = (context as Vacation);
+                                        </Template>
+                                    </GridColumn>
+                                    <GridColumn Field="@nameof(Vacation.StartDate)" HeaderText="Ngày bắt đầu"></GridColumn>
+                                    <GridColumn Field="@nameof(Vacation.EndDate)" HeaderText="Ngày kết thúc"></GridColumn>
+                                    <GridColumn Field="@nameof(Vacation.NumberOfDays)" HeaderText="Số ngày"></GridColumn>
+                                    <GridColumn HeaderText="Hành động">
+                                        <Template>
+                                            @{
+                                                var item = (context as Vacation);
+                                            }
                                             <div>
                                                 <i class="bi bi-pencil text-info" id="cursorStyle" @onclick="()=>EditClicked(item!)"></i>
                                                 <i class="bi bi-trash text-danger" id="cursorStyle" @onclick="()=>DeleteClicked(item!)"></i>
                                             </div>
-                                        }
-                                    </Template>
-                                </GridColumn>
-                            </GridColumns>
-                        </SfGrid>
+                                        </Template>
+                                    </GridColumn>
+                                </GridColumns>
+                            </SfGrid>
+                        </div>
                     </div>
                     <div class="card-footer"></div>
                 </div>
@@ -63,6 +73,7 @@
                 ItemModel="ItemModel"
                 VacationTypes="VacationTypes"
                 HandleSaveOperationEvent="HandleSaveOperationEvent"/>
+
 @code {
     private SfGrid<Vacation>? DefaultGrid;
     VacationDialog? vacationDialog;
@@ -70,14 +81,22 @@
     public List<Vacation> Vacations { get; set; } = new();
     public List<VacationType> VacationTypes { get; set; } = new();
 
+    // Thuộc tính lưu giá trị nhập vào tìm kiếm theo EmployeeId
+    private string searchId = string.Empty;
+
     protected override async Task OnInitializedAsync()
     {
         await GetType();
         await GetSanctions();
         allState.Action += StateHasChanged;
     }
-    private async Task GetType() => VacationTypes = await vacationTypeService.GetAll(Constants.VacationTypeBaseUrl);
-    private async Task GetSanctions() => Vacations = await vacationService.GetAll(Constants.VacationBaseUrl);
+
+    private async Task GetType()
+        => VacationTypes = await vacationTypeService.GetAll(Constants.VacationTypeBaseUrl);
+
+    private async Task GetSanctions()
+        => Vacations = await vacationService.GetAll(Constants.VacationBaseUrl);
+
     void OpenDialog() => vacationDialog?.OpenDialog();
 
     private async Task HandleSaveOperationEvent(Vacation vacation)
@@ -123,18 +142,33 @@
         }
     }
 
-    //Xuất Excel / PDF
+    // Xuất Excel / PDF / In từ toolbar (các nút còn lại)
     public async Task ToolbarClickHandle(Syncfusion.Blazor.Navigations.ClickEventArgs args)
     {
-        if (args.Item.Text == "Excel Export")
+        if (DefaultGrid == null)
         {
-            await this.DefaultGrid!.ExcelExport()!;
+            Console.WriteLine("LỖI: DefaultGrid chưa được khởi tạo!");
+            return;
         }
-        else if (args.Item.Text == "PDF Export")
-        {
-            await this.DefaultGrid!.PdfExport()!;
 
+        if (args.Item.Text == "Excel")
+        {
+            await DefaultGrid.ExcelExport();
         }
+        else if (args.Item.Text == "PDF")
+        {
+            await DefaultGrid.PdfExport();
+        }
+        else if (args.Item.Text == "In")
+        {
+            await DefaultGrid.PrintAsync();
+        }
+    }
+
+    // Xử lý tìm kiếm theo EmployeeId từ ô nhập liệu trong ToolbarTemplate
+    private async Task OnSearchClick()
+    {
+        
     }
 
     public void Dispose() => allState.Action -= StateHasChanged;

@@ -14,7 +14,7 @@
                             var tool = new List<string>() { "Tìm kiếm", "Excel", "PDF", "In" };
                         }
                         <SfGrid DataSource="@Overtimes" AllowPaging="true" AllowSorting="true" Toolbar="@tool"
-                                AllowExcelExport="true" @ref="DefaultGrid" AllowPdfExport="true">
+                        AllowExcelExport="true" @ref="DefaultGrid" AllowPdfExport="true">
                             <GridPageSettings PageSize="3"></GridPageSettings>
                             <GridEvents OnToolbarClick="ToolbarClickHandle" TValue="Overtime"></GridEvents>
                             <GridColumns>
@@ -55,13 +55,13 @@
 
 <style>
     #cursorStyle {
-        cursor: pointer;
+    cursor: pointer;
     }
 </style>
 <OvertimeDialog @ref="overtimeDialog"
-                ItemModel="ItemModel"
-                OvertimeTypes="OvertimeTypes"
-                HandleSaveOperationEvent="HandeleSaveOperationEvent" />
+ItemModel="ItemModel"
+OvertimeTypes="OvertimeTypes"
+HandleSaveOperationEvent="HandeleSaveOperationEvent" />
 @code {
     private SfGrid<Overtime>? DefaultGrid;
     OvertimeDialog? overtimeDialog;
@@ -105,6 +105,7 @@
         if (check1)
         {
             await GetOvertime();
+             StateHasChanged();
         }
     }
 

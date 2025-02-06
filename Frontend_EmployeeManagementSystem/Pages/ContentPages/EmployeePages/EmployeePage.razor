@@ -86,11 +86,11 @@ HandleAddHealthClicked="AddHealthClicked" />
 OvertimeTypes="OvertimeTypes" HandleSaveOperationEvent="SaveOvertimeEvent" />
 
 <SanctionDialog @ref="sanctionDialog" ItemModel="Sanction"
-                SanctionTypes="SanctionTypes" HandleSaveOperationEvent="SaveSanctionEvent" />
+SanctionTypes="SanctionTypes" HandleSaveOperationEvent="SaveSanctionEvent" />
 
 
 <VacationDialog @ref="vacationDialog" ItemModel="Vacation"
-                VacationTypes="VacationTypes" HandleSaveOperationEvent="SaveVacationEvent" />
+VacationTypes="VacationTypes" HandleSaveOperationEvent="SaveVacationEvent" />
 @code {
     AddOrUpdateEmployeePage? addOrUpdateEmployee;
     public List<Employee>? Employees { get; set; } = [];
@@ -126,6 +126,9 @@ OvertimeTypes="OvertimeTypes" HandleSaveOperationEvent="SaveOvertimeEvent" />
         allState.Action += StateHasChanged;
         await LoadEmployees();
         await LoadDefault();
+        await GetOvertimeType();
+        await GetSanctionType();
+        await GetVacationType();
     }
     //Load Default Data
     private async Task LoadDefault()
@@ -275,6 +278,11 @@ OvertimeTypes="OvertimeTypes" HandleSaveOperationEvent="SaveOvertimeEvent" />
         SelectedEmployee = new();
     }
 
+    private async Task GetOvertimeType() => OvertimeTypes = await overtimeTypeService.GetAll(Constants.OvertimeTypeBaseUrl);
+    private async Task GetSanctionType() => SanctionTypes = await sanctionTypeService.GetAll(Constants.SanctionTypeBaseUrl);
+    private async Task GetVacationType() => VacationTypes = await vacationTypeService.GetAll(Constants.VacationTypeBaseUrl);
+
+
     //Thêm Health Clicked
     Doctor Doctor = new();
     DoctorDialog? doctorDialog;
@@ -294,7 +302,7 @@ OvertimeTypes="OvertimeTypes" HandleSaveOperationEvent="SaveOvertimeEvent" />
         {
             SelectedEmployee = new();
             Doctor = new();
-            doctorDialog.CloseDialog();
+            doctorDialog!.CloseDialog();
         }
     }
 
