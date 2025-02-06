@@ -1,14 +1,14 @@
 ﻿<SfDialog Width="320px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
     <DialogEvents OnOpen="OpenDialog"></DialogEvents>
     <DialogTemplates>
-        <Header> Thêm vấn đề về sức khỏe</Header>
+        <Header> @Title vấn đề về sức khỏe</Header>
         <Content>
             <EditForm Model="Doctor" Enhance OnSubmit="Save">
                 <div class="card border-success">
                     <div class="card-body">
                         <div class="form-group">
                             <label class="form-label"> ID Nhân viên</label>
-                            <input @bind="Doctor.EmployeeId" class="form-control" disabled/>
+                            <input @bind="Doctor!.EmployeeId" class="form-control" disabled/>
                         </div>
                         <div class="form-group mt-2">
                             <label class="from-label"> Ngày</label>
@@ -16,11 +16,11 @@
                         </div>
                         <div class="form-group mt-2">
                             <label class="from-label"> Chẩn đoán y tế</label>
-                            <InputDate @bind-Value="Doctor.MedicalDiagnose" class="form-control" />
+                            <InputText @bind-Value="Doctor.MedicalDiagnose" class="form-control " />
                         </div>
                         <div class="form-group mt-2">
                             <label class="from-label"> Lời khuyên</label>
-                            <InputDate @bind-Value="Doctor.MedicalRecommendation" class="form-control" />
+                            <InputText @bind-Value="Doctor.MedicalRecommendation" class="form-control" />
                         </div>
                     </div>
                 </div>

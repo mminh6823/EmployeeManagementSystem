@@ -1,0 +1,95 @@
+﻿
+<SfDialog Width="280px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
+    <DialogEvents OnOpen="OpenDialog"></DialogEvents>
+    <DialogTemplates>
+        <Header>@Title lịch nghỉ</Header>
+        <Content>
+            <EditForm Model="ItemModel" Enhance OnSubmit="Save">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label"> Id nhân sự</label>
+                            <input @bind="ItemModel.EmployeeId" class="form-control" disabled />
+                        </div>
+                        <div class="form-group mt-2">
+                            <label class="form-label"> Ngày bắt đầu</label>
+                            <InputDate @bind-Value="ItemModel.StartDate"/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label class="form-label"> Số ngày</label>
+                            <input @bind="@ItemModel.NumberOfDays"/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label class="form-label"> Ngày kết thúc</label>
+                            <input value="@ItemModel.EndDate.Date" type="text" class="form-control" disabled/>
+                        </div>
+                        <div class="form-group mt-3 mb-3">
+                            <label class="form-label"> Chọn kiểu</label>
+                            @if (ItemModel.VacationType != null)
+                            {
+                                string selected = ItemModel.VacationType.Name!;
+                                <SfDropDownList TValue="string" TItem="VacationType" Placeholder="@selected" DataSource="VacationTypes">
+                                    <DropDownListFieldSettings Value="Id" Text="Name"></DropDownListFieldSettings>
+                                    <DropDownListEvents TValue="string" TItem="VacationType" ValueChange="OnValueChange"></DropDownListEvents>
+                                </SfDropDownList>
+                            }
+                            else
+                            {
+                                <SfDropDownList TValue="string" TItem="VacationType" Placeholder="Chọn kiểu" DataSource="VacationTypes">
+                                    <DropDownListFieldSettings Value="Id" Text="Name"></DropDownListFieldSettings>
+                                    <DropDownListEvents TValue="string" TItem="VacationType" ValueChange="OnValueChange"></DropDownListEvents>
+                                </SfDropDownList>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton Content="Lưu" Type="ButtonType.Submit" IsPrimary="true" OnClick="Save"></DialogButton>
+    </DialogButtons>
+</SfDialog>
+
+@code {
+    [Parameter] public Vacation ItemModel { get; set; } = new();
+    [Parameter] public string Title { get; set; } = "Add";
+    private bool IsVisible { get; set; } = false;
+    [Parameter] public List<VacationType>  VacationTypes { get; set; } = new();
+    [Parameter] public EventCallback<Vacation> HandleSaveOperationEvent { get; set; }
+
+    private async void Save()
+    {
+        if (ItemModel.VacationTypeId <= 0)
+        {
+            await dialogService.AlertAsync("Bạn cần cung cấp kiểu dữ liệu", "Lỗi!!!");
+        }
+        else
+        {
+            await HandleSaveOperationEvent.InvokeAsync(ItemModel);
+        }
+    }
+    public void OpenDialog()
+    {
+        IsVisible = true;
+        StateHasChanged();
+    }
+    public void CloseDialog()
+    {
+        IsVisible = false;
+        StateHasChanged();
+    }
+    public void OnValueChange(ChangeEventArgs<string, VacationType> args)
+    {
+        if (int.TryParse(args.Value, out int vacationtypeId))
+        {
+            ItemModel.VacationTypeId = vacationtypeId;
+            ItemModel.VacationType = VacationTypes.FirstOrDefault(g => g.Id == vacationtypeId);
+        }
+
+    }
+    public void ChangeTitle(string title)
+    {
+        Title = title;
+    }
+}

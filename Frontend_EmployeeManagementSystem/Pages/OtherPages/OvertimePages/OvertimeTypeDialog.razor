@@ -1,0 +1,51 @@
+﻿
+<SfDialog Width="350px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
+    <DialogEvents OnOpen="OpenDialog"></DialogEvents>
+    <DialogTemplates>
+        <Header>@Title mục tăng ca</Header>
+        <Content>
+            <EditForm Model="OvertimeType" Enhance OnSubmit="Save">
+                <div class="card border-success">
+                    <div class="card-body" >
+                        <div class="form-group">
+                            <label class="form-label">Tên</label>
+                            <InputText @bind-Value="OvertimeType.Name" class="form-control"/>
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton Content="Lưu" Type="ButtonType.Submit" IsPrimary="true" OnClick="Save"/>
+    </DialogButtons>
+
+</SfDialog>
+
+@code {
+    [Parameter] public OvertimeType OvertimeType { get; set; } = new();
+    [Parameter] public EventCallback<OvertimeType> HandleSaveOperationEvent { get; set; }
+    public string Title { get; set; } = "Add";
+    private bool IsVisible { get; set; } = false;
+
+    public void OpenDialog()
+    {
+        IsVisible = true;
+        StateHasChanged();
+    }
+    private async void Save()
+    {
+        if (OvertimeType.Name == null)
+        {
+            await dialogService.AlertAsync("Bạn cần cung cấp tên kiểu tăng ca", "Lỗi!!!");
+        }
+        else
+        {
+            await HandleSaveOperationEvent.InvokeAsync(OvertimeType);
+        }
+    }
+    public void ChangeTitle(string title)
+    {
+        Title = title;
+    }
+}

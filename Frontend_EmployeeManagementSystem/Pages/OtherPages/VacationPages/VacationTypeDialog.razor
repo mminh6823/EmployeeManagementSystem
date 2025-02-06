@@ -1,0 +1,50 @@
+﻿
+<SfDialog Width="350px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
+    <DialogEvents OnOpen="OpenDialog"></DialogEvents>
+    <DialogTemplates>
+        <Header>@Title mục hình phạt</Header>
+        <Content>
+            <EditForm Model="VacationType" Enhance OnSubmit="Save">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label">Tên</label>
+                            <InputText @bind-Value="VacationType.Name" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton Content="Lưu" Type="ButtonType.Submit" IsPrimary="true" OnClick="Save" />
+    </DialogButtons>
+</SfDialog>
+
+@code {
+    [Parameter] public VacationType VacationType { get; set; } = new();
+    [Parameter] public EventCallback<VacationType> HandleSaveOperationEvent { get; set; }
+    public string Title { get; set; } = "Add";
+    private bool IsVisible { get; set; } = false;
+
+    public void OpenDialog()
+    {
+        IsVisible = true;
+        StateHasChanged();
+    }
+    private async void Save()
+    {
+        if (VacationType.Name == null)
+        {
+            await dialogService.AlertAsync("Bạn cần cung cấp tên kiểu nghỉ phép", "Lỗi!!!");
+        }
+        else
+        {
+            await HandleSaveOperationEvent.InvokeAsync(VacationType);
+        }
+    }
+    public void ChangeTitle(string title)
+    {
+        Title = title;
+    }
+}

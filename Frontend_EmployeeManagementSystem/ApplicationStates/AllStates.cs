@@ -66,6 +66,64 @@
             Action?.Invoke();
         }
 
+        public bool ShowOvertime { get; set; }
+        public void OvertimeClicked()
+        {
+            ResetAllDepartments();
+            ShowOvertime = true;
+            Action?.Invoke();
+        }
+
+        public bool ShowOvertimeType { get; set; }
+        public void OvertimeTypeClicked()
+        {
+            ResetAllDepartments();
+            ShowOvertimeType = true;
+            Action?.Invoke();
+        }
+
+        public bool ShowHeath { get; set; }
+        public void HeathClicked()
+        {
+            ResetAllDepartments();
+            ShowHeath = true;
+            Action?.Invoke();
+        }
+
+       public bool ShowSanction { get; set; }
+        public void SanctionClicked()
+        {
+            ResetAllDepartments();
+            ShowSanction = true;
+            Action?.Invoke();
+        }
+
+
+        public bool ShowSancationType { get; set; }
+        public void SancationTypeClicked()
+        {
+            ResetAllDepartments();
+            ShowSancationType = true;
+            Action?.Invoke();
+        }
+
+        public bool ShowVacationType { get; set; }
+        public void VacationTypeClicked()
+        {
+            ResetAllDepartments();
+            ShowVacationType = true;
+            Action?.Invoke();
+        }
+        public bool ShowVacation { get; set; }
+        public void VacationClicked()
+        {
+            ResetAllDepartments();
+            ShowVacation = true;
+            Action?.Invoke();
+        }
+
+
+
         private void ResetAllDepartments()
         {
             ShowGeneralDepartment = false;
@@ -75,6 +133,13 @@
             ShowCity = false;
             ShowUser = false;
             ShowEmployee = false;
+            ShowOvertime = false;
+            ShowOvertimeType = false;
+            ShowHeath = false;
+            ShowSancationType = false;
+            ShowSanction = false;
+            ShowVacationType = false;
+            ShowVacation = false;
         }
     }
 }

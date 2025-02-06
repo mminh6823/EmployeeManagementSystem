@@ -1,162 +1,202 @@
-﻿
+﻿@inject AuthenticationStateProvider AuthenticationStateProvider
 
-<AuthorizeView>
-    <Authorized>
-        <!-- Header của Navigation -->
-        <div class="top-row ps-3 navbar navbar-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    Xin chào, @context.User.Identity.Name
-                </a>
-                <button title="Danh sách menu" class="navbar-toggler" @onclick="ToggleNavMenu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+@attribute [Authorize]
+
+<!-- Header của Navigation -->
+<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+           Home
+        </a>
+        <button title="Danh sách menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<!-- Menu điều hướng -->
+<div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
+    <nav class="flex-column" @onclick:stopPropagation>
+        @if (isUserAdmin)
+        {
+            <!-- Chỉ admin mới thấy phần này -->
+            <AuthorizeView Roles="Admin">
+                <Authorized Context="adminContext">
+                    <div class="nav-item px-3">
+                        <NavLink class="nav-link p-2" @onclick="ToggleAdminMenu" style="cursor:pointer" href="javascript:void(0)">
+                            <div class="hstack gap-1">
+                                <span class="bi bi-person-fill fs-3 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                <span>Quản lý User</span>
+                            </div>
+                        </NavLink>
+                        <a class="nav-link p-2 text-white" style="margin-left:2rem; visibility:@AdminMenuVisibility" @onclick:stopPropagation>
+                            <div class="hstack" @onclick="UserClicked">
+                                <span class="bi bi-people fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                <span>User</span>
+                            </div>
+                        </a>
+                    </div>
+                </Authorized>
+            </AuthorizeView>
+        }
+
+        <!-- Departments: margin-top sẽ được set dựa trên biến isUserAdmin -->
+        <div class="nav-item px-3" style="margin-top:@(isUserAdmin ? DepartmentMargin : "0")">
+            <NavLink class="nav-link p-2" @onclick="ToggleDepartmentMenu" style="cursor:pointer" href="javascript:void(0)">
+                <div class="hstack gap-1">
+                    <span class="bi bi-backpack4-fill fs-3 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                    <span>Quản lý</span>
+                </div>
+            </NavLink>
+            <div class="nav-link p-2 text-white" style="margin-left:2rem; visibility:@DepartmentMenuVisibility" @onclick:stopPropagation>
+                <ul class="list-group">
+                    <li style="list-style:none" class="cursorStyle">
+                        <a class="nav-link p-2" @onclick="GeneralDepartmentClicked">
+                            <div class="hstack">
+                                <span class="bi bi-file-medical-fill fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                <span>Phòng tổng hợp</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li style="list-style:none" class="cursorStyle" @onclick="DepartmentClicked">
+                        <a class="nav-link p-2">
+                            <div class="hstack">
+                                <span class="bi bi-substack fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                <span>Phòng bộ phận</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li style="list-style:none" class="cursorStyle" @onclick="BranchClicked">
+                        <a class="nav-link p-2">
+                            <div class="hstack">
+                                <span class="bi bi-chevron-bar-contract fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                <span>Chuyên môn</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li style="list-style:none">
+                        <hr />
+                    </li>
+                    <li style="list-style:none">
+                        <a class="nav-link p-2 cursorStyle" @onclick="CountryClicked">
+                            <div class="hstack">
+                                <span class="bi bi-geo-alt fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                <span>Quốc gia</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li style="list-style:none">
+                        <a class="nav-link p-2 cursorStyle" @onclick="CityClicked">
+                            <div class="hstack">
+                                <span class="bi bi-pin-map-fill fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                <span>Thành phố</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li style="list-style:none">
+                        <hr />
+                    </li>
+                    <li style="list-style:none">
+                        <a class="nav-link p-2 cursorStyle" @onclick="OvertimeTypeClicked">
+                            <div class="hstack">
+                                <span class="bi bi-stopwatch fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                <span>Mục tăng ca</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li style="list-style:none">
+                        <a class="nav-link p-2 cursorStyle" @onclick="SanctionTypeClicked">
+                            <div class="hstack">
+                                <span class="bi bi-x-octagon fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                <span>Mục hình phạt</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li style="list-style:none">
+                        <a class="nav-link p-2 cursorStyle" @onclick="VacationTypeClicked">
+                            <div class="hstack">
+                                <span class="bi bi-backpack3 fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                <span>Mục nghỉ phép</span>
+                            </div>
+                        </a>
+                    </li>
+                    <li style="list-style:none">
+                        <hr />
+                    </li>
+                    <li style="list-style:none">
+                        <a class="nav-link p-2 cursorStyle" @onclick="EmployeeClicked">
+                            <div class="hstack">
+                                <span class="bi bi-people-fill fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
+                                <span>Nhân viên</span>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-
-        <!-- Menu điều hướng -->
-        <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
-            <nav class="flex-column" @onclick:stopPropagation>
-                <!-- Home -->
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link p-2" href="/home/dashboard">
-                        <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-                    </NavLink>
-                </div>
-
-
-                <!-- Administration -->
-                <div class="nav-item px-3">
-                    <NavLink class="nav-link p-2" @onclick="ToggleAdminMenu " style="cursor:pointer" href="javascript:void()">
-                        <div class="hstack gap-1">
-                            <span class="bi bi-person-fill fs-3 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                            <span>Quản lý User</span>
-                        </div>
-                    </NavLink>
-                    <a class="nav-link p-2 text-white" style="margin-left:5rem; visibility:@AdminMenuVisibility" @onclick:stopPropagation>
-                        <div class="hstack" @onclick="UserClicked">
-                            <span class="bi bi-people fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                            <span>User</span>
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Departments -->
-                <div class="nav-item px-3" style="margin-top:@DepartmentMargin">
-                    <NavLink class="nav-link p-2" @onclick="ToggleDepartmentMenu" style="cursor:pointer" href="javascript:void()">
-                        <div class="hstack gap-1">
-                            <span class="bi bi-backpack4-fill fs-3 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                            <span>Quản lý</span>
-                        </div>
-                    </NavLink>
-                    <div class="nav-link p-2 text-white" style="margin-left:3rem; visibility:@DepartmentMenuVisibility" @onclick:stopPropagation>
-                        <ul class="list-group">
-                            <li style="list-style:none" class="cursorStyle">
-                                <a class="nav-link p-2" @onclick="GeneralDepartmentClicked">
-                                    <div class="hstack">
-                                        <span class="bi bi-file-medical-fill fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                                        <span>Phòng tổng hợp</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li style="list-style:none" class="cursorStyle" @onclick="DepartmentClicked">
-                                <a class="nav-link p-2">
-                                    <div class="hstack">
-                                        <span class="bi bi-substack fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                                        <span>Phòng bộ phận </span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li style="list-style:none" class="cursorStyle" @onclick="BranchClicked">
-                                <a class="nav-link p-2">
-                                    <div class="hstack">
-                                        <span class="bi bi-chevron-bar-contract fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                                        <span>Chuyên môn</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li style="list-style:none">
-                                <hr/>
-                                </li>
-                                <li style="list-style:none">
-                                <a class="nav-link p-2 cursorStyle" @onclick="CountryClicked">
-                                    <div class="hstack">
-                                        <span class="bi bi-geo-alt fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                                        <span>Quốc gia</span>
-                                    </div>
-                                </a>
-                                </li>
-                            <li style="list-style:none">
-                                <a class="nav-link p-2 cursorStyle" @onclick="CityClicked">
-                                    <div class="hstack">
-                                        <span class="bi bi-pin-map-fill fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                                        <span>Thành phố</span>
-                                    </div>
-                                </a>
-                            </li>
-                            <li style="list-style:none">
-                                <hr />
-                            </li>
-                            <li style="list-style:none">
-                                <a class="nav-link p-2 cursorStyle" @onclick="EmployeeClicked">
-                                    <div class="hstack">
-                                        <span class="bi bi-people-fill fs-5 text-center" aria-hidden="true" style="margin-top:-2rem"></span>
-                                        <span>Nhân viên</span>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-    </Authorized>
-</AuthorizeView>
+    </nav>
+</div>
 
 <style>
     .cursorStyle {
-        cursor:pointer;
+        cursor: pointer;
     }
 </style>
 
 @code {
-    private bool isNavMenuCollapsed = false; // Menu mặc định là mở
-    private bool isAdminMenuVisible = false; // Submenu Admin mặc định là ẩn
-    private bool isDepartmentMenuVisible = false; // Submenu Department mặc định là ẩn
+    // Các biến điều khiển hiển thị menu
+    private bool isNavMenuCollapsed = false; // Menu mặc định mở
+    private bool isAdminMenuVisible = false;   // Submenu Admin mặc định ẩn
+    private bool isDepartmentMenuVisible = false; // Submenu Department mặc định ẩn
 
+    // Biến kiểm tra quyền Admin
+    private bool isUserAdmin = false;
+
+    // Margin dành cho phần Departments (nếu admin hiện, có thể có khoảng cách, nếu không thì bằng 0)
     public string DepartmentMargin { get; set; } = "-3.5rem";
 
-    // Tùy chỉnh CSS class cho menu (ẩn hoặc hiện)
+    // CSS class cho menu (collapse nếu cần)
     private string NavMenuCssClass => isNavMenuCollapsed ? "collapse" : string.Empty;
 
-    // Hiển thị/Ẩn các menu con
+    // Visibility cho submenu
     private string AdminMenuVisibility => isAdminMenuVisible ? "visible" : "hidden";
     private string DepartmentMenuVisibility => isDepartmentMenuVisible ? "visible" : "hidden";
 
     // Toggle menu chính
     private void ToggleNavMenu() => isNavMenuCollapsed = !isNavMenuCollapsed;
 
-    // Toggle menu con Admin
+    // Toggle submenu Admin
     private void ToggleAdminMenu()
     {
         isAdminMenuVisible = !isAdminMenuVisible;
+        // Khi admin submenu mở, giữ margin; khi đóng, có thể giảm margin nếu muốn
         DepartmentMargin = isAdminMenuVisible ? "0" : "-3.5rem";
     }
 
-    // Toggle menu con Department
+    // Toggle submenu Departments
     private void ToggleDepartmentMenu() => isDepartmentMenuVisible = !isDepartmentMenuVisible;
 
-
-    //GeneralDepartment / Department / Branch 
-    void GeneralDepartmentClicked() => allState .GeneralDepartmentClicked();
-    
+    // Các event handler (gọi các phương thức của allState hoặc logic khác)
+    void GeneralDepartmentClicked() => allState.GeneralDepartmentClicked();
     void DepartmentClicked() => allState.DepartmentClicked();
     void BranchClicked() => allState.BranchClicked();
-    // Country / City 
     void CountryClicked() => allState.CountryClicked();
     void CityClicked() => allState.CityClicked();
-    //User
-    void UserClicked() => allState.UserClicked();
-    //Employee
+    void OvertimeTypeClicked() => allState.OvertimeTypeClicked();
+    void SanctionTypeClicked() => allState.SancationTypeClicked();
+    void VacationTypeClicked() => allState.VacationTypeClicked();
     void EmployeeClicked() => allState.EmployeeClicked();
+    void UserClicked() => allState.UserClicked();
+
+    // Khởi tạo, kiểm tra quyền người dùng
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        isUserAdmin = authState.User.IsInRole("Admin");
+        // Nếu không phải admin, đảm bảo margin cho Departments là 0 để đẩy lên
+        if (!isUserAdmin)
+        {
+            DepartmentMargin = "0";
+        }
+    }
 }

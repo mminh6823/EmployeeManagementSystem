@@ -1,0 +1,50 @@
+﻿
+<SfDialog Width="350px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
+    <DialogEvents OnOpen="OpenDialog"></DialogEvents>
+    <DialogTemplates>
+        <Header>@Title mục hình phạt</Header>
+        <Content>
+            <EditForm Model="SanctionType" Enhance OnSubmit="Save">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label">Tên</label>
+                            <InputText @bind-Value="SanctionType.Name" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton Content="Lưu" Type="ButtonType.Submit" IsPrimary="true" OnClick="Save" />
+    </DialogButtons>
+</SfDialog>
+
+@code {
+    [Parameter] public SanctionType SanctionType { get; set; } = new();
+    [Parameter] public EventCallback<SanctionType> HandleSaveOperationEvent { get; set; }
+    public string Title { get; set; } = "Add";
+    private bool IsVisible { get; set; } = false;
+
+    public void OpenDialog()
+    {
+        IsVisible = true;
+        StateHasChanged();
+    }
+    private async void Save()
+    {
+        if (SanctionType.Name == null)
+        {
+            await dialogService.AlertAsync("Bạn cần cung cấp tên kiểu hình phạt", "Lỗi!!!");
+        }
+        else
+        {
+            await HandleSaveOperationEvent.InvokeAsync(SanctionType);
+        }
+    }
+    public void ChangeTitle(string title)
+    {
+        Title = title;
+    }
+}

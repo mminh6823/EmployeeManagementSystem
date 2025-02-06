@@ -52,34 +52,45 @@
     }
 }
 <AddOrUpdateEmployeePage @ref="addOrUpdateEmployee"
-                         Employee="Employee"
-                         ShowAddOrUpdateEmployee="ShowAddOrUpdatePage"
-                         NotifyParentFormCloseClicked="NotifyParentFormCloseChicked"
-                         Countries="DefaultCountries"
-                         Cities="SelectedCities"
-                         GeneralDepartments="DefaultGeneralDepartments"
-                         Departments="SelectedDepartments"
-                         Branchs="SelectedBranchs"
-                         HandleCountrySelectedEvent="HandleCountrySelectedEvent"
-                         HandleGeneralDepartmentSelectedEvent="HandleGeneralDepartmentSelectedEvent"
-                         HandleDepartmentSelectedEvent="HandleDepartmentSelectedEvent"
-                         HandleSaveEmployeeEvent="HandleSaveEmployeeEvent">
+Employee="Employee"
+ShowAddOrUpdateEmployee="ShowAddOrUpdatePage"
+NotifyParentFormCloseClicked="NotifyParentFormCloseChicked"
+Countries="DefaultCountries"
+Cities="SelectedCities"
+GeneralDepartments="DefaultGeneralDepartments"
+Departments="SelectedDepartments"
+Branchs="SelectedBranchs"
+HandleCountrySelectedEvent="HandleCountrySelectedEvent"
+HandleGeneralDepartmentSelectedEvent="HandleGeneralDepartmentSelectedEvent"
+HandleDepartmentSelectedEvent="HandleDepartmentSelectedEvent"
+HandleSaveEmployeeEvent="HandleSaveEmployeeEvent">
 </AddOrUpdateEmployeePage>
 
 <EmployeeDetailPage EmployeeDetails="Employee"
-                    ShowDetailsPage="ShowDetailsPage"
-                    HandleDetailsPageCloseBtnClicked="HandleDetailsPageCloseBtnClicked"/>
+ShowDetailsPage="ShowDetailsPage"
+HandleDetailsPageCloseBtnClicked="HandleDetailsPageCloseBtnClicked" />
 
 
 <ContextMenu @ref="contextMenu"
-             HanldeViewClicked="ViewClicked"
-             HanldeEditClicked="EditClicked"
-             HanldeDeleteClicked="DeleteClicked"
-             HanldeAddVacationClicked="AddVactionClicked"
-             HanldeAddOvertimeClicked="AddOvertimeClicked"
-             HanldeAddSanctionClicked="AddSanctionClicked"
-             HanldeAddHealthClicked="AddHealthClicked"/>
-             <DoctorDialog @ref="doctorDialog" Doctor="Doctor" HandleSaveOperationEvent="SaveHealthEvent"/>
+HandleViewClicked="ViewClicked"
+HandleEditClicked="EditClicked"
+HandleDeleteClicked="DeleteClicked"
+HandleAddVacationClicked="AddVactionClicked"
+HandleAddSanctionClicked="AddSanctionClicked"
+HandleAddOvertimeClicked="AddOvertimeClicked"
+HandleAddHealthClicked="AddHealthClicked" />
+
+<DoctorDialog @ref="doctorDialog" Doctor="Doctor" HandleSaveOperationEvent="SaveHealthEvent" />
+
+<OvertimeDialog @ref="overtimeDialog" ItemModel="Overtime"
+OvertimeTypes="OvertimeTypes" HandleSaveOperationEvent="SaveOvertimeEvent" />
+
+<SanctionDialog @ref="sanctionDialog" ItemModel="Sanction"
+                SanctionTypes="SanctionTypes" HandleSaveOperationEvent="SaveSanctionEvent" />
+
+
+<VacationDialog @ref="vacationDialog" ItemModel="Vacation"
+                VacationTypes="VacationTypes" HandleSaveOperationEvent="SaveVacationEvent" />
 @code {
     AddOrUpdateEmployeePage? addOrUpdateEmployee;
     public List<Employee>? Employees { get; set; } = [];
@@ -98,9 +109,12 @@
     public List<Branch> SelectedBranchs { get; set; } = [];
     public List<City> SelectedCities { get; set; } = [];
 
+    //Overtime
+    public List<OvertimeType> OvertimeTypes { get; set; } = [];
+
     //Thông báo cho khi thêm hoặc cập nhật nhân viên khi form đóng
     private async Task NotifyParentFormCloseChicked()
-    { 
+    {
 
         ShowMainPage = true;
         ShowAddOrUpdatePage = false;
@@ -263,12 +277,96 @@
 
     //Thêm Health Clicked
     Doctor Doctor = new();
-        DoctorDialog? doctorDialog;
-        private void AddHealthClicked(){
+    DoctorDialog? doctorDialog;
+    private void AddHealthClicked()
+    {
         Doctor.EmployeeId = SelectedEmployee.Id;
         contextMenu!.CloseContextMenu();
-        doctorDialog.OpenDialog();
-        } 
+        doctorDialog!.OpenDialog();
+    }
+
+    async Task SaveHealthEvent(Doctor doctor)
+    {
+        doctor.EmployeeId = SelectedEmployee.Id;
+        var (flag, message) = await doctorService.Insert(doctor, Constants.DoctorBaseUrl);
+        var check = await DisplayMessage(flag, message);
+        if (check)
+        {
+            SelectedEmployee = new();
+            Doctor = new();
+            doctorDialog.CloseDialog();
+        }
+    }
+
+    //Thêm OverTime Clicked
+    Overtime Overtime = new();
+    OvertimeDialog? overtimeDialog;
+    List<OvertimeType> overtimeTypes = [];
+    private void AddOvertimeClicked()
+    {
+        Overtime.EmployeeId = SelectedEmployee.Id;
+        contextMenu!.CloseContextMenu();
+        overtimeDialog!.OpenDialog();
+    }
+    async Task SaveOvertimeEvent(Overtime overtime)
+    {
+        overtime.EmployeeId = SelectedEmployee.Id;
+        var (flag, message) = await overtimeService.Insert(overtime, Constants.OvertimeBaseUrl);
+        var check = await DisplayMessage(flag, message);
+        if (check)
+        {
+            SelectedEmployee = new(); 
+            Overtime = new();
+            overtimeDialog!.CloseDialog();
+        }
+    }
+
+    //Thêm Vacation Clicked
+    Vacation Vacation = new();
+    VacationDialog? vacationDialog;
+    List<VacationType>  VacationTypes = [];
+    private void AddVactionClicked()
+    {
+        Vacation.EmployeeId = SelectedEmployee.Id;
+        contextMenu!.CloseContextMenu();
+        vacationDialog?.OpenDialog();
+    }
+    async Task SaveVacationEvent(Vacation  vacation)
+    {
+        vacation.EmployeeId = SelectedEmployee.Id;
+        var (flag, message) = await vacationService.Insert(vacation, Constants.VacationBaseUrl);
+        var check = await DisplayMessage(flag, message);
+        if (check)
+        {
+            SelectedEmployee = new();
+            Vacation = new();
+             vacationDialog!.CloseDialog();
+        }
+    }
+
+
+    //Thêm Sanction Clicked
+    Sanction Sanction = new();
+    SanctionDialog? sanctionDialog;
+    List<SanctionType> SanctionTypes = [];
+    private void AddSanctionClicked()
+    {
+        Sanction.EmployeeId = SelectedEmployee.Id;
+        contextMenu!.CloseContextMenu();
+        sanctionDialog!.OpenDialog();
+    }
+    async Task SaveSanctionEvent(Sanction  sanction)
+    {
+        sanction.EmployeeId = SelectedEmployee.Id;
+        var (flag, message) = await sanctionService.Insert(sanction, Constants.SanctionBaseUrl);
+        var check = await DisplayMessage(flag, message);
+        if (check)
+        {
+            SelectedEmployee = new();
+            Sanction = new();
+            sanctionDialog!.CloseDialog();
+        }
+    }
 
     //Nút đóng trang chi tiết nhân viên
     void HandleDetailsPageCloseBtnClicked()

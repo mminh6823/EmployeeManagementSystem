@@ -29,7 +29,7 @@
                 <span id="cursorStyle" class="text-warning"> Thêm sức khỏe</span>
             </div>
             <div class="hstack gap-2 mb-2" id="cursorStyle" @onclick="AddSanctionClicked">
-                <i class="bi bi-octagon text-info"></i>
+                <i class="bi bi-x-octagon text-info"></i>
                 <span id="cursorStyle" class="text-info"> Thêm hình phạt</span>
             </div>
         </Content>
@@ -44,26 +44,26 @@
     SfDialog? OpenDialog;
     private bool IsVisible { get; set; }
 
-    [Parameter] public EventCallback HanldeViewClicked { get; set; }
-    private async Task ViewClicked() => await HanldeViewClicked.InvokeAsync();
+    [Parameter] public EventCallback HandleViewClicked { get; set; }
+    private async Task ViewClicked() => await HandleViewClicked.InvokeAsync();
 
-    [Parameter] public EventCallback HanldeEditClicked { get; set; }
-    private async Task EditClicked() => await HanldeEditClicked.InvokeAsync();
+    [Parameter] public EventCallback HandleEditClicked { get; set; }
+    private async Task EditClicked() => await HandleEditClicked.InvokeAsync();
 
-    [Parameter] public EventCallback HanldeDeleteClicked { get; set; }
-    private async Task DeleteClicked() => await HanldeDeleteClicked.InvokeAsync();
+    [Parameter] public EventCallback HandleDeleteClicked { get; set; }
+    private async Task DeleteClicked() => await HandleDeleteClicked.InvokeAsync();
 
-    [Parameter] public EventCallback HanldeAddVacationClicked { get; set; }
-    private async Task AddVacationClicked() => await HanldeAddVacationClicked.InvokeAsync();
+    [Parameter] public EventCallback HandleAddVacationClicked { get; set; }
+    private async Task AddVacationClicked() => await HandleAddVacationClicked.InvokeAsync();
 
-    [Parameter] public EventCallback HanldeAddOvertimeClicked { get; set; }
-    private async Task AddOvertimeClicked() => await HanldeAddOvertimeClicked.InvokeAsync();
+    [Parameter] public EventCallback HandleAddOvertimeClicked { get; set; }
+    private async Task AddOvertimeClicked() => await HandleAddOvertimeClicked.InvokeAsync();
 
-    [Parameter] public EventCallback HanldeAddHealthClicked { get; set; }
-    private async Task AddHealthClicked() => await HanldeAddHealthClicked.InvokeAsync();
+    [Parameter] public EventCallback HandleAddHealthClicked { get; set; }
+    private async Task AddHealthClicked() => await HandleAddHealthClicked.InvokeAsync();
 
-    [Parameter] public EventCallback HanldeAddSanctionClicked { get; set; }
-    private async Task AddSanctionClicked() => await HanldeAddSanctionClicked.InvokeAsync();
+    [Parameter] public EventCallback HandleAddSanctionClicked { get; set; }
+    private async Task AddSanctionClicked() => await HandleAddSanctionClicked.InvokeAsync();
 
     public void OpenContextMenu()
     {

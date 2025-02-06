@@ -22,7 +22,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddTransient<CustomHttpHandler>();
 builder.Services.AddHttpClient("SystemApiClient", client =>
 {
-    client.BaseAddress = new Uri("https://localhost:7083/"); // Đảm bảo đây là URL API của bạn
+    client.BaseAddress = new Uri("https://localhost:7083/"); // Đảm bảo đây là URL API 
 }).AddHttpMessageHandler<CustomHttpHandler>();
 
 // Đăng ký giấy phép Syncfusion
@@ -47,6 +47,17 @@ builder.Services.AddScoped<IGenericServiceInterface<Branch>, GenericServiceImple
 //Country, City
 builder.Services.AddScoped<IGenericServiceInterface<Country>, GenericServiceImplementation<Country>>();
 builder.Services.AddScoped<IGenericServiceInterface<City>, GenericServiceImplementation<City>>();
+
+builder.Services.AddScoped<IGenericServiceInterface<Doctor>, GenericServiceImplementation<Doctor>>();
+
+builder.Services.AddScoped<IGenericServiceInterface<Overtime>, GenericServiceImplementation<Overtime>>();
+builder.Services.AddScoped<IGenericServiceInterface<OvertimeType>, GenericServiceImplementation<OvertimeType>>();
+
+builder.Services.AddScoped<IGenericServiceInterface<Sanction>, GenericServiceImplementation<Sanction>>();
+builder.Services.AddScoped<IGenericServiceInterface<SanctionType>, GenericServiceImplementation<SanctionType>>();
+
+builder.Services.AddScoped<IGenericServiceInterface<Vacation>, GenericServiceImplementation<Vacation>>();
+builder.Services.AddScoped<IGenericServiceInterface<VacationType>, GenericServiceImplementation<VacationType>>();
 
 //Employee
 builder.Services.AddScoped<IGenericServiceInterface<Employee>, GenericServiceImplementation<Employee>>();

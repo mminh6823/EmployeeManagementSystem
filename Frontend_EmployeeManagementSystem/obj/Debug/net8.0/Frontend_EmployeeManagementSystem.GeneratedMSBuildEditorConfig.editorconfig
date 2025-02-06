@@ -120,12 +120,64 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xEb2N0b3JQYWdlc1xEb2N0b3JEaWFsb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/DoctorPages/DoctorPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xEb2N0b3JQYWdlc1xEb2N0b3JQYWdlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/OvertimePages/OvertimeDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xPdmVydGltZVBhZ2VzXE92ZXJ0aW1lRGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/OvertimePages/OvertimePage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xPdmVydGltZVBhZ2VzXE92ZXJ0aW1lUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/OvertimePages/OvertimeTypeDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xPdmVydGltZVBhZ2VzXE92ZXJ0aW1lVHlwZURpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/OvertimePages/OvertimeTypePage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xPdmVydGltZVBhZ2VzXE92ZXJ0aW1lVHlwZVBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/ProfileDropDown.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xQcm9maWxlRHJvcERvd24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/SanctionPages/SanctionDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xTYW5jdGlvblBhZ2VzXFNhbmN0aW9uRGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/SanctionPages/SanctionPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xTYW5jdGlvblBhZ2VzXFNhbmN0aW9uUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/SanctionPages/SanctionTypeDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xTYW5jdGlvblBhZ2VzXFNhbmN0aW9uVHlwZURpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/SanctionPages/SanctionTypePage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xTYW5jdGlvblBhZ2VzXFNhbmN0aW9uVHlwZVBhZ2UucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/TableBanner.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xUYWJsZUJhbm5lci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/VacationPages/VacationDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xWYWNhdGlvblBhZ2VzXFZhY2F0aW9uRGlhbG9nLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/VacationPages/VacationPage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xWYWNhdGlvblBhZ2VzXFZhY2F0aW9uUGFnZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/VacationPages/VacationTypeDialog.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xWYWNhdGlvblBhZ2VzXFZhY2F0aW9uVHlwZURpYWxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/Pages/OtherPages/VacationPages/VacationTypePage.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3RoZXJQYWdlc1xWYWNhdGlvblBhZ2VzXFZhY2F0aW9uVHlwZVBhZ2UucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/.Net/EmployeeManagementSystem/Frontend_EmployeeManagementSystem/_Imports.razor]

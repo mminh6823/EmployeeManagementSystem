@@ -1,0 +1,92 @@
+﻿
+<SfDialog Width="280px" IsModal="true" ShowCloseIcon="true" @bind-Visible="IsVisible">
+    <DialogEvents OnOpen="OpenDialog"></DialogEvents>
+    <DialogTemplates>
+        <Header>@Title hình phạt</Header>
+        <Content>
+            <EditForm Model="ItemModel" Enhance OnSubmit="Save">
+                <div class="card border-success">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label class="form-label"> Id nhân sự</label>
+                            <input @bind="ItemModel.EmployeeId" class="form-control" disabled/>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label class="form-label"> Ngày diễn ra</label>
+                            <InputDate @bind-Value="ItemModel.Date"></InputDate>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label class="form-label"> Ngày phạt</label>
+                            <InputDate @bind-Value="ItemModel.PunishmentDate"></InputDate>
+                        </div>
+                        <div class="form-group mt-2">
+                            <label class="form-label"> Hình phạt</label>
+                            <InputText @bind-Value="ItemModel.Punishment"></InputText>
+                        </div>
+                        <div class="form-group mt-3 mb-3">
+                            <label class="form-label"> Chọn kiểu</label>
+                            @if(ItemModel.SanctionType !=null)
+                            {
+                                string selected = ItemModel.SanctionType.Name!;
+                                <SfDropDownList TValue="string" TItem="SanctionType" Placeholder="@selected" DataSource="SanctionTypes">
+                                    <DropDownListFieldSettings Value="Id" Text="Name"></DropDownListFieldSettings>
+                                    <DropDownListEvents TValue="string" TItem="SanctionType" ValueChange="OnValueChange"></DropDownListEvents>
+                                </SfDropDownList>
+                            }
+                            else
+                            {
+                                <SfDropDownList TValue="string" TItem="SanctionType" Placeholder="Chọn kiểu" DataSource="SanctionTypes">
+                                    <DropDownListFieldSettings Value="Id" Text="Name"></DropDownListFieldSettings>
+                                    <DropDownListEvents TValue="string" TItem="SanctionType" ValueChange="OnValueChange"></DropDownListEvents>
+                                </SfDropDownList>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </EditForm>
+        </Content>
+    </DialogTemplates>
+    <DialogButtons>
+        <DialogButton Content="Lưu" Type="ButtonType.Submit" IsPrimary="true" OnClick="Save"></DialogButton>
+    </DialogButtons>
+</SfDialog>
+
+@code {
+    [Parameter] public Sanction ItemModel { get; set; } = new();
+    [Parameter] public string Title { get; set; } = "Add";
+    private bool IsVisible { get; set; } = false;
+    [Parameter] public List<SanctionType> SanctionTypes { get; set; } = new();
+    [Parameter] public EventCallback<Sanction> HandleSaveOperationEvent { get; set; }
+
+    private async void Save(){
+        if(ItemModel.SanctionTypeId <= 0 )
+        {
+            await dialogService.AlertAsync("Bạn cần cung cấp kiểu dữ liệu", "Lỗi!!!");
+        }
+        else{
+            await HandleSaveOperationEvent.InvokeAsync(ItemModel);
+        }
+    }
+    public void OpenDialog() {
+        IsVisible = true;
+        StateHasChanged();
+    }
+    public void CloseDialog()
+    {
+        IsVisible = false;
+        StateHasChanged();
+    }
+    public void OnValueChange(ChangeEventArgs<string, SanctionType> args)
+    {
+        if (int.TryParse(args.Value, out int overtimetypeId))
+        {
+            ItemModel.SanctionTypeId = overtimetypeId;
+            ItemModel.SanctionType = SanctionTypes.FirstOrDefault(g => g.Id == overtimetypeId);
+        }
+
+    }
+    public void ChangeTitle(string title)
+    {
+        Title = title;
+    }
+}

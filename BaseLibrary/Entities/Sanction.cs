@@ -16,5 +16,6 @@ namespace BaseLibrary.Entities
         //Mối quan hệ n-1 với VacationType
  
         public SanctionType? SanctionType { get; set; }
+        public int SanctionTypeId { get; set; }
     }
 }

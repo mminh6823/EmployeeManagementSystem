@@ -13,7 +13,8 @@
 
 @using BaseLibrary.DTOs
 @using FrontendLibrary.Helpers
-@using Microsoft.AspNetCore.Components.Authorization 
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Authorization
 @using FrontendLibrary.Services.Contracts
 @using Syncfusion.Blazor.Popups
 @using Syncfusion.Blazor.DropDowns
@@ -51,6 +52,20 @@
 @* /Country / City *@
 @inject IGenericServiceInterface<Country> countryService
 @inject IGenericServiceInterface<City> cityService
+
+@*/Bảng điều khiển*@
+@inject IGenericServiceInterface<Overtime> overtimeService
+@inject IGenericServiceInterface<OvertimeType> overtimeTypeService
+
+@inject IGenericServiceInterface<Vacation> vacationService
+@inject IGenericServiceInterface<VacationType> vacationTypeService
+
+@inject IGenericServiceInterface<Sanction> sanctionService
+@inject IGenericServiceInterface<SanctionType> sanctionTypeService
+
+@inject IGenericServiceInterface<Doctor> doctorService
+
+
 
 @* /Employee *@
 @inject IGenericServiceInterface<Employee> employeeService
