@@ -14,7 +14,8 @@
                             </button>
                         </div>
                         <div class="card-body">
-                            <SfGrid DataSource="@Employees">
+                            @if(Employees!.Any()){
+                            <SfGrid DataSource="@Employees" Height="400px">
                                 <GridColumns>
                                     <GridColumn HeaderText="Ảnh nhân viên">
                                         <Template>
@@ -43,6 +44,13 @@
                                     </GridColumn>
                                 </GridColumns>
                             </SfGrid>
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td colspan="6"><div class="alert alert-info text-center">Chưa có nhân sự nào được thêm!!!</div></td>
+                                </tr>
+                            }
                         </div>
                         <div class="card-footer"></div>
                     </div>

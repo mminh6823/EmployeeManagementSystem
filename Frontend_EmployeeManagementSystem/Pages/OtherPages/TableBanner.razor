@@ -1,7 +1,7 @@
 ﻿<div class="container-fluid">
     <div class="row"> 
         <div class="col-lg-2 cursorStyle"> 
-            <div class="card border-primary"> 
+            <div class="card border-primary" @onclick="EmployeeClicked"> 
                 <div class="card-header"><i class="bi bi-people text-primary"></i> Nhân viên
                     <span class="badge bg-primary fs-6"> @Employees.Count</span>
                 </div>
@@ -11,7 +11,7 @@
             <div class="card border-success" @onclick="VacationClicked">
                 <div class="card-header"><i class="bi bi-backpack3 text-success"></i> Nghỉ phép
                     <span class="badge bg-success fs-6"> @Vacations.Count</span>
-                    </div>
+                </div>
             </div>
         </div>
         <div class="col-lg-2 cursorStyle">
@@ -32,12 +32,12 @@
             <div class="card border-info" @onclick="SanctionClicked">
                 <div class="card-header"><i class="bi bi-x-octagon text-info"></i> Phạt
                     <span class="badge bg-info fs-6"> @Sanctions.Count</span>
-                    </div>
+                </div>
             </div>
         </div>
         <div class="col-lg-2 cursorStyle">
             <div class="card border-dark" @onclick="DepartmentClicked">
-                <div class="card-header"><i class="bi bi-slack text-dark"></i> Phòng bộ phận
+                <div class="card-header"><i class="bi bi-slack text-dark"></i> Bộ phận
                     <span class="badge bg-dark fs-6"> @Departments.Count</span>
                 </div>
             </div>
@@ -78,6 +78,7 @@
     void OvertimeClicked() => allState.OvertimeClicked();
     void SanctionClicked() => allState.SanctionClicked();
     void DepartmentClicked() => allState.DepartmentClicked();
+    void EmployeeClicked() => allState.EmployeeClicked();
 
 
     public void Dispose()

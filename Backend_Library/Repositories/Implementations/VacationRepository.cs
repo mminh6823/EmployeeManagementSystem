@@ -22,10 +22,14 @@ namespace Backend_Library.Repositories.Implementations
             return Success();
         }
 
-        public async Task<List<Vacation>> GetAll() => await appDbContext.Vacations.ToListAsync();
-
-        public async Task<Vacation> GetById(int id) => await appDbContext.Vacations.FirstOrDefaultAsync(i => i.EmployeeId == id);
-
+        public async Task<List<Vacation>> GetAll() => await appDbContext.Vacations
+                             .AsNoTracking()
+                             .Include(v => v.VacationType)  // Nạp kèm dữ liệu của VacationType
+                             .ToListAsync();
+        public async Task<Vacation?> GetById(int id) => await appDbContext.Vacations
+                                 .AsNoTracking()
+                                 .Include(v => v.VacationType) // Load luôn VacationType
+                                 .FirstOrDefaultAsync(i => i.EmployeeId == id);
         public async Task<GeneralResponse> Insert(Vacation item)
         {
             // Kiểm tra xem id nghỉ phép đã tồn tại chưa

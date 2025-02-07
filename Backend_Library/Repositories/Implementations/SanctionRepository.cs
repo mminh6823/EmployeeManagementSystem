@@ -15,16 +15,22 @@ namespace Backend_Library.Repositories.Implementations
     {
         public async Task<GeneralResponse> DeleteById(int id)
         {
-            var minh = await appDbContext.Sanctions.FindAsync(id);
+            var minh = await appDbContext.Sanctions.FirstOrDefaultAsync(m=>m.EmployeeId == id);
             if (minh is null) return NotFound();
             appDbContext.Sanctions.Remove(minh);
             await Commit();
             return Success();
         }
 
-        public async Task<List<Sanction>> GetAll() => await appDbContext.Sanctions.ToListAsync();
+        public async Task<List<Sanction>> GetAll() => await appDbContext.Sanctions
+            .AsNoTracking()
+            .Include(v => v.SanctionType)  // Nạp kèm dữ liệu của VacationType
+            .ToListAsync();
 
-        public async Task<Sanction> GetById(int id) => await appDbContext.Sanctions.FirstOrDefaultAsync(m => m.Id == id);
+        public async Task<Sanction?> GetById(int id) => await appDbContext.Sanctions
+            .AsNoTracking()
+            .Include(v => v.SanctionType!) // Load luôn VacationType
+            .FirstOrDefaultAsync(m => m.Id == id);
 
 
         public async Task<GeneralResponse> Insert(Sanction item)

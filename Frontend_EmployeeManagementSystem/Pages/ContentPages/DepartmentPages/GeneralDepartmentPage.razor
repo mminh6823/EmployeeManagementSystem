@@ -23,7 +23,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if(GeneralDepartment is not null){
+                                    @if(GeneralDepartments.Any()){
                                         int count = 1 ;
                                         foreach(var item in GeneralDepartments){
                                             <tr>
@@ -38,9 +38,10 @@
                                             count++;
                                         }
                                     }
-                                    else{
+                                    else
+                                    {
                                         <tr>
-                                            <td colspan="4"><div class="alert alert-info text-center">Chưa có phòng ban tổng hợp nào được thêm!!!</div></td>
+                                            <td colspan="6"><div class="alert alert-info text-center">Chưa có phòng ban tổng hợp nào được thêm!!!</div></td>
                                         </tr>
                                     }
                                 </tbody>

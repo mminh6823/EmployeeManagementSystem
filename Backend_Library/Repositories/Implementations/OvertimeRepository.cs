@@ -22,9 +22,15 @@ namespace Backend_Library.Repositories.Implementations
             return Success();
         }
 
-        public async Task<List<Overtime>> GetAll() => await appDbContext.Overtimes.ToListAsync();
+        public async Task<List<Overtime>> GetAll() => await appDbContext.Overtimes
+            .AsNoTracking()
+            .Include(v => v.OvertimeType)  // Nạp kèm dữ liệu của VacationType
+            .ToListAsync();
 
-        public async Task<Overtime> GetById(int id) => await appDbContext.Overtimes.FirstOrDefaultAsync(m => m.EmployeeId == id);
+        public async Task<Overtime?> GetById(int id) => await appDbContext.Overtimes
+            .AsNoTracking()
+            .Include(v => v.OvertimeType) // Load luôn VacationType
+            .FirstOrDefaultAsync(m => m.EmployeeId == id);
 
         public async Task<GeneralResponse> Insert(Overtime item)
         {

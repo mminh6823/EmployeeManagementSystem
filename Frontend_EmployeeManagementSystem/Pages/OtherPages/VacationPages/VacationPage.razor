@@ -4,9 +4,9 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-lg-12">
-                <div class="card border-info shadow-lg">
+                <div class="card border-success shadow-lg">
                     <div class="card-header">
-                        <h4 class="float-start">Quản lý nhân sự bị phạt</h4>
+                        <h4 class="float-start">Quản lý nhân sự nghỉ phép</h4>
                     </div>
                     <div class="card-header" style="max-height:580px; overflow-x:hidden; overflow-y: scroll">
                         <div class="card-body">
@@ -27,20 +27,11 @@
                                 <GridPageSettings PageSize="3"></GridPageSettings>
                                 <GridEvents OnToolbarClick="ToolbarClickHandle" TValue="Vacation"></GridEvents>
                                 <GridColumns>
-                                    <GridColumn Field="@nameof(Vacation.EmployeeId)" HeaderText="ID"></GridColumn>
-                                    <GridColumn HeaderText="Kiểu">
-                                        <Template>
-                                            @{
-                                                var item = (context as Vacation);
-                                            }
-                                            <div>
-                                                @(item?.VacationType?.Name ?? "Không có dữ liệu")
-                                            </div>
-                                        </Template>
-                                    </GridColumn>
-                                    <GridColumn Field="@nameof(Vacation.StartDate)" HeaderText="Ngày bắt đầu"></GridColumn>
-                                    <GridColumn Field="@nameof(Vacation.EndDate)" HeaderText="Ngày kết thúc"></GridColumn>
-                                    <GridColumn Field="@nameof(Vacation.NumberOfDays)" HeaderText="Số ngày"></GridColumn>
+                                    <GridColumn Field="@nameof(ItemModel.EmployeeId)" HeaderText="ID"></GridColumn>
+                                    <GridColumn Field="VacationType.Name" HeaderText="Kiểu"></GridColumn>
+                                    <GridColumn Field="@nameof(ItemModel.StartDate)" HeaderText="Ngày bắt đầu"></GridColumn>
+                                    <GridColumn Field="@nameof(ItemModel.EndDate)" HeaderText="Ngày kết thúc"></GridColumn>
+                                    <GridColumn Field="@nameof(ItemModel.NumberOfDays)" HeaderText="Số ngày"></GridColumn>
                                     <GridColumn HeaderText="Hành động">
                                         <Template>
                                             @{

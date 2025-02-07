@@ -11,27 +11,18 @@
                     <div class="card-body">
                         <!-- Sửa vị trí thẻ này -->
                         @{
-                            var tool = new List<string>() { "Tìm kiếm", "Excel", "PDF", "In" };
+                            var tool = new List<string>() { "Excel", "PDF", "In" };
                         }
-                        <SfGrid DataSource="@Sanctions" AllowPaging="true" AllowSorting="true" Toolbar="@tool"
+                        <SfGrid DataSource="@Sanctions"  AllowPaging="true" AllowSorting="true" Toolbar="@tool"
                                 AllowExcelExport="true" @ref="DefaultGrid" AllowPdfExport="true">
                             <GridPageSettings PageSize="3"></GridPageSettings>
-                            <GridEvents OnToolbarClick="ToolbarClickHandle" TValue="Overtime"></GridEvents>
+                            <GridEvents OnToolbarClick="ToolbarClickHandle" TValue="Sanction"></GridEvents>
                             <GridColumns>
-                                <GridColumn Field="@nameof(Sanction.EmployeeId)" HeaderText="Id"></GridColumn>
-                                <GridColumn HeaderText="Kiểu">
-                                    <Template>
-                                        @{
-                                            var item = (context as Sanction);
-                                            <div>
-                                                @item!.SanctionType!.Name
-                                            </div>
-                                        }
-                                    </Template>
-                                </GridColumn>
-                                <GridColumn Field="@nameof(Sanction.Date)" HeaderText="Ngày diễn ra"></GridColumn>
-                                <GridColumn Field="@nameof(Sanction.Punishment)" HeaderText="Hình phạt"></GridColumn>
-                                <GridColumn Field="@nameof(Sanction.PunishmentDate)" HeaderText="Ngày phạt"></GridColumn>
+                                <GridColumn Field="@nameof(ItemModel.EmployeeId)" HeaderText="Id"></GridColumn>
+                                <GridColumn Field="SanctionType.Name" HeaderText="Kiểu"> </GridColumn>
+                                <GridColumn Field="@nameof(ItemModel.Date)" HeaderText="Ngày diễn ra"></GridColumn>
+                                <GridColumn Field="@nameof(ItemModel.Punishment)" HeaderText="Hình phạt"></GridColumn>
+                                <GridColumn Field="@nameof(ItemModel.PunishmentDate)" HeaderText="Ngày phạt"></GridColumn>
                                 <GridColumn HeaderText="Hành động">
                                     <Template>
                                         @{
@@ -123,17 +114,26 @@
         }
     }
 
-    //Xuất Excel / PDF
+    // Xuất Excel / PDF / In từ toolbar (các nút còn lại)
     public async Task ToolbarClickHandle(Syncfusion.Blazor.Navigations.ClickEventArgs args)
     {
-        if (args.Item.Text == "Excel Export")
+        if (DefaultGrid == null)
         {
-            await this.DefaultGrid!.ExcelExport()!;
+            Console.WriteLine("LỖI: DefaultGrid chưa được khởi tạo!");
+            return;
         }
-        else if (args.Item.Text == "PDF Export")
-        {
-            await this.DefaultGrid!.PdfExport()!;
 
+        if (args.Item.Text == "Excel")
+        {
+            await DefaultGrid!.ExcelExport();
+        }
+        else if (args.Item.Text == "PDF")
+        {
+            await DefaultGrid!.PdfExport();
+        }
+        else if (args.Item.Text == "In")
+        {
+            await DefaultGrid.PrintAsync();
         }
     }
 

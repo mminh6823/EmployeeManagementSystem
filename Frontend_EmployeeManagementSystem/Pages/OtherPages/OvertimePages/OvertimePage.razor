@@ -13,12 +13,12 @@
                         @{
                             var tool = new List<string>() { "Tìm kiếm", "Excel", "PDF", "In" };
                         }
-                        <SfGrid DataSource="@Overtimes" AllowPaging="true" AllowSorting="true" Toolbar="@tool"
+                        <SfGrid DataSource="@Overtimes"  AllowPaging="true" AllowSorting="true" Toolbar="@tool"
                         AllowExcelExport="true" @ref="DefaultGrid" AllowPdfExport="true">
                             <GridPageSettings PageSize="3"></GridPageSettings>
                             <GridEvents OnToolbarClick="ToolbarClickHandle" TValue="Overtime"></GridEvents>
                             <GridColumns>
-                                <GridColumn Field="@nameof(Overtime.EmployeeId)" HeaderText="Id"></GridColumn>
+                                <GridColumn Field="@nameof(ItemModel.EmployeeId)" HeaderText="Id"></GridColumn>
                                 <GridColumn HeaderText="Kiểu">
                                     <Template>
                                         @{
@@ -29,9 +29,9 @@
                                         }
                                     </Template>
                                 </GridColumn>
-                                <GridColumn Field="@nameof(Overtime.StarDate)" HeaderText="Ngày bắt đầu"></GridColumn>
-                                <GridColumn Field="@nameof(Overtime.EndDate)" HeaderText="Ngày kết thúc"></GridColumn>
-                                <GridColumn Field="@nameof(Overtime.NumberOfDay)" HeaderText="Ngày"></GridColumn>
+                                <GridColumn Field="@nameof(ItemModel.StarDate)" HeaderText="Ngày bắt đầu"></GridColumn>
+                                <GridColumn Field="@nameof(ItemModel.EndDate)" HeaderText="Ngày kết thúc"></GridColumn>
+                                <GridColumn Field="@nameof(ItemModel.NumberOfDay)" HeaderText="Ngày"></GridColumn>
                                 <GridColumn HeaderText="Hành động">
                                     <Template>
                                         @{
