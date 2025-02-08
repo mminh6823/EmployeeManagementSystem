@@ -22,7 +22,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (ManageUsers is not null)
+                                    @if (ManageUsers.Any())
                                     {
                                         int count = 1;
                                         foreach (var item in ManageUsers)
@@ -105,7 +105,7 @@
         bool successCheck = await DisplayMessage(result.Flag, result.Message);
         if (successCheck)
         {
-            ManageUser = new();  // Khởi tạo lại USer sau khi lưu thành công
+            ManageUser = new();  // Khởi tạo lại User sau khi lưu thành công
             await GetUsers();
             userDialog?.CloseDialogs();
         }

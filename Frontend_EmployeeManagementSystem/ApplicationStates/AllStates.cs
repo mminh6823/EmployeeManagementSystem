@@ -122,7 +122,13 @@
             Action?.Invoke();
         }
 
-
+        public bool ShowUserProfile { get; set; }
+        public void UserProfileClicked()
+        {
+            ResetAllDepartments();
+            ShowUserProfile = true;
+            Action?.Invoke();
+        }
 
         private void ResetAllDepartments()
         {
@@ -140,6 +146,8 @@
             ShowSanction = false;
             ShowVacationType = false;
             ShowVacation = false;
+            ShowUserProfile = false;
+           
         }
     }
 }

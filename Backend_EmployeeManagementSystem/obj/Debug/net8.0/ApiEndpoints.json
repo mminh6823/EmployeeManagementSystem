@@ -75,6 +75,22 @@
   },
   {
     "ContainingType": "Backend_EmployeeManagementSystem.Controllers.AuthenticationController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/Authentication/update-profile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "profile",
+        "Type": "BaseLibrary.DTOs.UserProfile",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.AuthenticationController",
     "Method": "UpdateUser",
     "RelativePath": "api/Authentication/update-user",
     "HttpMethod": "PUT",
@@ -84,6 +100,22 @@
       {
         "Name": "user",
         "Type": "BaseLibrary.DTOs.ManageUser",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Backend_EmployeeManagementSystem.Controllers.AuthenticationController",
+    "Method": "GetUserImage",
+    "RelativePath": "api/Authentication/user-image/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

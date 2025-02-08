@@ -13,14 +13,14 @@
                             <InputText @bind-Value="generalDepartment.Name" class="form-control" />
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary fload-end" type="submit">Lưu</button>
+                    </div>
                 </div>
             </EditForm>
         </Content>
     </DialogTemplates>
 
-    <DialogButtons>
-        <DialogButton Content="Lưu" Type="ButtonType.Submit" Isprimary="true" OnClick="Save" />
-    </DialogButtons>
 </SfDialog>
 
 @code {

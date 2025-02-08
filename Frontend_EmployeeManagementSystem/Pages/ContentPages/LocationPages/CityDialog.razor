@@ -33,14 +33,13 @@
                             }
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary fload-end" type="submit">Lưu</button>
+                    </div>
                 </div>
             </EditForm>
         </Content>
     </DialogTemplates>
-
-    <DialogButtons>
-        <DialogButton Content="Lưu" Type="ButtonType.Submit" IsPrimary="true" OnClick="Save"></DialogButton>
-    </DialogButtons>
 </SfDialog>
 
 
@@ -76,10 +75,14 @@
 
 
     // Mở dialog
-    public void OpenDialogs()
+    public async Task OpenDialogs()
     {
         IsVisible = true;
+        await LoadCountrys();
         StateHasChanged();
+    }
+    async Task LoadCountrys(){
+        Countries = await countryService.GetAll(Constants.CountryBaseUrl);
     }
     public void ChangeTitle(string title)
     {

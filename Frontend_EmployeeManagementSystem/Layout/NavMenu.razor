@@ -5,7 +5,7 @@
 <!-- Header của Navigation -->
 <div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" style="cursor:pointer" @onclick="HomeClicked">
            Home
         </a>
         <button title="Danh sách menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -187,7 +187,7 @@
     void VacationTypeClicked() => allState.VacationTypeClicked();
     void EmployeeClicked() => allState.EmployeeClicked();
     void UserClicked() => allState.UserClicked();
-
+    void HomeClicked() => allState.EmployeeClicked();
     // Khởi tạo, kiểm tra quyền người dùng
     protected override async Task OnInitializedAsync()
     {

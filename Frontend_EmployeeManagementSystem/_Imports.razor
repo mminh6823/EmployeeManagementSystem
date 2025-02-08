@@ -29,6 +29,7 @@
 @using Frontend_EmployeeManagementSystem.Pages.OtherPages.OvertimePages
 @using Frontend_EmployeeManagementSystem.Pages.OtherPages.VacationPages
 @using Frontend_EmployeeManagementSystem.Pages.OtherPages.SanctionPages
+@using Frontend_EmployeeManagementSystem.Pages.ContentPages.ProfilePages
 
 
 
@@ -65,8 +66,8 @@
 
 @inject IGenericServiceInterface<Doctor> doctorService
 
-
-
+    @inject UserProfileState userProfileState
+    @inject GetHttpClient getHttpClient
 @* /Employee *@
 @inject IGenericServiceInterface<Employee> employeeService
 

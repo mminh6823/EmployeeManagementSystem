@@ -8,10 +8,11 @@ namespace Backend_EmployeeManagementSystem.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
+
     public class AuthenticationController(IUserAccount accountInteface ) : ControllerBase
     {
         [HttpPost("register")]
+        [AllowAnonymous]
         public async Task<IActionResult> CreateAsync(Register user)
         {
             if (user == null ) return BadRequest("Model trống");
@@ -20,6 +21,7 @@ namespace Backend_EmployeeManagementSystem.Controllers
         }
 
         [HttpPost("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> LoginAsync(Login user)
         {
             if (user == null) return BadRequest("Model trống");
@@ -28,6 +30,7 @@ namespace Backend_EmployeeManagementSystem.Controllers
         }
         
         [HttpPost("refresh-token")]
+        [AllowAnonymous]
         public async Task<IActionResult> RefreshTokenAsync(RefreshToken token)
         {
             if (token == null) return BadRequest("Model trống");
@@ -36,6 +39,7 @@ namespace Backend_EmployeeManagementSystem.Controllers
         }
 
         [HttpGet("users")]
+        [Authorize]
         public async Task<IActionResult> GetUsers()
         {
             var result = await accountInteface.GetUsers();
@@ -43,6 +47,7 @@ namespace Backend_EmployeeManagementSystem.Controllers
             return Ok(result);
         }
         [HttpPut("update-user")]
+        [Authorize]
         public async Task<IActionResult> UpdateUser(ManageUser user)
         {
             if (user == null) return BadRequest("Model trống");
@@ -50,6 +55,7 @@ namespace Backend_EmployeeManagementSystem.Controllers
             return Ok(result);
         }
         [HttpGet("roles")]
+        [Authorize]
         public async Task<IActionResult> GetRoles()
         {
             var result = await accountInteface.GetRoles();
@@ -57,10 +63,26 @@ namespace Backend_EmployeeManagementSystem.Controllers
             return Ok(result);
         }
         [HttpDelete("delete-user/{id}")]
+        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> DeleteUser(int id)
         {
             if (id == 0) return BadRequest("Id trống");
             var result = await accountInteface.DeleteUser(id);
+            return Ok(result);
+        }
+        [HttpGet("user-image/{id}")]
+        [Authorize]
+        public async Task<IActionResult> GetUserImage(int id)
+        {
+            var result = await accountInteface.GetUserImage(id);
+            return Ok(result);
+        }
+        [HttpPut("update-profile")]
+        [Authorize]
+        public async Task<IActionResult> UpdateProfile(UserProfile profile)
+        {
+            var result = await accountInteface.UpdateProfile(profile);
             return Ok(result);
         }
     }

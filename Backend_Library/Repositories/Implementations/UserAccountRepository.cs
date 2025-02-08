@@ -195,7 +195,16 @@ namespace Backend_Library.Repositories.Implementations
         private async Task<List<UserRole>> UserRoles() => await appDbContext.UserRoles.AsNoTracking().ToListAsync();
         private async Task<List<SystemRole>> SystemRoles() => await appDbContext.SystemRoles.AsNoTracking().ToListAsync();
 
+        public async Task<string> GetUserImage(int id) => (await GetApplicationUsers()).FirstOrDefault(m=>m.Id==id)!.Image;  
 
-
+        public async Task<bool> UpdateProfile(UserProfile profile)
+        {
+            var user = await appDbContext.ApplicationUsers.FirstOrDefaultAsync(m => m.Id == int.Parse(profile.Id));
+            user!.Email = profile.Email;
+            user!.FullName = profile.Name;
+            user!.Image = profile.Image;
+            await appDbContext.SaveChangesAsync();
+            return true;
+        }
     }
 }

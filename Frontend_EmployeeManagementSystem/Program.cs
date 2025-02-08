@@ -63,6 +63,7 @@ builder.Services.AddScoped<IGenericServiceInterface<VacationType>, GenericServic
 builder.Services.AddScoped<IGenericServiceInterface<Employee>, GenericServiceImplementation<Employee>>();
 
 builder.Services.AddScoped<AllStates>();
+builder.Services.AddScoped<UserProfileState>();
 
 // Đăng ký Syncfusion Dialog Service nếu bạn muốn sử dụng Dialog
 builder.Services.AddScoped<SfDialogService>();
