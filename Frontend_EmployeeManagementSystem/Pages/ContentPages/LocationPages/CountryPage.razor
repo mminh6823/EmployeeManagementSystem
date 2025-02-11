@@ -1,4 +1,5 @@
 ﻿@implements IDisposable
+
 @if (allState.ShowCountry)
 {
     <div class="container mt-5">
@@ -7,7 +8,8 @@
                 <div class="card">
                     <div class="card-header">
                         <h4 class="float-start">Quốc gia</h4>
-                        <button class="btn btn-outline-success float-end" @onclick="OpenDialog">
+                        <!-- Khi bấm vào nút Thêm sẽ gọi hàm AddClicked -->
+                        <button class="btn btn-outline-success float-end" @onclick="AddClicked">
                             <i class="bi bi-plus-circle-dotted"></i> Thêm quốc gia
                         </button>
                     </div>
@@ -23,7 +25,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @if (Country is not null)
+                                    @if (Countries.Any())
                                     {
                                         int count = 1;
                                         foreach (var item in Countries)
@@ -33,6 +35,7 @@
                                                 <td>@item.Id</td>
                                                 <td>@item.Name</td>
                                                 <td>
+                                                    <!-- Khi bấm Edit sẽ truyền dữ liệu hiện có -->
                                                     <i class="bi bi-pencil text-info" id="cursorStyle" @onclick="()=>EditClicked(item)"></i>
                                                     <i class="bi bi-trash text-danger" id="cursorStyle" @onclick="()=>DeleteClicked(item)"></i>
                                                 </td>
@@ -43,7 +46,11 @@
                                     else
                                     {
                                         <tr>
-                                            <td colspan="4"><div class="alert alert-info text-center">Chưa có quốc gia nào được thêm!!!</div></td>
+                                            <td colspan="4">
+                                                <div class="alert alert-info text-center">
+                                                    Chưa có quốc gia nào được thêm!!!
+                                                </div>
+                                            </td>
                                         </tr>
                                     }
                                 </tbody>
@@ -55,9 +62,10 @@
         </div>
     </div>
 }
+
 <CountryDialog @ref="countryDialog"
-                         HandleSaveOperationEvent="HandleSaveOperationEvent"
-               country="Country" />
+               HandleSaveOperationEvent="HandleSaveOperationEvent"
+               Country="Country" />
 
 <style>
     .cursorStyle {
@@ -66,10 +74,11 @@
 </style>
 
 @code {
-    CountryDialog?  countryDialog ;
-    Country  Country = new();
-    public string Title { get; set; } = "Add";
-    public List<Country>  Countries { get; set; } = new();
+    // Tham chiếu đến component dialog
+    CountryDialog? countryDialog;
+    // Đối tượng Country được dùng làm binding cho dialog
+    Country Country = new();
+    public List<Country> Countries { get; set; } = new();
 
     protected async override Task OnInitializedAsync()
     {
@@ -82,52 +91,69 @@
         Countries = await countryService.GetAll(Constants.CountryBaseUrl);
     }
 
-    //Add
-    private async Task HandleSaveOperationEvent(Country  country)
+    // Hàm xử lý sự kiện lưu (dùng cho cả thêm và cập nhật)
+    private async Task HandleSaveOperationEvent(Country country)
     {
         bool successCheck = false;
         if (country.Id > 0)
         {
-            var result = await countryService.Update(Country, Constants.CountryBaseUrl);
+            // Cập nhật (Update)
+            var result = await countryService.Update(country, Constants.CountryBaseUrl);
             successCheck = await DisplayMessage(result.Flag, result.Message);
         }
         else
         {
-            var respone = await countryService.Insert(Country, Constants.CountryBaseUrl);
-            successCheck = await DisplayMessage(respone.Flag, respone.Message);
+            // Thêm mới (Insert)
+            var response = await countryService.Insert(country, Constants.CountryBaseUrl);
+            successCheck = await DisplayMessage(response.Flag, response.Message);
         }
         if (successCheck)
         {
-            Countries = new();
             await GetCountries();
-            countryDialog?.ChangeTitle("Add");
             countryDialog?.CloseDialogs();
         }
     }
-    //Edit
-    private void EditClicked(Country dep)
+
+    // Hàm xử lý khi bấm nút Edit
+    private void EditClicked(Country selectedCountry)
     {
+        // Gán dữ liệu của quốc gia được chọn vào đối tượng Country của dialog
+        // (Có thể clone nếu không muốn thay đổi dữ liệu gốc khi hủy chỉnh sửa)
+        Country = new Country
+            {
+                Id = selectedCountry.Id,
+                Name = selectedCountry.Name
+                // Nếu có các thuộc tính khác, copy thêm tại đây
+            };
+
         countryDialog?.ChangeTitle("Update");
-        Country = dep;
         OpenDialog();
     }
 
-    //Delete
-    private async Task DeleteClicked(Country dep)
+    // Hàm xử lý khi bấm nút Thêm quốc gia
+    private void AddClicked()
     {
-        bool confirm = await dialogService.ConfirmAsync($"Bạn có chắc chắn muốn xóa quốc gia: {dep.Name}?", "Xác nhận xóa");
+        // Reset đối tượng Country cho trường hợp thêm mới
+        Country = new Country();
+        countryDialog?.ChangeTitle("Add");
+        OpenDialog();
+    }
+
+    // Hàm xử lý khi bấm nút Delete
+    private async Task DeleteClicked(Country selectedCountry)
+    {
+        bool confirm = await dialogService.ConfirmAsync(
+            $"Bạn có chắc chắn muốn xóa quốc gia: {selectedCountry.Name}?",
+            "Xác nhận xóa");
         if (!confirm) return;
-        var respone = await countryService.DeleteById(dep.Id, Constants.CountryBaseUrl);
-        if (await DisplayMessage(respone.Flag, respone.Message))
+        var response = await countryService.DeleteById(selectedCountry.Id, Constants.CountryBaseUrl);
+        if (await DisplayMessage(response.Flag, response.Message))
         {
             await GetCountries();
         }
     }
 
-
-
-
-
+    // Hàm hiển thị thông báo
     private async Task<bool> DisplayMessage(bool flag, string message)
     {
         if (flag)
@@ -142,6 +168,7 @@
         }
     }
 
+    // Hàm mở dialog
     void OpenDialog()
     {
         countryDialog?.OpenDialogs();
@@ -151,5 +178,4 @@
     {
         allState.Action -= StateHasChanged;
     }
-
 }

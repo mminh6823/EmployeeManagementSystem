@@ -42,7 +42,7 @@
                                         <div class="card-title mb-5 fw-bold" style="font-family:Tomaho"> Thông tin cá nhân</div>
                                         <div class="card-body">
                                             <div class="form-group">
-                                                <label class="form-label">Fullname</label>
+                                                <label class="form-label">Họ và tên</label>
                                                 <InputText @bind-Value="EmployeeGroup1.Name" class="form-control" />
                                                 <ValidationMessage For="()=>EmployeeGroup1.Name" class="text-danger" />
                                             </div>
@@ -131,9 +131,9 @@
                                             </div>
                                             <div class="form-group mt-3">
                                                 @{
-                                                    string branchName = Branchs.Equals("") ? "Tìm kiếm nghiệp vụ" : Branch;
+                                                    string branchName = Branchs.Equals("") ? "Tìm kiếm chuyên môn" : Branch;
                                                 }
-                                                <label class="form-label"> Tìm kiếm nghiệp vụ</label>
+                                                <label class="form-label"> Tìm kiếm chuyên môn</label>
                                                 <SfDropDownList TValue="string" TItem="Branch" Placeholder="@branchName" DataSource="Branchs">
                                                     <DropDownListFieldSettings Text="Name" Value="Id"></DropDownListFieldSettings>
                                                     <DropDownListEvents TValue="string" TItem="Branch " ValueChange="OnBranchValueChange"></DropDownListEvents>
@@ -307,7 +307,7 @@
             || string.IsNullOrEmpty(EmployeeGroup1.Address)
             || string.IsNullOrEmpty(EmployeeGroup1.Photo)
             || string.IsNullOrEmpty(EmployeeGroup1.CivilId)){
-                return false;
+            return false;
         }
         else{
             return true;
@@ -346,8 +346,7 @@
     }
 
     private async Task Form2()
-    { 
-        
+    {
         if (ValidateEmployeeGroup2())
         {
             Employee.Jobname = EmployeeGroup2.JobName;
@@ -356,12 +355,18 @@
             Employee.BranchId = EmployeeGroup2.BranchId;
 
             await HandleSaveEmployeeEvent.InvokeAsync(Employee);
+
+            // Đợi 3 giây rồi đóng form và reset dữ liệu
+            await Task.Delay(3000);
+            await Closeform();
         }
     }
     public void ClearContent(){
         Employee = new Employee();
         EmployeeGroup1 = new EmployeeGrouping1();
         EmployeeGroup2 = new EmployeeGrouping2(); 
+        FirstLayer = true;
+        SecondLayer = false;
         StateHasChanged();
 
     }

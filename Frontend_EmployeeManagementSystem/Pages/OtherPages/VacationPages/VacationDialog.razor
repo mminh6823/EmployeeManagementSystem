@@ -53,7 +53,7 @@
 
 @code {
     [Parameter] public Vacation ItemModel { get; set; } = new();
-    [Parameter] public string Title { get; set; } = "Add";
+    [Parameter] public string Title { get; set; } = "Thêm";
     private bool IsVisible { get; set; } = false;
     [Parameter] public List<VacationType>  VacationTypes { get; set; } = new();
     [Parameter] public EventCallback<Vacation> HandleSaveOperationEvent { get; set; }

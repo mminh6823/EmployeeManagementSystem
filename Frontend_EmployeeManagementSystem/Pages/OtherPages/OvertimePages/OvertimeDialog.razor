@@ -55,7 +55,7 @@
     [Parameter] public Overtime ItemModel { get; set; } = new();
     [Parameter] public List<OvertimeType> OvertimeTypes { get; set; } = new();
     [Parameter] public EventCallback<Overtime> HandleSaveOperationEvent { get; set; }
-    public string Title { get; set; } = "Add";
+    public string Title { get; set; } = "Thêm";
     private bool IsVisible { get; set; } = false;
     private async void Save()
     {

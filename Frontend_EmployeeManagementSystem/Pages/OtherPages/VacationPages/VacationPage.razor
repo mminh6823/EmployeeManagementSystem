@@ -15,15 +15,8 @@
                                 var tool = new List<string>() { "Excel", "PDF", "In" };
                             }
                             <SfGrid DataSource="@Vacations" AllowPaging="true" AllowSorting="true" Toolbar="@tool"
-                                    AllowExcelExport="true" @ref="DefaultGrid" AllowPdfExport="true">
+                            AllowExcelExport="true" @ref="DefaultGrid" AllowPdfExport="true">
                                 <!-- ToolbarTemplate cho phần tìm kiếm theo EmployeeId -->
-
-                                    <div class="d-flex align-items-center mt-2 mb-2">
-                                        <input type="text" placeholder="Tìm kiếm theo ID" class="form-control"
-                                               style="width:200px;" @bind="searchId" />
-                                        <button class="btn btn-primary ms-2" @onclick="OnSearchClick">Tìm kiếm</button>
-                                    </div>
-
                                 <GridPageSettings PageSize="3"></GridPageSettings>
                                 <GridEvents OnToolbarClick="ToolbarClickHandle" TValue="Vacation"></GridEvents>
                                 <GridColumns>
@@ -56,14 +49,14 @@
 
 <style>
     #cursorStyle {
-        cursor: pointer;
+    cursor: pointer;
     }
 </style>
 
 <VacationDialog @ref="vacationDialog"
-                ItemModel="ItemModel"
-                VacationTypes="VacationTypes"
-                HandleSaveOperationEvent="HandleSaveOperationEvent"/>
+ItemModel="ItemModel"
+VacationTypes="VacationTypes"
+HandleSaveOperationEvent="HandleSaveOperationEvent"/>
 
 @code {
     private SfGrid<Vacation>? DefaultGrid;
@@ -104,6 +97,7 @@
     private void EditClicked(Vacation item)
     {
         ItemModel = item;
+        vacationDialog?.ChangeTitle("Update");
         OpenDialog();
     }
 
@@ -156,11 +150,6 @@
         }
     }
 
-    // Xử lý tìm kiếm theo EmployeeId từ ô nhập liệu trong ToolbarTemplate
-    private async Task OnSearchClick()
-    {
-        
-    }
 
     public void Dispose() => allState.Action -= StateHasChanged;
 }

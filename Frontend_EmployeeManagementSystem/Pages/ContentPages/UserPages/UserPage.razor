@@ -58,20 +58,21 @@
 }
 <style>
     .cursorStyle {
-        cursor: pointer;
+    cursor: pointer;
     }
 </style>
 
 <UserDialog @ref="userDialog"
-            HandleSaveOperationEvent="HandleSaveOperationEvent"
-            ManagerUser="ManageUser"
-            SystemRoles="SystemRoles" />
+HandleSaveOperationEvent="HandleSaveOperationEvent"
+ManagerUser="ManageUser"
+SystemRoles="SystemRoles"
+/>
 
 @code {
-    UserDialog?  userDialog;
-    ManageUser  ManageUser= new();
-    public List<ManageUser>  ManageUsers { get; set; } = new();
-    public List<SystemRole>  SystemRoles { get; set; } = new();
+    UserDialog? userDialog;
+    ManageUser ManageUser = new();
+    public List<ManageUser> ManageUsers { get; set; } = new();
+    public List<SystemRole> SystemRoles { get; set; } = new();
 
     protected async override Task OnInitializedAsync()
     {

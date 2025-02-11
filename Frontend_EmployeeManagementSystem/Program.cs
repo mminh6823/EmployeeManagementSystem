@@ -26,7 +26,7 @@ builder.Services.AddHttpClient("SystemApiClient", client =>
 }).AddHttpMessageHandler<CustomHttpHandler>();
 
 // Đăng ký giấy phép Syncfusion
-SyncfusionLicenseProvider.RegisterLicense("Ngo9BigBOggjHTQxAR8/V1NMaF5cXmBCfEx3THxbf1x1ZFREalxYTnVbUiweQnxTdEBjWH1ecHVWT2BbV0d0Vw==");
+SyncfusionLicenseProvider.RegisterLicense("MzcxNDg0NEAzMjM4MmUzMDJlMzBZSWVwemJnMzhyaHhJdEZsdGg2U0pCSnR2UnBpd214c0tsUjR1YlU5S3k0PQ==");
 
 // Đăng ký dịch vụ Syncfusion
 builder.Services.AddSyncfusionBlazor();

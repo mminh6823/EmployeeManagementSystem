@@ -22,7 +22,7 @@ namespace FrontendLibrary.Helpers
 
         protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            bool loginUrl = request.RequestUri.AbsoluteUri.Contains("login");
+            bool loginUrl = request.RequestUri!.AbsoluteUri.Contains("login");
             bool registerUrl = request.RequestUri.AbsoluteUri.Contains("register");
             bool refreshTokenUrl = request.RequestUri.AbsoluteUri.Contains("refresh-token");
 

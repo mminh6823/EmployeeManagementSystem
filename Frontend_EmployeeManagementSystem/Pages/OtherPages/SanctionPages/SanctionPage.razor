@@ -14,7 +14,7 @@
                             var tool = new List<string>() { "Excel", "PDF", "In" };
                         }
                         <SfGrid DataSource="@Sanctions"  AllowPaging="true" AllowSorting="true" Toolbar="@tool"
-                                AllowExcelExport="true" @ref="DefaultGrid" AllowPdfExport="true">
+                        AllowExcelExport="true" @ref="DefaultGrid" AllowPdfExport="true">
                             <GridPageSettings PageSize="3"></GridPageSettings>
                             <GridEvents OnToolbarClick="ToolbarClickHandle" TValue="Sanction"></GridEvents>
                             <GridColumns>
@@ -46,14 +46,14 @@
 
 <style>
     #cursorStyle {
-        cursor: pointer;
+    cursor: pointer;
     }
 </style>
 
 <SanctionDialog @ref="sanctionDialog"
-                ItemModel="ItemModel"
-                SanctionTypes="SanctionTypes"
-                HandleSaveOperationEvent="HandleSaveOperationEvent"></SanctionDialog>
+ItemModel="ItemModel"
+SanctionTypes="SanctionTypes"
+HandleSaveOperationEvent="HandleSaveOperationEvent"></SanctionDialog>
 @code {
     private SfGrid<Sanction>? DefaultGrid;
     SanctionDialog? sanctionDialog;
@@ -85,6 +85,7 @@
     private void EditClicked(Sanction item)
     {
         ItemModel = item;
+        sanctionDialog?.ChangeTitle("Cập nhật");
         OpenDialog();
     }
 

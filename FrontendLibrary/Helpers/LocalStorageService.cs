@@ -15,7 +15,7 @@ namespace FrontendLibrary.Helpers
         }
 
         // Lấy token từ Local Storage
-        public async Task<string> GetToken() => await _localStorageService.GetItemAsStringAsync(StorageKey);
+        public async Task<string> GetToken() => await _localStorageService!.GetItemAsStringAsync(StorageKey!);
 
         // Lưu token vào Local Storage
         public async Task SetToken(string item) => await _localStorageService.SetItemAsStringAsync(StorageKey, item);
