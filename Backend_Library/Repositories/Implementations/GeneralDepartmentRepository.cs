@@ -25,7 +25,7 @@ namespace Backend_Library.Repositories.Implementations
 
         public  async Task<List<GeneralDepartment>> GetAll() => await appDbContext.GeneralDepartments.ToListAsync();
 
-        public async Task<GeneralDepartment> GetById(int id) => await appDbContext.GeneralDepartments.FirstOrDefaultAsync(m => m.Id == id);
+        public async Task<GeneralDepartment> GetById(int id) => await appDbContext.GeneralDepartments!.FirstOrDefaultAsync(m => m.Id! == id);
 
 
         public async Task<GeneralResponse> Insert(GeneralDepartment item)

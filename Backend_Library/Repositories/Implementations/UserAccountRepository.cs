@@ -22,7 +22,7 @@ namespace Backend_Library.Repositories.Implementations
         public async Task<GeneralResponse> CreateAsync(Register user)
         {
             if (user == null) return new GeneralResponse(false, "Model trống");
-            var checkUser = await FindUserByEmail(user.Email);
+            var checkUser = await FindUserByEmail(user.Email!);
             if (checkUser != null) return new GeneralResponse(false, "Email đã tồn tại");
 
             //Lưu User 
@@ -58,9 +58,9 @@ namespace Backend_Library.Repositories.Implementations
 
         public async Task<LoginResponse> SingInAsync(Login user)
         {
-            if (user is null) return new LoginResponse(false, "Model trống");
+            if (user is null) return new LoginResponse(false, "Hệ thống trống!!!");
             var applicationUser = await FindUserByEmail(user.Email!);
-            if (applicationUser is null) return new LoginResponse(false, "Không tìm thấy User");
+            if (applicationUser is null) return new LoginResponse(false, "Email/Mật khẩu không chính xác");
             //Xác thực mật khẩu
             if (!BCrypt.Net.BCrypt.Verify(user.Password, applicationUser.Password))
                 return new LoginResponse(false, "Email/Mật khẩu không chính xác");
@@ -131,7 +131,7 @@ namespace Backend_Library.Repositories.Implementations
             if (token is null) return new LoginResponse(false, "Token trống");
 
             var findToken = await appDbContext.RefreshTokenInfos.FirstOrDefaultAsync(m => m.Token!.Equals(token.Token));
-            if (findToken is null) return new LoginResponse(false, "Yêu cầu phải có refresh token");
+            if (findToken is null) return new LoginResponse(false, "Bắt buộc phải có refresh token");
 
             //Lấy thông tin user
             var user = await appDbContext.ApplicationUsers.FirstOrDefaultAsync(m => m.Id == findToken.UserId);

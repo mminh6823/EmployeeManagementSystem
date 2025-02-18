@@ -131,9 +131,9 @@
                                             </div>
                                             <div class="form-group mt-3">
                                                 @{
-                                                    string branchName = Branchs.Equals("") ? "Tìm kiếm chuyên môn" : Branch;
+                                                    string branchName = Branchs.Equals("") ? "Tìm kiếm chi nhánh" : Branch;
                                                 }
-                                                <label class="form-label"> Tìm kiếm chuyên môn</label>
+                                                <label class="form-label"> Tìm kiếm chi nhánh</label>
                                                 <SfDropDownList TValue="string" TItem="Branch" Placeholder="@branchName" DataSource="Branchs">
                                                     <DropDownListFieldSettings Text="Name" Value="Id"></DropDownListFieldSettings>
                                                     <DropDownListEvents TValue="string" TItem="Branch " ValueChange="OnBranchValueChange"></DropDownListEvents>
