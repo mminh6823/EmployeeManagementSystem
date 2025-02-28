@@ -67,6 +67,7 @@ builder.Services.AddScoped<IGenericRepositoryInterface<VacationType>, VacationTy
 builder.Services.AddScoped<IGenericRepositoryInterface<Doctor>, DoctorRepository>();
 
 builder.Services.AddScoped<IGenericRepositoryInterface<Employee>, EmployeeRepository>();
+/*builder.Services.AddSignalR();*/ // Thêm SignalR service
 
 builder.Services.AddCors(options =>
 {
@@ -86,7 +87,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+};
+
+/*app.MapHub<EmployeeHub>("/employeeHub");*/
 
 app.UseHttpsRedirection();
 app.UseCors("AllowBlazorWasm");

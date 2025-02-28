@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Frontend_EmployeeManagementSystem",
   "resources": {
-    "hash": "sha256-c1HG9H+TDa68QIOboZ7Rp7FmBDgzk14xq3ccJO7bhPw=",
+    "hash": "sha256-vTYgD8/cdS+HUJuh0DNkNkh/i6rIvktbRWtqpI9a/KI=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-B6DNRvFeCUi3jbx9uKpuj+hV9cN0KG4RdZj1FgBZwj8="
     },
@@ -26,7 +26,14 @@
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-Go1+KknLmUt4Al9mE6Zub4w1Ep6UQ8eoUZFkOqflpTk=",
       "Microsoft.AspNetCore.Components.Web.wasm": "sha256-nlZiwSbZpMVqGJeD62dVo/h4C08w3B9e28OTn+axSYk=",
       "Microsoft.AspNetCore.Components.WebAssembly.wasm": "sha256-lbETL2gMDpYpWns34za5WduQnviXuzMXnY2iNELZYPI=",
+      "Microsoft.AspNetCore.Connections.Abstractions.wasm": "sha256-kvoGIPOm66so2bcx6IqxjQVunIn5Nml9EQSn9E6SEcE=",
+      "Microsoft.AspNetCore.Http.Connections.Client.wasm": "sha256-eN1oamXmvXTeEjH74HRQDhmKvQ5P3pna9X6bBYuzYuk=",
+      "Microsoft.AspNetCore.Http.Connections.Common.wasm": "sha256-ripiaw5dn/b10bR2ua5jd7sUrpVP+PjOj/nN6W1ow9U=",
       "Microsoft.AspNetCore.Metadata.wasm": "sha256-WRtYKmT2sKtl1zuD8t8PG9hqpsNTxwYEw2c/oHknGVo=",
+      "Microsoft.AspNetCore.SignalR.Client.wasm": "sha256-tUff0JuyVQKkQV399AANapXUuCJbffjEQ5pHP+TMhps=",
+      "Microsoft.AspNetCore.SignalR.Client.Core.wasm": "sha256-bJkSglm0QzM/kUsBOF1S4aZRaFhsC7HtbK78YVV0rnY=",
+      "Microsoft.AspNetCore.SignalR.Common.wasm": "sha256-EJfWK0FTWlbbPBgf4i3NOMNF7lpIDP5hxIj+UG7/q7Q=",
+      "Microsoft.AspNetCore.SignalR.Protocols.Json.wasm": "sha256-wiEaTEzrlIIov31fuQaaK29YEHyegLm1ST3bScHmduM=",
       "Microsoft.Bcl.TimeProvider.wasm": "sha256-5ine+Cz2QWr37uKBXs2zMfV26JfmjD8i9wxXaJcWUpw=",
       "Microsoft.Extensions.Configuration.wasm": "sha256-UDGEQR7J3WTfzYMgOzxVIBwFQtKEeJvO8UgrWagypdE=",
       "Microsoft.Extensions.Configuration.Abstractions.wasm": "sha256-yNdqbqDWGiJo943D7LPak5xryCBEsNH0wtdiuU1R9VE=",
@@ -37,6 +44,7 @@
       "Microsoft.Extensions.DependencyInjection.Abstractions.wasm": "sha256-NICKEw2hjoBhl1lvxOBh8cxOIN8kkrGHz3pvV1eLLbY=",
       "Microsoft.Extensions.Diagnostics.wasm": "sha256-ocjYvUYaqVp/zqoZgO2Jz9xDvZzLM7qR2qkAidM5DsU=",
       "Microsoft.Extensions.Diagnostics.Abstractions.wasm": "sha256-zZcH54DRmcuIAi/NQWV5AKf4l8zFSHQ5r+ZK4gGwnrY=",
+      "Microsoft.Extensions.Features.wasm": "sha256-dtbH7xCSnk8QUbQDUEGU+XJMoFPyq2Kq85lJJEJQ1yQ=",
       "Microsoft.Extensions.FileProviders.Abstractions.wasm": "sha256-IUopixuV8E09mP+TIgRp/lXEbeacXbUTW7cu0v5B9Tc=",
       "Microsoft.Extensions.FileProviders.Physical.wasm": "sha256-MS+zB0xkKhKk/QdE32ZwKtdlrLMLI/y2NAKPUWhcBVg=",
       "Microsoft.Extensions.FileSystemGlobbing.wasm": "sha256-AnWUKd0qJ8ZNKkRC0AFK2cjjszB7reXiP+bXdIi8bic=",
@@ -239,14 +247,14 @@
       "mscorlib.wasm": "sha256-QoC5hTKpDNO6efLnEvYwV9OJBXvYRq8/1yGhNZKiNCw=",
       "netstandard.wasm": "sha256-JT2F4bYWJpaSGq+iD0ITLpWxsDhMUjhqje9RpBtTg7w=",
       "System.Private.CoreLib.wasm": "sha256-fvIPBcvgvsRuWrKi2LGQsLYvcKUSnyIuBUsE3LJu/0Y=",
-      "BaseLibrary.wasm": "sha256-3pSRDFUGBqJnO+ihVPPTyHhTvtm8+IXiNZdw6Qp4ZG8=",
-      "FrontendLibrary.wasm": "sha256-N3vHLK4/GS/7QKF+iGd151GXVfx5sHgWN5kkweXlA7s=",
-      "Frontend_EmployeeManagementSystem.wasm": "sha256-OoDHXWda4I996rVhUkxuLdTPV5FtrP7Df3ntuQNEGEM="
+      "BaseLibrary.wasm": "sha256-ZGfcKmMk00mpTPhNC8vLkKmJJo2ZBN4nLB3s6qLrXLM=",
+      "FrontendLibrary.wasm": "sha256-E8SQqAqP0iaV3Qhdw1pobJuFJ+tvb4cQ416KZrY3BuA=",
+      "Frontend_EmployeeManagementSystem.wasm": "sha256-lTxuYa8iomOptedDvrCv+qQnRDD8MuoqK23/KBEewOE="
     },
     "pdb": {
-      "BaseLibrary.pdb": "sha256-I0HgmX5hrsRlo0VNC3iFHmkgY8wDdBf20VVEZxQqZXg=",
-      "FrontendLibrary.pdb": "sha256-feZf6zvlMwKE5pmCDP+AtJb1BeUXWt8LBsQVNUjI8hk=",
-      "Frontend_EmployeeManagementSystem.pdb": "sha256-3TRdYD0VWXlqByovxVXpms/LKvofzLzPus0ks9cMEXc="
+      "BaseLibrary.pdb": "sha256-HFzxWzybcNWQtn7xQQW/WM82y38k7y6EAV7HJlKKOUs=",
+      "FrontendLibrary.pdb": "sha256-cDk4t74qotLVPycXfF2G0nxBSDxA0T1hk4NzCO2Mwas=",
+      "Frontend_EmployeeManagementSystem.pdb": "sha256-UnQmqUBJ1Q5j7Fu/cWG3iF5dgHtKwPo5Qd6yGgYZWxg="
     }
   },
   "cacheBootResources": true,

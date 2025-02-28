@@ -1,4 +1,5 @@
-﻿@implements IDisposable
+﻿
+@implements IDisposable
 
 @if (allState.ShowEmployee)
 {
@@ -32,7 +33,7 @@
                                     <GridColumn Field=@nameof(Employee.Name) HeaderText="Tên"></GridColumn>
                                     <GridColumn Field=@nameof(Employee.TelephoneNumber) HeaderText="Số điện thoại"></GridColumn>
                                     <GridColumn Field=@nameof(Employee.Jobname) HeaderText="Tên công việc"></GridColumn>
-                                    <GridColumn Field="Branch.Name" HeaderText="Chi nhánh"></GridColumn>
+                                    <GridColumn Field="Branch.Name" HeaderText="Nhánh"></GridColumn>
                                     <GridColumn Field="City.Name" HeaderText="Thành phố"></GridColumn>
                                     <GridColumn HeaderText="Menu" HeaderTextAlign="TextAlign.Left">
                                         <Template>

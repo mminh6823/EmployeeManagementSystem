@@ -64,6 +64,8 @@ builder.Services.AddScoped<IGenericServiceInterface<Employee>, GenericServiceImp
 
 builder.Services.AddScoped<AllStates>();
 builder.Services.AddScoped<UserProfileState>();
+//SingalR
+/*builder.Services.AddSingleton<EmployeeHubService>();*/
 
 // Đăng ký Syncfusion Dialog Service nếu bạn muốn sử dụng Dialog
 builder.Services.AddScoped<SfDialogService>();

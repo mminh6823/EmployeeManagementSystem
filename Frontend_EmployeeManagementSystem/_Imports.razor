@@ -1,6 +1,7 @@
 ﻿ @using System.Net.Http
 @using System.Net.Http.Json
 @using BaseLibrary.Entities
+@using FrontendLibrary.Services.Implementations
 @using Frontend_EmployeeManagementSystem.ApplicationStates
 @using Microsoft.AspNetCore.Components.Forms
 @using Microsoft.AspNetCore.Components.Routing
@@ -30,6 +31,7 @@
 @using Frontend_EmployeeManagementSystem.Pages.OtherPages.VacationPages
 @using Frontend_EmployeeManagementSystem.Pages.OtherPages.SanctionPages
 @using Frontend_EmployeeManagementSystem.Pages.ContentPages.ProfilePages
+
 
 
 
@@ -70,4 +72,6 @@
     @inject GetHttpClient getHttpClient
 @* /Employee *@
 @inject IGenericServiceInterface<Employee> employeeService
+
+@* @inject EmployeeHubService employeeHubService *@
 
