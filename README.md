@@ -7,7 +7,7 @@ Employee Management System là hệ thống quản lý nhân sự hiện đại,
 - 📋 **Quản lý nhân viên**: Thêm, sửa, xóa và tìm kiếm nhân viên.
 - 🎁 **Thưởng & phạt**: Quản lý các khoản thưởng, kỷ luật nhân viên.
 - 🏖 **Nghỉ phép**: Theo dõi và duyệt đơn nghỉ phép.
-- ⏳ **Tăng ca**: Ghi nhận giờ làm thêm và tính toán lương tăng ca.
+- ⏳ **Tăng ca**: Ghi nhận giờ làm thêm 
 - ❤️ **Sức khỏe nhân viên**: Quản lý thông tin sức khỏe và lịch sử khám bệnh.
 
 ## 🛠 Công nghệ sử dụng
