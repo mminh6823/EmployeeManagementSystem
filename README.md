@@ -1,7 +1,7 @@
 # 🚀 Hệ Thống Quản Lý Nhân Sự (Employee Management System)
 
 ## 📌 Giới thiệu
-Employee Management System là hệ thống quản lý nhân sự hiện đại, hỗ trợ doanh nghiệp quản lý nhân viên, chấm công, tính lương, thưởng phạt, nghỉ phép, tăng ca và theo dõi sức khỏe nhân viên. Hệ thống được phát triển với **.NET Core 8 API** và **Blazor WebAssembly**, triển khai trên **Azure Cloud**.
+Employee Management System là hệ thống quản lý nhân sự hiện đại, hỗ trợ doanh nghiệp quản lý nhân viên, thưởng phạt, nghỉ phép, tăng ca và theo dõi sức khỏe nhân viên. Hệ thống được phát triển với **.NET Core 8 API** và **Blazor WebAssembly**, triển khai trên **Azure Cloud**.
 
 ## 🔥 Tính năng chính
 - 📋 **Quản lý nhân viên**: Thêm, sửa, xóa và tìm kiếm nhân viên.
@@ -14,7 +14,7 @@ Employee Management System là hệ thống quản lý nhân sự hiện đại,
 - **Backend**: ASP.NET Core 8 Web API
 - **Frontend**: Blazor WebAssembly
 - **Cơ sở dữ liệu**: SQL Server
-- **Triển khai**: Azure App Service, Azure Static Web Apps
+- **Triển khai**: Azure App Service
 
 ## 🚀 Cài đặt và chạy dự án
 ### Yêu cầu hệ thống:
@@ -44,7 +44,7 @@ Employee Management System là hệ thống quản lý nhân sự hiện đại,
 
 ## 📢 Triển khai lên Azure
 1. **Backend**: Deploy lên **Azure App Service**.
-2. **Frontend**: Deploy lên **Azure Static Web Apps**.
+2. **Frontend**: Deploy lên **Azure Apps Service**.
 3. **Database**: Sử dụng **Azure SQL Database**.
 
 ## 📜 Giấy phép
