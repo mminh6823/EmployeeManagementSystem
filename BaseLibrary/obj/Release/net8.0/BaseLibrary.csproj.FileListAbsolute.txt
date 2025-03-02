@@ -1,0 +1,13 @@
+D:\.Net\EmployeeManagementSystem\BaseLibrary\bin\Release\net8.0\BaseLibrary.deps.json
+D:\.Net\EmployeeManagementSystem\BaseLibrary\bin\Release\net8.0\BaseLibrary.dll
+D:\.Net\EmployeeManagementSystem\BaseLibrary\bin\Release\net8.0\BaseLibrary.pdb
+D:\.Net\EmployeeManagementSystem\BaseLibrary\obj\Release\net8.0\BaseLibrary.csproj.AssemblyReference.cache
+D:\.Net\EmployeeManagementSystem\BaseLibrary\obj\Release\net8.0\BaseLibrary.GeneratedMSBuildEditorConfig.editorconfig
+D:\.Net\EmployeeManagementSystem\BaseLibrary\obj\Release\net8.0\BaseLibrary.AssemblyInfoInputs.cache
+D:\.Net\EmployeeManagementSystem\BaseLibrary\obj\Release\net8.0\BaseLibrary.AssemblyInfo.cs
+D:\.Net\EmployeeManagementSystem\BaseLibrary\obj\Release\net8.0\BaseLibrary.csproj.CoreCompileInputs.cache
+D:\.Net\EmployeeManagementSystem\BaseLibrary\obj\Release\net8.0\BaseLibrary.sourcelink.json
+D:\.Net\EmployeeManagementSystem\BaseLibrary\obj\Release\net8.0\BaseLibrary.dll
+D:\.Net\EmployeeManagementSystem\BaseLibrary\obj\Release\net8.0\refint\BaseLibrary.dll
+D:\.Net\EmployeeManagementSystem\BaseLibrary\obj\Release\net8.0\BaseLibrary.pdb
+D:\.Net\EmployeeManagementSystem\BaseLibrary\obj\Release\net8.0\ref\BaseLibrary.dll

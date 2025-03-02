@@ -26,7 +26,7 @@
                             }
                             else
                             {
-                                <SfDropDownList TValue="string" TItem="Country" Placeholder="Phòng quốc gia" DataSource="Countries">
+                                <SfDropDownList TValue="string" TItem="Country" Placeholder="Quốc gia" DataSource="Countries">
                                     <DropDownListFieldSettings Value="Id" Text="Name"></DropDownListFieldSettings>
                                     <DropDownListEvents TValue="string" TItem="Country" ValueChange="OnValueChange"></DropDownListEvents>
                                 </SfDropDownList>
@@ -60,7 +60,7 @@
         {
             if (string.IsNullOrEmpty(City.Name) || City.Country == null)
             {
-                await dialogService.AlertAsync("Bạn cần nhập tên phòng bộ phận và chọn phòng tổng hợp!", "Thông báo!");
+                await dialogService.AlertAsync("Bạn cần nhập tên thành phố và chọn quốc gia!", "Thông báo!");
                 return;
             }
             Console.WriteLine($"Debug: City ID = {City.Id}, Name = {City.Name}, Country = {City.Country}");

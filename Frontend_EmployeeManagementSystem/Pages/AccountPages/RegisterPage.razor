@@ -39,12 +39,12 @@
                         </div>
                         <div class="form-group mt-3">
                             @if (ShowLoadingButton)
-                            { 
-                            <ButtonLoadingSpinner></ButtonLoadingSpinner>
+                            {
+                                <ButtonLoadingSpinner></ButtonLoadingSpinner>
                             }
                             else
                             {
-                            <button type="submit" class="btn btn-outline-primary float-end">Đăng ký</button>
+                                <button type="submit" class="btn btn-outline-primary float-end">Đăng ký</button>
                             }
                         </div>
                     </div>
@@ -85,16 +85,30 @@
         // Kiểm tra kết quả trả về
         if (result.Flag)
         {
-            // Reset lại form nếu đăng ký thành công
-            DisplayDialog(result.Message!, "Thành công!");
+            
+            await DisplayDialogAndRedirect(result.Message!, "Thành công!");
             User = new();
         }
         else
         {
             await DisplayDialog(result.Message, "Thông báo!");
+            ShowLoadingButton = false; 
         }
         ShowLoadingButton = false;
     }
+
+    private async Task DisplayDialogAndRedirect(string content, string title)
+    {
+        // Hiển thị thông báo
+        await dialogService.AlertAsync(content, title);
+
+        // Chờ 2 giây
+        await Task.Delay(2000);
+
+        // Chuyển hướng sang trang login
+        NavManager.NavigateTo("/identity/account/login");
+    }
+
     private async Task DisplayDialog(string content, string title)
     {
         await dialogService.AlertAsync(content, title);
@@ -109,7 +123,4 @@
             NavManager.NavigateTo("/home/dashboard");
         }
     }
-
-
-
 }

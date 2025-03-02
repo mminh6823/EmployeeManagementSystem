@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "Backend_EmployeeManagementSystem",
-    "version": "1.0"
+    "title": "EmployeeService API",
+    "version": "v1"
   },
   "paths": {
     "/api/Authentication/register": {
