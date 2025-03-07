@@ -302,3 +302,11 @@ D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Debug\net8
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Debug\net8.0\Backend_EmployeeManagementSystem.pdb
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Debug\net8.0\Backend_EmployeeManagementSystem.genruntimeconfig.cache
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Debug\net8.0\ref\Backend_EmployeeManagementSystem.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

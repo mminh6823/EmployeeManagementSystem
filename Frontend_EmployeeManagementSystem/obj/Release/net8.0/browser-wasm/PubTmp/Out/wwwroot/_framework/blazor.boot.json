@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "Frontend_EmployeeManagementSystem",
   "resources": {
-    "hash": "sha256-zS+SE833LmNj8fKyoGZqZqBQH/3FkfZgGBntFtXGafA=",
+    "hash": "sha256-FYlXOTiETMZHpXcPSU+TF4iVeeaqQ2lKBJ4KOmfBfnk=",
     "jsModuleNative": {
       "dotnet.native.js": "sha256-B6DNRvFeCUi3jbx9uKpuj+hV9cN0KG4RdZj1FgBZwj8="
     },
@@ -19,10 +19,10 @@
     "coreAssembly": {},
     "assembly": {
       "AutoMapper.wasm": "sha256-ZQSB98bRoMRi9VGnS4rbVaTRPwmPIYrY1BBPbc2h38g=",
-      "BaseLibrary.wasm": "sha256-mdiJKNSGH1CyrVSsUA8TbytcfT+bKe95PKxHJuKV+Nw=",
+      "BaseLibrary.wasm": "sha256-K6gHGpr3PQp4bJsk+WduM033sbxfUn/iurFKWD9Z0TE=",
       "Blazored.LocalStorage.wasm": "sha256-OaMAAd5n7ORfyur5e3QIyEVKJ76MKIvwbg7/icnnYcU=",
-      "Frontend_EmployeeManagementSystem.wasm": "sha256-S5R0VUCAJLep5WtoCkPkQPxXbixDmLt0RTUFgXs9a94=",
-      "FrontendLibrary.wasm": "sha256-7t7bHVG3kcIgss0JofSSzbt9qJ1LF266oEbcxap/wEE=",
+      "Frontend_EmployeeManagementSystem.wasm": "sha256-YLo55M0ojbRjEjQeyMW+JvScEIrDJaDKqat+5U7AkNc=",
+      "FrontendLibrary.wasm": "sha256-XFTYqx5x+deHtcgnc/FDRniSf+wYfxbExvEZDpIdULU=",
       "Microsoft.AspNetCore.Authorization.wasm": "sha256-BqL9U73GKgBnmJrMw0wwHGgOMtzB/4T7TuGVoCxmsU4=",
       "Microsoft.AspNetCore.Components.Authorization.wasm": "sha256-giryqoPucXjzdcTYGNxSsxOrQo7HO85gpSavQHt+nDk=",
       "Microsoft.AspNetCore.Components.Forms.wasm": "sha256-gIHXdZBeLhnyYLm2h8QDjACbwq7SOymn4Sc6ozl8EVY=",

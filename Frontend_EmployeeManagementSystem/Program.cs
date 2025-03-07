@@ -22,7 +22,8 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 builder.Services.AddTransient<CustomHttpHandler>();
 builder.Services.AddHttpClient("SystemApiClient", client =>
 {
-    client.BaseAddress = new Uri("https://backendemployee-e6f3gjhndtgfctcs.eastasia-01.azurewebsites.net/"); // Đảm bảo đây là URL API 
+    client.BaseAddress = new Uri("https://backendemployee-e6f3gjhndtgfctcs.eastasia-01.azurewebsites.net/"); //URL API 
+    /*client.BaseAddress = new Uri("https://localhost:7083/"); */
 }).AddHttpMessageHandler<CustomHttpHandler>();
 
 // Đăng ký giấy phép Syncfusion

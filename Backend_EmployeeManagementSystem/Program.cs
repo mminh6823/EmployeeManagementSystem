@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using BaseLibrary.Entities;
 using Microsoft.OpenApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -80,7 +81,10 @@ builder.Services.AddScoped<IGenericRepositoryInterface<Employee>, EmployeeReposi
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
-        policy => policy.WithOrigins("https://frontendemployee-agb8c7g5hwcyg7ag.eastasia-01.azurewebsites.net") // Thay bằng URL Blazor trên Azure
+        policy => policy.WithOrigins(
+            "https://frontendemployee-agb8c7g5hwcyg7ag.eastasia-01.azurewebsites.net",
+             "https://localhost:7142"
+                ) // Thay bằng URL Blazor trên Azure
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials());
@@ -97,7 +101,8 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Employee API V1");
-    c.RoutePrefix = string.Empty; // Đặt Swagger làm trang chủ
+    c.RoutePrefix = string.Empty;
+    /*c.RoutePrefix = "swagger";*/ // Đặt Swagger làm trang chủ
 });
 
 

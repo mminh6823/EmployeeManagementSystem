@@ -1225,10 +1225,6 @@ D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\n
 D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\fj8mo35b6e-tptq2av103.gz
 D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\9q33xaht0a-lfu7j35m59.gz
 D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\xtte53abpw-oyz0vx2fzb.gz
-D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\e03tqfzh5r-b33fqsyw7a.gz
-D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\7grvqakagg-23owx7i1b5.gz
-D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\dp6f77mb31-bijhbaevu2.gz
-D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\qguqxn6q7z-jl0olx16ur.gz
 D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\staticwebassets.build.json
 D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\staticwebassets.development.json
 D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\staticwebassets.build.endpoints.json
@@ -1244,6 +1240,10 @@ D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\n
 D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\refint\Frontend_EmployeeManagementSystem.dll
 D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\Frontend_EmployeeManagementSystem.pdb
 D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\ref\Frontend_EmployeeManagementSystem.dll
-D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\xmek2tqpua-54mrf9lhdf.gz
-D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\89mbvlebr8-20or0h7ljo.gz
-D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\bmly1w1rxd-tiwv7z6j4m.gz
+D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\e03tqfzh5r-zuxbcfw49m.gz
+D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\7grvqakagg-sy4ufu1axl.gz
+D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\dp6f77mb31-9eszsbgtn7.gz
+D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\qguqxn6q7z-tof70ywiza.gz
+D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\xmek2tqpua-8y1yo1odhz.gz
+D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\89mbvlebr8-vgzxleiclz.gz
+D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\compressed\bmly1w1rxd-zpx28pz455.gz

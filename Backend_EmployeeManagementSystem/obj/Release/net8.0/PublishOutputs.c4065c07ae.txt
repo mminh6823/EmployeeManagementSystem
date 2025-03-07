@@ -16,7 +16,13 @@ D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\ne
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Relational.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.DependencyModel.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Diagnostics.Abstractions.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Hosting.Abstractions.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Logging.Abstractions.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.ObjectPool.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.Extensions.Options.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.Identity.Client.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.Identity.Client.Extensions.Msal.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.IdentityModel.Abstractions.dll
@@ -28,6 +34,7 @@ D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\ne
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.OpenApi.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.SqlServer.Server.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Microsoft.Win32.SystemEvents.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Newtonsoft.Json.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Scrutor.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Filters.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\Swashbuckle.AspNetCore.Filters.Abstractions.dll
@@ -38,6 +45,7 @@ D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\ne
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\System.Drawing.Common.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\System.IdentityModel.Tokens.Jwt.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\System.Memory.Data.dll
+D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\System.Net.WebSockets.WebSocketProtocol.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\System.Runtime.Caching.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\System.Security.Cryptography.ProtectedData.dll
 D:\.Net\EmployeeManagementSystem\Backend_EmployeeManagementSystem\obj\Release\net8.0\PubTmp\Out\System.Security.Permissions.dll
