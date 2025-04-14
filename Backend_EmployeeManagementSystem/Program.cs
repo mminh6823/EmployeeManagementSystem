@@ -9,10 +9,17 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using BaseLibrary.Entities;
 using Microsoft.OpenApi.Models;
+using DotNetEnv;
+DotNetEnv.Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Configuration["ConnectionStrings:DefaultConnection"] = Environment.GetEnvironmentVariable("DATABASE_URL");
+builder.Configuration["JwtSection:Key"] = Environment.GetEnvironmentVariable("JWT_KEY");
+builder.Configuration["JwtSection:Issuer"] = Environment.GetEnvironmentVariable("JWT_ISSUER");
+builder.Configuration["JwtSection:Audience"] = Environment.GetEnvironmentVariable("JWT_AUDIENCE");
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

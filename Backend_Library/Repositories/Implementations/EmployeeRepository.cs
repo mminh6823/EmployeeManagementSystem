@@ -78,7 +78,7 @@ namespace Backend_Library.Repositories.Implementations
             findUser.Jobname = item.Jobname;
             findUser.Photo = item.Photo;
 
-            await appDbContext.SaveChangesAsync();
+
             await Commit();
 
        

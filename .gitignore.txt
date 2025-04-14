@@ -1,0 +1,38 @@
+# .NET build files
+bin/
+obj/
+
+# Visual Studio user-specific files
+.vs/
+*.user
+*.suo
+
+# Build results
+*.dll
+*.exe
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Logs
+*.log
+
+# Env files (nhạy cảm!)
+Backend_EmployeeManagementSystem/.env
+
+# User secrets
+secrets.json
+
+# Publish
+publish/
+wwwroot/
+
+# Rider IDE
+.idea/
+
+# Others
+Thumbs.db
+*.DS_Store
