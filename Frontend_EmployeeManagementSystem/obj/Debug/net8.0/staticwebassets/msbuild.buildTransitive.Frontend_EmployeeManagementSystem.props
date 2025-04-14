@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\buildMultiTargeting\Frontend_EmployeeManagementSystem.props" />
-</Project>

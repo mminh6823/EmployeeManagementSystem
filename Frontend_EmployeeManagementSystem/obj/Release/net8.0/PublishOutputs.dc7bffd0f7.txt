@@ -1,3 +1,0 @@
-D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\browser-wasm\PubTmp\Out\libman.json
-D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\browser-wasm\PubTmp\Out\emcc-props.json
-D:\.Net\EmployeeManagementSystem\Frontend_EmployeeManagementSystem\obj\Release\net8.0\browser-wasm\PubTmp\Out\web.config
